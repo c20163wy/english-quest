@@ -1089,42 +1089,155 @@ function normalize(text) {
 }
 
 function getHint(q) {
-  if (q.hint) return q.hint;
+  const text = q.q;
 
+  // Lesson 3 vocabulary
+  if (text.includes("「気候」")) return "clothes are worn to protect us from colder climates... の climates と同じ仲間の単語。";
+  if (text.includes("「厳しい」")) return "Khanty people が暮らす environment を説明している形容詞。寒さや環境のきつさを表す語。";
+  if (text.includes("「反映する」")) return "Traditional clothing ___ local climates and lifestyles. の空欄に入る動詞を思い出そう。";
+  if (text.includes("「生活様式」")) return "local climates and ___ のセットで出てきた語。生活の仕方という意味。";
+  if (text.includes("「表現する」")) return "inner selves through fashion の前に出てくる動詞。自分の内面を外に出すイメージ。";
+  if (text.includes("「追い求める」")) return "what we genuinely wish to be の前に出てくる語。夢や理想を追うイメージ。";
+  if (text.includes("「本当に、心から」")) return "genuinely wish to be の genuinely。気持ちが本物であるイメージ。";
+  if (text.includes("「衣服」を表す")) return "本文では garments to wear の形でも出てくる。clothes より少し堅い言い方。";
+  if (text.includes("「固定観念」")) return "common ___ の形で出てきた語。男子らしさ・女子らしさの決めつけのこと。";
+  if (text.includes("「受け入れられる」")) return "It is ___ for girls to wear boyish clothes. の空欄に入る語。";
+
+  // Lesson 4 vocabulary
+  if (text.includes("「昆虫」")) return "crickets や grasshoppers をまとめて言う語。Lesson 4の中心語。";
+  if (text.includes("「恐ろしい")) return "Mana が最初に cricket cookies を見たときの反応 That sounds ... を思い出そう。";
+  if (text.includes("「おいしい」")) return "Sam が cricket cookies について説明した positive な形容詞。";
+  if (text.includes("「栄養素」")) return "rich in ___, especially protein の空欄に入る語。protein を含む広い意味。";
+  if (text.includes("「タンパク質」")) return "nutrients の中でも especially と強調されていたもの。";
+  if (text.includes("「食べられる」")) return "even if they are ___ の形で出てきた語。食べ物として可能という意味。";
+  if (text.includes("「繁殖する」")) return "Insects ___ rapidly. の動詞。どんどん増えるイメージ。";
+  if (text.includes("「効率よく」")) return "more ___ than livestock の形で出てきた副詞。efficient の副詞形。";
+  if (text.includes("「節約する」")) return "We can ___ water. の動詞。水を大切に使うイメージ。";
+  if (text.includes("「冒険好きな」")) return "Mana の最後のセリフ I’m not ... を思い出そう。新しいことに挑戦する性格。";
+
+  // Lesson 3 grammar choice
+  if (text.includes("母は私に夕食を作らせてくれた")) return "「させてくれた」は許可のニュアンス。let を使い、後ろは me + 動詞の原形。";
+  if (text.includes("兄にパソコンを直してもらった")) return "「してもらった」は have の出番。have + 人 + 動詞の原形。";
+  if (text.includes("先生は私たちに机を運ばせた")) return "先生が生徒にやらせる場面。強めの make を使う。後ろは us + 動詞の原形。";
+  if (text.includes("The news made me")) return "made me の後ろは to feel ではなく feel。気持ちを表す形容詞 sad が続く。";
+  if (text.includes("This shirt makes me")) return "この型は make + 人 + feel + 形容詞。comfortable は feel の後ろに置く。";
+  if (text.includes("She let Kevin")) return "let の後ろは Kevin + 動詞の原形。to は入れない。";
+  if (text.includes("I had Satoshi")) return "have + 人 + 動詞の原形。take copies で「コピーを取る」。";
+  if (text.includes("She made Ken")) return "make + 人 + 動詞の原形。Ken の後ろは study の原形。";
+  if (text.includes("The smell made me feel")) return "feel の後ろには形容詞。副詞っぽい形にしない。";
+  if (text.includes("The sari makes the wearer")) return "本文そのまま型。makes the wearer の後ろは feel + 比較級。";
+  if (text.includes("Boys can wear a skirt")) return "makes them の後ろに続くのは feel。to feel にはしない。";
+  if (text.includes("We don’t always have")) return "don’t have to は「〜する必要はない」。have の後ろに必要な形を考えよう。";
+  if (text.includes("Fashion is an expression")) return "expression は of と相性がよい。『〜の表現』というまとまり。";
+  if (text.includes("Traditional clothing reflects")) return "local climates と lifestyles を並べている。2つをつなぐ語を選ぶ。";
+
+  // Lesson 3 word order
+  if (text.includes("父は私に車を洗わせた")) return "主語は my father。使役動詞 made の後ろは me + wash ... の順番。";
+  if (text.includes("弟にゲームをやらせてあげた")) return "「やらせてあげた」なので let。I → let → my brother → play ... の流れ。";
+  if (text.includes("母に部屋を掃除してもらった")) return "「してもらった」なので had。I → had → my mother → clean ... の流れ。";
+  if (text.includes("その歌は私を幸せ")) return "主語は the song。made me feel happy のまとまりを作ろう。";
+  if (text.includes("その写真は私を幸せ")) return "the picture が主語。made me feel happy の順番は崩さない。";
+  if (text.includes("弟に私のペンを使わせてあげた")) return "許可の let。I let my brother use ... まで一気に作ろう。";
+  if (text.includes("友だちに数学を教えてもらった")) return "have + 人 + teach。teach me math の語順にも注意。";
+  if (text.includes("サリーは着る人を涼しく")) return "The sari が主語。makes the wearer feel cooler の型。";
+  if (text.includes("生き方の表現")) return "Fashion is an expression of ... の後ろに the way we live を置く。";
+  if (text.includes("自分が着たいもの")) return "what we want が「私たちが望むもの」。We can wear の後ろに続ける。";
+
+  // Lesson 3 correction / image
+  if (text.includes("My mother let me to cook")) return "let の後ろは to 不定詞にしない。me の次は動詞の原形。";
+  if (text.includes("made me to feel")) return "make + 人 + feel の型。to を入れたくなるけど不要。";
+  if (text.includes("許可して")) return "やさしく許可するイメージの使役動詞。『〜させてあげる』。";
+  if (text.includes("お願い・役割")) return "頼んでやってもらうイメージ。仕事や役割としてお願いする感じ。";
+  if (text.includes("やりたくなくても")) return "一番強い使役動詞。本人の意思より『させる』が強い。";
+
+  // Lesson 4 passive grammar
+  if (text.includes("受け身の基本形")) return "『〜される／された』は、主語の後ろに be動詞、その後ろに過去分詞。";
+  if (text.includes("この写真はケンによって撮られた")) return "写真は『撮られた』側。take の過去分詞と by Ken を使う。";
+  if (text.includes("この家は1990年に建てられた")) return "家は『建てられた』側。build の過去分詞と、年を表す in 1990。";
+  if (text.includes("フランス語はカナダで話されている")) return "言語が主語。speak の過去分詞を使い、場所は in Canada。";
+  if (text.includes("この机は父によって作られた")) return "机は『作られた』側。作った人を表すので by my father。";
+  if (text.includes("このバッグは中国で作られた")) return "中国は作った人ではなく場所。by ではなく in を使う。";
+  if (text.includes("この手紙は英語で書かれている")) return "言語は in English。write の過去分詞にも注意。";
+  if (text.includes("この窓はトムによって壊された")) return "窓は壊された側。break の過去分詞と by Tom。";
+  if (text.includes("この公園は多くの子どもたちに使われている")) return "公園が主語なので受け身。This park は単数だから be動詞にも注意。";
+  if (text.includes("They are cooked in soy sauce")) return "They are cooked と are called が並んでいる。主語 They に合う be動詞を選ぶ。";
+  if (text.includes("Insects can")) return "can の後ろは必ず動詞の原形。受け身なら can be + 過去分詞。";
+  if (text.includes("About one hundred crickets")) return "one bowl のために使われる、という意味。本文表現として覚えておこう。";
+  if (text.includes("Mealworms use much")) return "than があるので比較級。water は不可算名詞なので fewer ではなく別の語。";
+
+  // Natural active/passive
+  if (text.includes("学校パンフレットで体育館")) return "紹介したい主役は『体育館』。体育館を主語にすると自然。";
+  if (text.includes("サッカーというスポーツ")) return "説明したい主役は『サッカー』。世界中でプレーされる、という受け身が自然。";
+  if (text.includes("生徒たちが体育館を使って")) return "今回は主役が『生徒たちの活動』。受け身より Many students を主語にする。";
+  if (text.includes("観光客の動き")) return "動いている主役は観光客。Many tourists を主語にした能動態が自然。";
+  if (text.includes("ONE PIECEという漫画")) return "紹介したい主役は作品名。作品を主語にして『書かれている』にする。";
+
+  // Lesson 4 correction
+  if (text.includes("This room is clean by students")) return "clean はこのままだと形容詞/原形。受け身にするには過去分詞にする。";
+  if (text.includes("Many flowers is grown")) return "主語 Many flowers は複数。be動詞を単数形にしない。";
+  if (text.includes("This window was break")) return "was の後ろは過去分詞。break の過去分詞は不規則変化。";
+  if (text.includes("This letter is wrote")) return "is の後ろは過去分詞。write の過去分詞を思い出そう。";
+
+  // Lesson 4 word order
+  if (text.includes("この漫画は英語で書かれている")) return "This manga が主語。is written の後ろに、言語を表す in English。";
+  if (text.includes("この窓はケンによって壊された")) return "This window → was broken → by Ken の順番。";
+  if (text.includes("韓国語は韓国で話されている")) return "Korean が主語。is spoken の後ろに場所を表す in Korea。";
+  if (text.includes("この本は佐々木先生")) return "This book が主語。was written の後ろに by Mr. Sasaki。";
+  if (text.includes("コオロギで作られているのですか")) return "疑問文なので Are they ... ? から始まる。made with crickets はまとまり。";
+  if (text.includes("家畜よりも効率的")) return "主語は insects。can be raised の後ろに比較の more efficiently than ...。";
+
+  // Lesson 3 reading
+  if (text.includes("服を着る理由として最初")) return "本文の最初の Why do we wear clothes? の直後を思い出そう。気候や暑さの話。";
+  if (text.includes("Khanty people はどこの")) return "Khanty people の直後に地名が2つ出てくる。Siberia と国名。";
+  if (text.includes("Khanty people の winter coats")) return "winter coats made of ... の部分。寒い地域らしい素材。";
+  if (text.includes("winter coats を着る目的")) return "to keep themselves warm in their harsh environment の部分を見る。";
+  if (text.includes("sari はどこの")) return "The sari, traditional clothing of ... の国名を思い出そう。";
+  if (text.includes("sari は着る人を")) return "makes the wearer feel ... の後ろ。暑い天気でどう感じるか。";
+  if (text.includes("Traditional clothing は何を反映")) return "reflects の後ろに2つ並んでいる。local で始まるセット。";
+  if (text.includes("服を着るもう1つの理由")) return "More recently we have another reason... の次の文。fashion がキーワード。";
+  if (text.includes("fashion は何の表現")) return "an expression of ... の後ろの4語。way が入る表現。";
+  if (text.includes("boys can wear a skirt")) return "理由は if の後ろ。本人がどう感じるならOKなのか。";
+  if (text.includes("girls について")) return "girls can wear ... ではなく、It is acceptable for girls to wear ... の部分。";
+  if (text.includes("Lesson 3全体のテーマ")) return "前半は伝統衣装と気候、後半はファッションと自分らしさ。この2つを含む選択肢を探す。";
+
+  // Lesson 4 reading
+  if (text.includes("Sam が Mana に持ってきた")) return "本文の最初の Sam のセリフ。Mana に試してほしいと言っているもの。";
+  if (text.includes("最初、cricket cookies")) return "Mana の最初の反応。That sounds ... の一語。";
+  if (text.includes("cricket cookies について Sam")) return "Sam は味と栄養の2点を説明している。especially の後ろも大事。";
+  if (text.includes("食べた後の反応")) return "Mana は完全に好きになったわけではない。all right という控えめな反応。";
+  if (text.includes("日本の一部地域")) return "such as の後ろに出てくる昆虫。日本の佃煮の話。";
+  if (text.includes("grasshoppers は何で")) return "They are cooked in ... and are called ... の2つを押さえる。";
+  if (text.includes("insects を食べることについて")) return "Mana は edible とは認めているが、自分ではどう感じているか。";
+  if (text.includes("Some people dislike")) return "だから、虫の姿がそのままではない食べ物がよい、という流れ。";
+  if (text.includes("宇宙で何になる")) return "food ___ in space の表現。食料の供給源という意味。";
+  if (text.includes("astronauts")) return "宇宙では地球から持っていくだけではなく、自分たちで何をする必要があるか。";
+  if (text.includes("昆虫のよい点")) return "rapidly と steadily の2語がヒント。増える速さと生産の安定性。";
+  if (text.includes("Insect farming")) return "Mana が I see. のあとに言っていること。space の量に注目。";
+  if (text.includes("Mealworms と beef")) return "比較表現 much less water than beef。more と less を取り違えない。";
+  if (text.includes("何を節約")) return "conserve の直後の名詞。昆虫を食べることで節約できるもの。";
+  if (text.includes("local restaurant")) return "cricket cookies ではなく、地元のレストランが出している料理。";
+  if (text.includes("one bowl of cricket ramen")) return "About one hundred ... の数字。10でも1000でもない。";
+  if (text.includes("最後に Mana")) return "I’m not adventurous, but ... の後半。完全拒否ではない。";
+  if (text.includes("Lesson 4全体のテーマ")) return "Part 1は抵抗感、Part 2は宇宙食・未来の食料。この両方をまとめる選択肢。";
+
+  // General fallback, but still a bit more useful
   if (q.mode === "word_order") {
-    if (q.type === "文法" && currentLessonId === "lesson3") {
-      return "使役動詞の並べ替えは「主語 → let / have / make → 人 → 動詞の原形」の順番を意識しよう。";
-    }
-    if (q.type === "文法" && currentLessonId === "lesson4") {
-      return "受け身の並べ替えは「主語 → be動詞 → 過去分詞」を先に作ろう。by は「誰によって」、in は「場所・年・言語」のときに使うよ。";
-    }
-    return "まず主語と動詞を探そう。文頭の大文字と最後のピリオドはヒントにならないように消してあるよ。";
-  }
-
-  if (q.type === "単語") {
-    return "本文でその単語が出てきた場面を思い出そう。意味だけでなく、どの話題で使われたかもヒントになるよ。";
-  }
-
-  if (q.type === "本文内容") {
-    if (currentLessonId === "lesson3") {
-      return "Lesson 3は「服の役割」と「ファッションで自分らしさを表すこと」の2つの流れを思い出そう。";
-    }
-    return "Lesson 4は「コオロギクッキーへの反応」と「昆虫食が未来の食料になる理由」の流れを思い出そう。";
+    return "まず主語を置き、その後ろに動詞のまとまりを作ろう。日本語の『誰が／何が』と『どうする』を分けて考える。";
   }
 
   if (q.type === "文法" && currentLessonId === "lesson3") {
-    return "Lesson 3の文法は使役動詞。基本は「let / have / make + 人 + 動詞の原形」。make + 人 + feel + 形容詞も大事。";
+    return "使役動詞のどれを使うかを先に決めよう。let は許可、have は依頼、make は強制寄り。";
   }
 
   if (q.type === "文法" && currentLessonId === "lesson4") {
-    return "Lesson 4の文法は受け身。基本は「be動詞 + 過去分詞」。by は「誰によって」、in は「場所・年・言語」。";
+    return "主語が『する側』か『される側』かを確認しよう。される側なら be動詞 + 過去分詞。";
   }
 
-  if (q.type === "表現") {
-    return "本文で出てきた決まった表現を思い出そう。文法というより、フレーズとして覚えると解きやすいよ。";
+  if (q.type === "本文内容") {
+    return "問題文のキーワードを本文のどの場面で見たか思い出そう。前半か後半かを分けると探しやすい。";
   }
 
-  return "問題文のキーワードを1つ決めて、本文や授業プリントのどこで出てきたか思い出そう。";
+  return "選択肢をすぐ選ばず、問題文のキーワードが本文・プリントのどこで出てきたか思い出そう。";
 }
 
 function showHint() {
