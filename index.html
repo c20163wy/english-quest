@@ -485,6 +485,20 @@
       color: var(--muted);
       font-size: 12px;
     }
+  
+    .word-order-reset {
+      margin-bottom: 18px;
+    }
+
+  
+    .version-info {
+      margin: 28px 0 10px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
   </style>
 </head>
 <body>
@@ -568,7 +582,7 @@
           <div id="answerBank" class="answer-bank"></div>
           <div style="font-weight:800;margin-bottom:8px;">語群</div>
           <div id="wordBank" class="word-bank"></div>
-          <button class="btn secondary" onclick="clearWordOrder()">やり直す</button>
+          <button class="btn secondary word-order-reset" onclick="clearWordOrder()">やり直す</button>
         </div>
 
         <button id="checkBtn" class="btn" onclick="checkAnswer()" disabled>答え合わせ</button>
@@ -606,7 +620,7 @@
     </main>
 
     <footer>
-      Prototype for class review. 問題はあとから追加できます。
+      
     </footer>
   </div>
 
@@ -660,6 +674,30 @@ const lessons = {
     theme: "Why do we wear clothes? / Causative Verbs",
     description: "服の役割、ファッション、使役動詞 let / have / make を復習します。",
     questions: [
+
+      // Term exam prep: Lesson 3 reading, not identical to the test
+      { type: "本文内容", mode: "choice", q: "本文で、winter coats の役割に最も近いものは？", choices: ["厳しい寒さの中で体をあたたかく保つ", "暑い天候で涼しく感じさせる", "自分の好きな色を表す", "食べ物を保存する"], answer: "厳しい寒さの中で体をあたたかく保つ", explanation: "winter coats は寒い環境で体をあたたかく保つための服として出てきます。" },
+      { type: "本文内容", mode: "choice", q: "本文で、sari について正しいものはどれ？", choices: ["暑い天候と関係がある服", "シベリアの冬用コート", "トナカイの皮でできた服", "宇宙で使われる服"], answer: "暑い天候と関係がある服", explanation: "sari は hot weather で着る人を涼しく感じさせる服として紹介されています。" },
+      { type: "本文内容", mode: "choice", q: "服を着る理由として、本文に合わないものはどれ？", choices: ["全員が同じ服を着るため", "暑さや寒さから身を守るため", "自分らしさを表すため", "ファッションで内面を表すため"], answer: "全員が同じ服を着るため", explanation: "本文では、身を守ることと自分らしさを表すことが理由として述べられています。" },
+      { type: "本文内容", mode: "choice", q: "下線部の考えに合う例として自然なものはどれ？", choices: ["自分が落ち着くなら、周りと少し違う服を選んでもよい。", "みんなと同じ服でなければならない。", "男子と女子の服装は必ず分けるべきだ。", "好きな服よりも常に流行を優先すべきだ。"], answer: "自分が落ち着くなら、周りと少し違う服を選んでもよい。", explanation: "固定観念に必ず従う必要はない、という考えに合う例です。" },
+      { type: "本文内容", mode: "choice", q: "本文全体の考えに近いものはどれ？", choices: ["服は身を守るだけでなく、自分らしさを表すこともできる。", "服は流行しているものだけを選ぶべきだ。", "伝統衣装は今の生活には関係がない。", "服装は性別で必ず決めるべきだ。"], answer: "服は身を守るだけでなく、自分らしさを表すこともできる。", explanation: "本文全体では、服の実用的な役割と自己表現としての役割の両方が扱われています。" },
+      { type: "本文内容", mode: "choice", q: "本文の流れとして、最初に出てくる内容はどれ？", choices: ["服は寒さや暑さから身を守る", "ファッションは生き方の表現である", "男子がスカートを着てもよい", "自分が着たいものを着られる"], answer: "服は寒さや暑さから身を守る", explanation: "本文はまず、服を着る実用的な理由から始まります。" },
+      { type: "本文内容", mode: "choice", q: "本文の後半で中心になっている内容はどれ？", choices: ["ファッションで自分らしさを表すこと", "トナカイの皮の使い方", "シベリアの気候", "サリーの素材"], answer: "ファッションで自分らしさを表すこと", explanation: "後半では fashion や stereotypes、wear what we want が中心になります。" },
+
+      // Term exam prep: Lesson 3 grammar and word order, not identical to the test
+      { type: "文法", mode: "choice", q: "The joke made me ___ happy.", choices: ["feel", "to feel", "felt", "feeling"], answer: "feel", explanation: "make + 人 + feel + 形容詞の形です。" },
+      { type: "文法", mode: "choice", q: "My father made me ___ the dishes.", choices: ["wash", "to wash", "washed", "washing"], answer: "wash", explanation: "make + 人 + 動詞の原形です。" },
+      { type: "文法", mode: "choice", q: "I had my sister ___ my bag.", choices: ["carry", "to carry", "carried", "carrying"], answer: "carry", explanation: "have + 人 + 動詞の原形で「人に〜してもらう」です。" },
+      { type: "文法", mode: "choice", q: "The game made me ___ excited.", choices: ["feel", "to feel", "felt", "feels"], answer: "feel", explanation: "make + 人 + feel + 形容詞の形です。" },
+      { type: "文法", mode: "word_order", q: "「私は弟に私の消しゴムを使わせてあげた。」となるように並べ替えよう。", words: ["I", "let", "my", "brother", "use", "my", "eraser"], answer: "I let my brother use my eraser.", explanation: "let + 人 + 動詞の原形です。" },
+      { type: "文法", mode: "word_order", q: "「そのゲームは私をワクワクした気持ちにさせた。」となるように並べ替えよう。", words: ["the", "game", "made", "me", "feel", "excited"], answer: "The game made me feel excited.", explanation: "made me feel excited のまとまりを作ります。" },
+      { type: "文法", mode: "choice", q: "「私は弟に私の消しゴムを使わせてあげた。」を並べ替えると、2番目と4番目に来る語の組み合わせは？", choices: ["let / brother", "I / my", "use / eraser", "my / use"], answer: "let / brother", explanation: "I let my brother use my eraser. なので、2番目は let、4番目は brother です。" },
+      { type: "文法", mode: "choice", q: "「そのゲームは私をワクワクした気持ちにさせた。」を並べ替えると、2番目と5番目に来る語の組み合わせは？", choices: ["game / feel", "made / excited", "me / feel", "made / me"], answer: "game / feel", explanation: "The game made me feel excited. なので、2番目は game、5番目は feel です。" },
+
+      // Term exam prep: Lesson 3 vocabulary in context
+      { type: "単語", mode: "choice", q: "空欄に合う語は？ We should not always follow common ___.", choices: ["stereotypes", "nutrients", "astronauts", "crickets"], answer: "stereotypes", explanation: "common stereotypes で「一般的な固定観念」です。" },
+      { type: "単語", mode: "choice", q: "空欄に合う語は？ Traditional clothes can ___ local lifestyles.", choices: ["reflect", "reproduce", "conserve", "serve"], answer: "reflect", explanation: "reflect は「反映する」です。" },
+      { type: "単語", mode: "choice", q: "空欄に合う語は？ This rule is ___ for many students.", choices: ["acceptable", "rapidly", "edible", "efficiently"], answer: "acceptable", explanation: "acceptable は「受け入れられる」です。" },
 
       { type: "本文内容", mode: "choice", q: "Lesson 3 Part1の流れとして正しいものは？", choices: ["服を着る理由 → Khanty people の例 → sari の例 → 伝統衣装が反映するもの", "ファッションの意味 → 固定観念の話 → 服装の具体例 → 着たいものを着る", "コオロギクッキー → 最初の抵抗感 → 食べてみる → 昆虫食への抵抗", "宇宙での食料 → 昆虫の利点 → コオロギラーメン → Mana の最後の反応"], answer: "服を着る理由 → Khanty people の例 → sari の例 → 伝統衣装が反映するもの", explanation: "Lesson 3 Part1は、服を着る理由から始まり、Khanty people と sari の例を通して、伝統衣装が気候や生活様式を反映することにつながります。" },
 
@@ -759,7 +797,7 @@ const lessons = {
       { type: "文法", mode: "choice", q: "「母は私に夕食を作らせてくれた。」に合う英文は？", choices: ["My mother let me cook dinner.", "My mother let me to cook dinner.", "My mother made me to cook dinner.", "My mother had I cook dinner."], answer: "My mother let me cook dinner.", explanation: "let + 人 + 動詞の原形。許可・させてあげるイメージです。" },
       { type: "文法", mode: "choice", q: "「私は兄にパソコンを直してもらった。」に合う英文は？", choices: ["I had my brother fix my computer.", "I let my brother to fix my computer.", "I made my brother fixed my computer.", "I had my brother to fix my computer."], answer: "I had my brother fix my computer.", explanation: "have + 人 + 動詞の原形。お願い・役割としてやってもらうイメージです。" },
       { type: "文法", mode: "choice", q: "「先生は私たちに机を運ばせた。」に合う英文は？", choices: ["The teacher made us carry the desks.", "The teacher let us to carry the desks.", "The teacher had we carry the desks.", "The teacher made us carried the desks."], answer: "The teacher made us carry the desks.", explanation: "make + 人 + 動詞の原形。強めに「させる」イメージです。" },
-      { type: "文法", mode: "choice", q: "The news made me ___ sad.", choices: ["feel", "feels", "to feel", "felt"], answer: "feel", explanation: "make + 人 + feel + 形容詞。「人を〜な気持ちにさせる」です。" },
+      { type: "文法", mode: "choice", q: "The story made me ___ nervous.", choices: ["feel", "feels", "to feel", "felt"], answer: "feel", explanation: "make + 人 + feel + 形容詞。「人を〜な気持ちにさせる」です。" },
       { type: "文法", mode: "choice", q: "This shirt makes me ___ comfortable.", choices: ["feel", "feels", "to feel", "feeling"], answer: "feel", explanation: "makes me feel comfortable で「私を快適な気持ちにさせる」です。" },
       { type: "文法", mode: "choice", q: "She let Kevin ___ the dishes.", choices: ["wash", "washes", "to wash", "washed"], answer: "wash", explanation: "let Kevin wash ... のように、let の後は人 + 動詞の原形です。" },
       { type: "文法", mode: "choice", q: "I had Satoshi ___ copies.", choices: ["take", "takes", "to take", "taken"], answer: "take", explanation: "have Satoshi take copies で「サトシにコピーを取ってもらった」です。" },
@@ -816,6 +854,30 @@ const lessons = {
     description: "昆虫食、宇宙食、受け身を復習します。文法は by / in 中心です。",
     questions: [
 
+      // Term exam prep: Lesson 4 reading, not identical to the test
+      { type: "本文内容", mode: "choice", q: "Sam の考えに近いものはどれ？", choices: ["昆虫を使った食べ物にはよい点がある", "昆虫食は絶対に食べてはいけない", "牛肉は宇宙で簡単に育てられる", "Mana は最初から昆虫食が大好きだ"], answer: "昆虫を使った食べ物にはよい点がある", explanation: "Sam は昆虫食の栄養や宇宙食としての利点を説明しています。" },
+      { type: "本文内容", mode: "choice", q: "Mana の考えに近いものはどれ？", choices: ["味は悪くないが、昆虫を食べることには抵抗がある", "昆虫食をすぐに毎日食べたい", "宇宙食には全く興味がない", "コオロギラーメンをすでに食べたことがある"], answer: "味は悪くないが、昆虫を食べることには抵抗がある", explanation: "Mana はクッキーの味は認めつつも、昆虫を食べることには抵抗を示しています。" },
+      { type: "本文内容", mode: "choice", q: "Mana の気持ちの変化として自然なものはどれ？", choices: ["嫌がる → 食べてみる → 味は悪くない → いつか試すかもしれない", "好きになる → 後悔する → 肉だけ食べる → 宇宙へ行く", "興味がない → 文化を否定する → 毎日食べる", "最初から好き → 食べない → 絶対に拒否する"], answer: "嫌がる → 食べてみる → 味は悪くない → いつか試すかもしれない", explanation: "Mana の反応は、抵抗感から少しだけ前向きな可能性へ変化しています。" },
+      { type: "本文内容", mode: "choice", q: "昆虫が宇宙食として注目される理由として、本文に合わないものはどれ？", choices: ["広い牧場が必要だから", "小さいスペースで育てられるから", "少ない水でよいから", "効率よく育てられるから"], answer: "広い牧場が必要だから", explanation: "本文では、小さいスペースや少ない水、効率のよさが利点として述べられています。" },
+      { type: "本文内容", mode: "choice", q: "昆虫を使ったスナックがよいと考えられる理由に近いものは？", choices: ["虫をそのまま食べるのが苦手な人でも試しやすいから", "誰でも必ず昆虫が好きになるから", "宇宙でしか食べられないから", "肉より必ずおいしいから"], answer: "虫をそのまま食べるのが苦手な人でも試しやすいから", explanation: "昆虫そのものに抵抗がある人にも、スナックなら試しやすいという考えです。" },
+      { type: "本文内容", mode: "choice", q: "本文全体の内容として近いものはどれ？", choices: ["昆虫食には利点がある一方で、食べることに抵抗を感じる人もいる", "昆虫食は危険なので誰も食べるべきではない", "Mana は最初から昆虫食を楽しんでいる", "牛肉は昆虫より必ず少ない水で作れる"], answer: "昆虫食には利点がある一方で、食べることに抵抗を感じる人もいる", explanation: "本文全体では、昆虫食の利点と心理的な抵抗の両方が描かれています。" },
+
+      // Term exam prep: Lesson 4 grammar and word order, not identical to the test
+      { type: "文法", mode: "choice", q: "This sign ___ ___ in English.", choices: ["is written", "are written", "is wrote", "writes"], answer: "is written", explanation: "受け身は be動詞 + 過去分詞。sign は単数なので is written です。" },
+      { type: "文法", mode: "choice", q: "This chair ___ ___ by Tom.", choices: ["was broken", "is break", "was broke", "broke"], answer: "was broken", explanation: "break の過去分詞は broken。受け身は was broken です。" },
+      { type: "文法", mode: "choice", q: "This library ___ ___ in 1980.", choices: ["was built", "was build", "is build", "built"], answer: "was built", explanation: "build の過去分詞は built。過去の受け身なので was built です。" },
+      { type: "文法", mode: "choice", q: "Chinese ___ ___ in many places.", choices: ["is spoken", "are spoken", "is speak", "speaks"], answer: "is spoken", explanation: "言語が主語の受け身です。Chinese は単数扱いで is spoken です。" },
+      { type: "文法", mode: "word_order", q: "「この標識は英語で書かれている。」となるように並べ替えよう。", words: ["this", "sign", "is", "written", "in", "english"], answer: "This sign is written in English.", explanation: "This sign → is written → in English の順番です。" },
+      { type: "文法", mode: "word_order", q: "「この椅子はトムによって壊された。」となるように並べ替えよう。", words: ["this", "chair", "was", "broken", "by", "tom"], answer: "This chair was broken by Tom.", explanation: "This chair → was broken → by Tom の順番です。" },
+      { type: "文法", mode: "word_order", q: "「この図書館は1980年に建てられた。」となるように並べ替えよう。", words: ["this", "library", "was", "built", "in", "1980"], answer: "This library was built in 1980.", explanation: "This library → was built → in 1980 の順番です。" },
+      { type: "文法", mode: "choice", q: "「この椅子はトムによって壊された。」を並べ替えると、2番目と5番目に来る語の組み合わせは？", choices: ["chair / by", "was / Tom", "broken / by", "this / broken"], answer: "chair / by", explanation: "This chair was broken by Tom. なので、2番目は chair、5番目は by です。" },
+      { type: "文法", mode: "choice", q: "「中国語は多くの場所で話されている。」を並べ替えると、2番目と4番目に来る語の組み合わせは？", choices: ["is / in", "spoken / places", "Chinese / spoken", "in / many"], answer: "is / in", explanation: "Chinese is spoken in many places. なので、2番目は is、4番目は in です。" },
+
+      // Term exam prep: Lesson 4 vocabulary in context
+      { type: "単語", mode: "choice", q: "空欄に合う語は？ We should ___ water in daily life.", choices: ["conserve", "reflect", "pursue", "follow"], answer: "conserve", explanation: "conserve は「節約する、保つ」です。" },
+      { type: "単語", mode: "choice", q: "空欄に合う語は？ Insects ___ quickly.", choices: ["reproduce", "express", "protect", "reflect"], answer: "reproduce", explanation: "reproduce は「繁殖する」です。" },
+      { type: "単語", mode: "choice", q: "空欄に合う語は？ This machine works very ___.", choices: ["efficiently", "horrible", "acceptable", "edible"], answer: "efficiently", explanation: "efficiently は「効率よく」です。" },
+
       { type: "本文内容", mode: "choice", q: "Lesson 4 Part1の流れとして正しいものは？", choices: ["コオロギクッキー → 最初の抵抗感 → 食べてみる → 味は悪くない → 昆虫食にはまだ抵抗", "宇宙での食料 → 自分たちで育てる必要 → 昆虫の利点 → コオロギラーメン → Mana の最後の反応", "服を着る理由 → Khanty people の例 → sari の例 → 伝統衣装が反映するもの", "ファッションの意味 → 固定観念の話 → 服装の具体例 → 着たいものを着る"], answer: "コオロギクッキー → 最初の抵抗感 → 食べてみる → 味は悪くない → 昆虫食にはまだ抵抗", explanation: "Lesson 4 Part1は、コオロギクッキーをきっかけに、Mana の抵抗感、試食後の反応、昆虫食への気持ちへ進みます。" },
 
       { type: "本文内容", mode: "choice", q: "Lesson 4 Part2の流れとして正しいものは？", choices: ["宇宙での食料 → 自分たちで育てる必要 → 昆虫の利点 → コオロギラーメン → Mana の最後の反応", "コオロギクッキー → 最初の抵抗感 → 食べてみる → 味は悪くない → 昆虫食にはまだ抵抗", "ファッションの意味 → 固定観念の話 → 服装の具体例 → 着たいものを着る", "服を着る理由 → Khanty people の例 → sari の例 → 伝統衣装が反映するもの"], answer: "宇宙での食料 → 自分たちで育てる必要 → 昆虫の利点 → コオロギラーメン → Mana の最後の反応", explanation: "Lesson 4 Part2は、宇宙での食料の話から、食料を育てる必要、昆虫の利点、コオロギラーメン、Mana の最後の反応へ進みます。" },
@@ -856,8 +918,8 @@ const lessons = {
 
       { type: "文法", mode: "choice", q: "This song is written in Japanese. の意味は？", choices: ["この歌は日本語で書かれている。", "この歌は日本人によって書かれている。", "この歌は日本語を書いている。", "日本語はこの歌で書かれている。"], answer: "この歌は日本語で書かれている。", explanation: "in Japanese は『日本語で』です。" },
       { type: "文法", mode: "choice", q: "誤りを直すなら？ This song is wrote in Japanese.", choices: ["This song is written in Japanese.", "This song is wrote in Japanese.", "This song are written in Japanese.", "This song writes in Japanese."], answer: "This song is written in Japanese.", explanation: "write の過去分詞は written です。" },
-      { type: "文法", mode: "choice", q: "This bag was made in China. の意味は？", choices: ["このバッグは中国で作られた。", "このバッグは中国人によって作られた。", "このバッグは中国を作った。", "中国はこのバッグで作られた。"], answer: "このバッグは中国で作られた。", explanation: "in China は場所を表します。by China ではありません。" },
-      { type: "文法", mode: "choice", q: "誤りを直すなら？ This bag was made by China.", choices: ["This bag was made in China.", "This bag was made by China.", "This bag is made in China.", "This bag made in China."], answer: "This bag was made in China.", explanation: "中国は作った人ではなく場所なので in China です。" },
+      { type: "文法", mode: "choice", q: "This jacket was made in Italy. の意味は？", choices: ["このジャケットはイタリアで作られた。", "このジャケットはイタリア人によって作られた。", "このジャケットはイタリアを作った。", "イタリアはこのジャケットで作られた。"], answer: "このジャケットはイタリアで作られた。", explanation: "in Italy は場所を表します。by Italy ではありません。" },
+      { type: "文法", mode: "choice", q: "誤りを直すなら？ This jacket was made by Italy.", choices: ["This jacket was made in Italy.", "This jacket was made by Italy.", "This jacket is made in Italy.", "This jacket made in Italy."], answer: "This jacket was made in Italy.", explanation: "国名は作った人ではなく場所なので in を使います。" },
 
       // Added vocabulary reverse patterns: English to Japanese
       { type: "単語", mode: "choice", q: "insect の意味は？", choices: ["昆虫", "家畜", "栄養素", "宇宙飛行士"], answer: "昆虫", explanation: "insect は『昆虫』です。" },
@@ -896,9 +958,9 @@ const lessons = {
       { type: "文法", mode: "choice", q: "This bridge ___ ___ in 2000.", choices: ["was built", "is build", "was build", "were built"], answer: "was built", explanation: "build の過去分詞は built。2000年に建てられたので was built です。" },
       { type: "文法", mode: "choice", q: "French ___ ___ in Canada.", choices: ["is spoken", "are spoken", "is spoke", "was speak"], answer: "is spoken", explanation: "speak の過去分詞は spoken。French は単数扱いで is spoken です。" },
       { type: "文法", mode: "word_order", q: "「バッタはしょうゆで調理される。」となるように並べ替えよう。", words: ["grasshoppers", "are", "cooked", "in", "soy", "sauce"], answer: "Grasshoppers are cooked in soy sauce.", explanation: "Grasshoppers are cooked が受け身、in soy sauce が手段・材料に近い表現です。" },
-      { type: "文法", mode: "word_order", q: "「この写真はユミによって撮られた。」となるように並べ替えよう。", words: ["this", "picture", "was", "taken", "by", "yumi"], answer: "This picture was taken by Yumi.", explanation: "was taken by Yumi のまとまりを作ります。" },
+      { type: "文法", mode: "word_order", q: "「この写真はエミによって撮られた。」となるように並べ替えよう。", words: ["this", "photo", "was", "taken", "by", "emi"], answer: "This photo was taken by Emi.", explanation: "was taken by Emi のまとまりを作ります。" },
       { type: "文法", mode: "word_order", q: "「この歌は日本語で書かれている。」となるように並べ替えよう。", words: ["this", "song", "is", "written", "in", "japanese"], answer: "This song is written in Japanese.", explanation: "言語は in Japanese。is written が受け身です。" },
-      { type: "文法", mode: "word_order", q: "「このバッグは中国で作られた。」となるように並べ替えよう。", words: ["this", "bag", "was", "made", "in", "china"], answer: "This bag was made in China.", explanation: "場所は in China。was made が受け身です。" },
+      { type: "文法", mode: "word_order", q: "「このTシャツはベトナムで作られた。」となるように並べ替えよう。", words: ["this", "T-shirt", "was", "made", "in", "vietnam"], answer: "This T-shirt was made in Vietnam.", explanation: "場所は in Vietnam。was made が受け身です。" },
       { type: "文法", mode: "choice", q: "Insects can ___ more efficiently than livestock.", choices: ["be raised", "raise", "raised", "raising"], answer: "be raised", explanation: "昆虫は『育てられる』側なので can be raised です。can の後は原形なので、can be raised の形になります。" },
       { type: "表現", mode: "choice", q: "About one hundred crickets ___ for one bowl.", choices: ["are used", "use", "is used", "used"], answer: "are used", explanation: "crickets は使われる側で複数なので are used です。for one bowl は本文表現として確認しましょう。" },
       { type: "文法", mode: "choice", q: "Mealworms ___ much less water than beef.", choices: ["use", "are used", "is used", "used"], answer: "use", explanation: "Mealworms は水を『使う』側なので能動態の use です。受け身ではありません。" },
@@ -932,7 +994,7 @@ const lessons = {
       { type: "文法", mode: "choice", q: "「この家は1990年に建てられた。」に合う英文は？", choices: ["This house was built in 1990.", "This house built in 1990.", "This house was build in 1990.", "This house is built by 1990."], answer: "This house was built in 1990.", explanation: "build の過去分詞は built。年は in 1990 です。" },
       { type: "文法", mode: "choice", q: "「フランス語はカナダで話されている。」に合う英文は？", choices: ["French is spoken in Canada.", "French is speak in Canada.", "French was spoken by Canada.", "Canada is spoken French."], answer: "French is spoken in Canada.", explanation: "speak の過去分詞は spoken。場所は in Canada です。" },
       { type: "文法", mode: "choice", q: "「この机は父によって作られた。」に合う英文は？", choices: ["This desk was made by my father.", "This desk made by my father.", "This desk was make by my father.", "My father was made this desk."], answer: "This desk was made by my father.", explanation: "was made by ... で「〜によって作られた」です。" },
-      { type: "文法", mode: "choice", q: "「このバッグは中国で作られた。」に合う英文は？", choices: ["This bag was made in China.", "This bag was made by China.", "This bag made in China.", "This bag is make in China."], answer: "This bag was made in China.", explanation: "国・場所は in China。作った人ではないので by China ではありません。" },
+      { type: "文法", mode: "choice", q: "「このジャケットはイタリアで作られた。」に合う英文は？", choices: ["This jacket was made in Italy.", "This jacket was made by Italy.", "This bag made in Italy.", "This bag is make in Italy."], answer: "This jacket was made in Italy.", explanation: "国・場所は in Italy。作った人ではないので by Italy ではありません。" },
       { type: "文法", mode: "choice", q: "「この手紙は英語で書かれている。」に合う英文は？", choices: ["This letter is written in English.", "This letter is wrote in English.", "This letter was written by English.", "This letter writes in English."], answer: "This letter is written in English.", explanation: "write の過去分詞は written。言語は in English です。" },
       { type: "文法", mode: "choice", q: "「この窓はトムによって壊された。」に合う英文は？", choices: ["This window was broken by Tom.", "This window was broke by Tom.", "This window is break by Tom.", "Tom was broken this window."], answer: "This window was broken by Tom.", explanation: "break の過去分詞は broken。by Tom で「トムによって」です。" },
       { type: "文法", mode: "choice", q: "「この公園は多くの子どもたちに使われている。」に合う英文は？", choices: ["This park is used by many children.", "This park are used by many children.", "This park is use by many children.", "Many children is used this park."], answer: "This park is used by many children.", explanation: "This park は単数なので is used です。" },
@@ -1316,6 +1378,20 @@ function getHint(q) {
   const text = q.q;
   const answer = String(q.answer || "");
 
+  // 期末対策問題向けヒント
+  if (q.type === "文法" && text.includes("番目")) {
+    return "まず英文全体を正しい順番に並べてから、指定された位置の語を確認しよう。選択肢だけを見て決めないのがコツ。";
+  }
+  if (q.type === "本文内容" && text.includes("合わないもの")) {
+    return "本文に書かれていないものを選ぶ問題です。本文の中心内容と反対になっている選択肢に注意しよう。";
+  }
+  if (q.type === "本文内容" && text.includes("気持ちの変化")) {
+    return "最初の反応、食べた後の反応、最後の反応を順番に分けて考えよう。";
+  }
+  if (q.type === "本文内容" && text.includes("理由として")) {
+    return "本文中の理由を問う問題です。結果だけでなく『なぜそう考えたのか』に注目しよう。";
+  }
+
   // 単語：答えそのものではなく、本文の場面・語のイメージだけ出す
   if (q.type === "単語") {
     if (currentLessonId === "lesson3") {
@@ -1499,5 +1575,7 @@ function finishLesson() {
 renderModes();
 loadStats();
 </script>
+
+  <div class="version-info">English Quest v1.0.0｜2026.07.08</div>
 </body>
 </html>
