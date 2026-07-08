@@ -661,6 +661,27 @@ const lessons = {
     description: "服の役割、ファッション、使役動詞 let / have / make を復習します。",
     questions: [
 
+      { type: "本文内容", mode: "choice", q: "Lesson 3 Part1の流れとして正しいものは？", choices: ["服を着る理由 → Khanty people の例 → sari の例 → 伝統衣装が反映するもの", "ファッションの意味 → 固定観念の話 → 服装の具体例 → 着たいものを着る", "コオロギクッキー → 最初の抵抗感 → 食べてみる → 昆虫食への抵抗", "宇宙での食料 → 昆虫の利点 → コオロギラーメン → Mana の最後の反応"], answer: "服を着る理由 → Khanty people の例 → sari の例 → 伝統衣装が反映するもの", explanation: "Lesson 3 Part1は、服を着る理由から始まり、Khanty people と sari の例を通して、伝統衣装が気候や生活様式を反映することにつながります。" },
+
+      // Reading variants: same content, different answer formats
+      { type: "本文内容", mode: "choice", q: "次の文は本文の内容と合っている？ Clothes are worn to protect us from cold or heat.", choices: ["合っている", "合っていない"], answer: "合っている", explanation: "服は寒さや暑さから身を守るために着られる、という内容です。" },
+      { type: "本文内容", mode: "choice", q: "次の文は本文の内容と合っている？ Khanty people wear winter coats made of cotton.", choices: ["合っている", "合っていない"], answer: "合っていない", explanation: "Khanty people の winter coats は reindeer skin でできています。" },
+      { type: "本文内容", mode: "choice", q: "Khanty people の winter coats について、正しい文はどれ？", choices: ["They are made of reindeer skin.", "They are made of cotton.", "They make the wearer feel cooler.", "They are worn in India."], answer: "They are made of reindeer skin.", explanation: "Khanty people の winter coats は reindeer skin でできています。" },
+      { type: "本文内容", mode: "choice", q: "Khanty people の winter coats について、間違っている文はどれ？", choices: ["They are made of cotton.", "They are made of reindeer skin.", "They are used in a harsh environment.", "They keep people warm."], answer: "They are made of cotton.", explanation: "cotton ではなく reindeer skin です。" },
+      { type: "本文内容", mode: "choice", q: "The sari makes the wearer feel ___.", choices: ["cooler", "warmer", "sad", "horrible"], answer: "cooler", explanation: "サリーは暑い天候で着る人をより涼しく感じさせます。" },
+      { type: "本文内容", mode: "choice", q: "サリーについて、本文の内容に合うものはどれ？", choices: ["It is traditional clothing of India.", "It is made of reindeer skin.", "It is worn by Khanty people.", "It protects people from cold in Siberia."], answer: "It is traditional clothing of India.", explanation: "sari はインドの伝統衣装として出てきます。" },
+      { type: "本文内容", mode: "choice", q: "Traditional clothing reflects local ___.", choices: ["climates and lifestyles", "insects and protein", "crickets and mealworms", "teachers and students"], answer: "climates and lifestyles", explanation: "伝統衣装は地域の気候や生活様式を反映しています。" },
+      { type: "本文内容", mode: "choice", q: "「伝統衣装は地域の気候や生活様式を反映している」に合う英文は？", choices: ["Traditional clothing reflects local climates and lifestyles.", "Fashion is only about looking cool.", "Insects can be raised efficiently.", "We always have to follow stereotypes."], answer: "Traditional clothing reflects local climates and lifestyles.", explanation: "Traditional clothing / reflects / local climates and lifestyles のまとまりです。" },
+      { type: "本文内容", mode: "choice", q: "次の文は本文の内容と合っている？ Fashion is an expression of the way we live.", choices: ["合っている", "合っていない"], answer: "合っている", explanation: "Part2では、ファッションは生き方の表現だと説明されています。" },
+      { type: "本文内容", mode: "choice", q: "次の文は本文の内容と合っている？ We always have to follow common stereotypes.", choices: ["合っている", "合っていない"], answer: "合っていない", explanation: "本文では、固定観念にいつも従う必要はないと述べています。" },
+      { type: "本文内容", mode: "choice", q: "We don’t always have to follow common ___.", choices: ["stereotypes", "nutrients", "astronauts", "reindeer"], answer: "stereotypes", explanation: "common stereotypes で「一般的な固定観念」です。" },
+      { type: "本文内容", mode: "choice", q: "Part2の内容に合う文はどれ？", choices: ["Boys can wear a skirt if it makes them feel more comfortable.", "Boys must always wear pants.", "Girls cannot wear boyish clothes.", "Fashion is only about uniforms."], answer: "Boys can wear a skirt if it makes them feel more comfortable.", explanation: "本文では、心地よければ男子がスカートを着ることも例として示されています。" },
+      { type: "本文内容", mode: "choice", q: "Part2の内容と違う文はどれ？", choices: ["We must always follow common stereotypes.", "We can wear what we want.", "Fashion is an expression of the way we live.", "Girls can wear boyish clothes."], answer: "We must always follow common stereotypes.", explanation: "本文では、固定観念にいつも従う必要はないと述べています。" },
+      { type: "本文内容", mode: "word_order", q: "Lesson 3 Part1の内容の流れになるように並べ替えよう。", words: ["服を着る理由", "Khanty people の例", "sari の例", "伝統衣装が反映するもの"], answer: "服を着る理由 Khanty people の例 sari の例 伝統衣装が反映するもの", explanation: "服を着る理由 → Khanty people の例 → sari の例 → 伝統衣装が反映するもの、という流れです。" },
+      { type: "本文内容", mode: "word_order", q: "Lesson 3 Part2の内容の流れになるように並べ替えよう。", words: ["ファッションの意味", "固定観念の話", "服装の具体例", "着たいものを着る"], answer: "ファッションの意味 固定観念の話 服装の具体例 着たいものを着る", explanation: "ファッションの意味 → 固定観念の話 → 服装の具体例 → 着たいものを着る、という流れです。" },
+      { type: "本文内容", mode: "choice", q: "Part1を一言でまとめるなら？", choices: ["Traditional clothing reflects climates and lifestyles.", "Fashion is only about color.", "Insects may become space food.", "Mana likes eating insects."], answer: "Traditional clothing reflects climates and lifestyles.", explanation: "Part1は服と気候・生活様式の関係が中心です。" },
+      { type: "本文内容", mode: "choice", q: "Part2を一言でまとめるなら？", choices: ["Fashion can express who we are.", "Traditional clothing is always warm.", "Insect farming needs a large space.", "Cricket ramen uses beef."], answer: "Fashion can express who we are.", explanation: "Part2はファッションと自分らしさが中心です。" },
+
       // Added pattern variants: same grammar in multiple formats
       { type: "文法", mode: "word_order", q: "「母は私に夕食を作らせてくれた。」となるように並べ替えよう。", words: ["my", "mother", "let", "me", "cook", "dinner"], answer: "My mother let me cook dinner.", explanation: "let + 人 + 動詞の原形。『させてくれた』なので let を使います。" },
       { type: "文法", mode: "choice", q: "誤りを直すなら？ My mother let me to cook dinner.", choices: ["My mother let me cook dinner.", "My mother made me to cook dinner.", "My mother let I cook dinner.", "My mother had me cooked dinner."], answer: "My mother let me cook dinner.", explanation: "let の後ろは 人 + 動詞の原形。to cook ではなく cook です。" },
@@ -718,10 +739,10 @@ const lessons = {
       { type: "本文内容", mode: "choice", q: "Part1で、winter coats から分かる地域の特徴は？", choices: ["寒い地域である", "暑い地域である", "宇宙にある", "水が少ない地域である"], answer: "寒い地域である", explanation: "winter coats は寒さから身を守るための服なので、その地域は寒いと考えられます。" },
       { type: "本文内容", mode: "choice", q: "Part1で、sari から分かる地域の特徴は？", choices: ["暑い地域である", "寒い地域である", "雪が多い地域である", "宇宙にある"], answer: "暑い地域である", explanation: "sari は hot weather で着る人を cooler に感じさせる服です。" },
       { type: "本文内容", mode: "choice", q: "Traditional clothing reflects local climates and lifestyles. に最も合う服は？", choices: ["raincoat", "smartphone", "cricket cookie", "desk"], answer: "raincoat", explanation: "raincoat は雨の多さや生活場面と関係する服なので、気候や生活様式を反映している例になりやすいです。" },
-      { type: "本文内容", mode: "choice", q: "Part2の Main Idea として最も近いものは？", choices: ["Fashion can help us express the way we live.", "We must follow common stereotypes.", "Boys and girls must wear different clothes.", "Fashion is only about looking cool."], answer: "Fashion can help us express the way we live.", explanation: "Part2は、ファッションが生き方や自分らしさの表現になるという内容です。" },
-      { type: "本文内容", mode: "choice", q: "Stereotype の例として最も近いものは？", choices: ["Boys can’t wear pink.", "Some people wear coats in winter.", "Students wear uniforms at school.", "People wear raincoats when it rains."], answer: "Boys can’t wear pink.", explanation: "性別で服装を決めつける考え方は stereotype に近いです。" },
-      { type: "本文内容", mode: "choice", q: "Part2の流れとして正しいものは？", choices: ["Fashion is expression → stereotypes → examples → we can wear what we want", "examples → winter coats → cricket cookies → space food", "sari → beef → mealworms → ramen", "stereotypes → must follow → boys and girls must wear different clothes"], answer: "Fashion is expression → stereotypes → examples → we can wear what we want", explanation: "Part2は、ファッションの意味、固定観念、具体例、まとめの順で進みます。" },
-      { type: "本文内容", mode: "choice", q: "Part2のメッセージとして最も近いものは？", choices: ["We can wear what we want.", "Boys should wear skirts.", "Girls should wear boyish clothes.", "Fashion is only about looking cool."], answer: "We can wear what we want.", explanation: "Part2のまとめは、自分が着たいものを着てよいという方向です。" },
+      { type: "本文内容", mode: "choice", q: "Part2の中心内容として最も近いものは？", choices: ["Fashion can help us express the way we live.", "We must follow common stereotypes.", "Boys and girls must wear different clothes.", "Fashion is only about looking cool."], answer: "Fashion can help us express the way we live.", explanation: "Part2は、ファッションが生き方や自分らしさの表現になるという内容です。" },
+      { type: "本文内容", mode: "choice", q: "固定観念の例として最も近いものは？", choices: ["Boys can’t wear pink.", "Some people wear coats in winter.", "Students wear uniforms at school.", "People wear raincoats when it rains."], answer: "Boys can’t wear pink.", explanation: "性別で服装を決めつける考え方は stereotype に近いです。" },
+      { type: "本文内容", mode: "choice", q: "Lesson 3 Part2の流れとして正しいものは？", choices: ["ファッションの意味 → 固定観念の話 → 服装の具体例 → 着たいものを着る", "服を着る理由 → winter coats の例 → sari の例 → 伝統衣装が反映するもの", "コオロギクッキー → 最初の抵抗感 → 食べてみる → 昆虫食への抵抗", "宇宙での食料 → 昆虫の利点 → コオロギラーメン → Mana の最後の反応"], answer: "ファッションの意味 → 固定観念の話 → 服装の具体例 → 着たいものを着る", explanation: "Lesson 3 Part2は、ファッションの意味、固定観念の話、具体例、まとめの順で進みます。" },
+      { type: "本文内容", mode: "choice", q: "Part2で伝えたいこととして最も近いものは？", choices: ["We can wear what we want.", "Boys should wear skirts.", "Girls should wear boyish clothes.", "Fashion is only about looking cool."], answer: "We can wear what we want.", explanation: "Part2のまとめは、自分が着たいものを着てよいという方向です。" },
       // Vocabulary
       { type: "単語", mode: "choice", q: "「気候」を表す英語は？", choices: ["climate", "culture", "costume", "cookie"], answer: "climate", explanation: "climate は「気候」です。" },
       { type: "単語", mode: "choice", q: "「厳しい」を表す英語は？", choices: ["harsh", "hot", "honest", "happy"], answer: "harsh", explanation: "harsh は「厳しい」という意味です。" },
@@ -784,7 +805,7 @@ const lessons = {
       { type: "本文内容", mode: "choice", q: "girls について本文で述べられていることは？", choices: ["boyish clothes を着ることも受け入れられる", "sari を着なければならない", "winter coats を着るべき", "stereotypes に従うべき"], answer: "boyish clothes を着ることも受け入れられる", explanation: "it is acceptable for girls to wear boyish clothes とあります。" },
       { type: "本文内容", mode: "choice", q: "本文の内容と合っているものは？", choices: ["Clothes are worn to protect us from climates or heat.", "The sari makes the wearer feel warmer.", "We always have to follow stereotypes.", "Traditional clothing does not reflect lifestyles."], answer: "Clothes are worn to protect us from climates or heat.", explanation: "服は気候や暑さから身を守るために着られる、という内容が本文に合っています。" },
       { type: "本文内容", mode: "choice", q: "本文の内容と違うものは？", choices: ["The sari makes the wearer feel warmer in hot weather.", "Traditional clothing reflects local climates.", "Fashion can express our inner selves.", "We can wear what we want."], answer: "The sari makes the wearer feel warmer in hot weather.", explanation: "本文では warmer ではなく cooler です。" },
-      { type: "本文内容", mode: "choice", q: "Lesson 3全体のテーマとして最も近いものは？", choices: ["服には気候への対応と自分らしさの表現という役割がある", "昆虫は未来の食料になる", "宇宙では水を節約する必要がある", "英語では受け身を使う"], answer: "服には気候への対応と自分らしさの表現という役割がある", explanation: "前半は気候と伝統衣装、後半はファッションと自分らしさが中心です。" }
+      { type: "本文内容", mode: "choice", q: "Lesson 3全体の内容として最も近いものは？", choices: ["服には気候への対応と自分らしさの表現という役割がある", "昆虫は未来の食料になる", "宇宙では水を節約する必要がある", "英語では受け身を使う"], answer: "服には気候への対応と自分らしさの表現という役割がある", explanation: "前半は気候と伝統衣装、後半はファッションと自分らしさが中心です。" }
     ]
   },
 
@@ -794,6 +815,31 @@ const lessons = {
     theme: "Our Future Food? / Passive Voice",
     description: "昆虫食、宇宙食、受け身を復習します。文法は by / in 中心です。",
     questions: [
+
+      { type: "本文内容", mode: "choice", q: "Lesson 4 Part1の流れとして正しいものは？", choices: ["コオロギクッキー → 最初の抵抗感 → 食べてみる → 味は悪くない → 昆虫食にはまだ抵抗", "宇宙での食料 → 自分たちで育てる必要 → 昆虫の利点 → コオロギラーメン → Mana の最後の反応", "服を着る理由 → Khanty people の例 → sari の例 → 伝統衣装が反映するもの", "ファッションの意味 → 固定観念の話 → 服装の具体例 → 着たいものを着る"], answer: "コオロギクッキー → 最初の抵抗感 → 食べてみる → 味は悪くない → 昆虫食にはまだ抵抗", explanation: "Lesson 4 Part1は、コオロギクッキーをきっかけに、Mana の抵抗感、試食後の反応、昆虫食への気持ちへ進みます。" },
+
+      { type: "本文内容", mode: "choice", q: "Lesson 4 Part2の流れとして正しいものは？", choices: ["宇宙での食料 → 自分たちで育てる必要 → 昆虫の利点 → コオロギラーメン → Mana の最後の反応", "コオロギクッキー → 最初の抵抗感 → 食べてみる → 味は悪くない → 昆虫食にはまだ抵抗", "ファッションの意味 → 固定観念の話 → 服装の具体例 → 着たいものを着る", "服を着る理由 → Khanty people の例 → sari の例 → 伝統衣装が反映するもの"], answer: "宇宙での食料 → 自分たちで育てる必要 → 昆虫の利点 → コオロギラーメン → Mana の最後の反応", explanation: "Lesson 4 Part2は、宇宙での食料の話から、食料を育てる必要、昆虫の利点、コオロギラーメン、Mana の最後の反応へ進みます。" },
+
+      // Reading variants: same content, different answer formats
+      { type: "本文内容", mode: "choice", q: "次の文は本文の内容と合っている？ Sam brought cricket cookies for Mana.", choices: ["合っている", "合っていない"], answer: "合っている", explanation: "Sam は Mana に cricket cookies を持ってきました。" },
+      { type: "本文内容", mode: "choice", q: "次の文は本文の内容と合っている？ Mana thought cricket cookies sounded good at first.", choices: ["合っている", "合っていない"], answer: "合っていない", explanation: "Mana は最初 That sounds horrible. と反応しています。" },
+      { type: "本文内容", mode: "choice", q: "Mana の最初の反応に合う英文は？", choices: ["That sounds horrible.", "It tastes all right.", "I might try it someday.", "It is served at a local restaurant."], answer: "That sounds horrible.", explanation: "最初にコオロギクッキーのことを聞いたときの反応です。" },
+      { type: "本文内容", mode: "choice", q: "コオロギクッキーを食べた後の Mana の反応は？", choices: ["It tastes all right.", "That sounds horrible.", "I don't try it.", "It needs a large space."], answer: "It tastes all right.", explanation: "食べてみると、完全に好きではないものの all right と言っています。" },
+      { type: "本文内容", mode: "choice", q: "Cricket cookies について、Sam が説明したことは？", choices: ["They are tasty and rich in nutrients.", "They are made of reindeer skin.", "They need a very large space.", "They are Mana’s favorite food."], answer: "They are tasty and rich in nutrients.", explanation: "Sam は味と栄養について説明しています。" },
+      { type: "本文内容", mode: "choice", q: "次の文は本文の内容と合っている？ Grasshoppers are cooked in soy sauce and called tsukudani.", choices: ["合っている", "合っていない"], answer: "合っている", explanation: "日本の一部地域で、バッタ・イナゴはしょうゆで調理され、佃煮と呼ばれます。" },
+      { type: "本文内容", mode: "choice", q: "Part1の内容に合う文はどれ？", choices: ["Mana thinks the cookie tastes OK, but she still doesn't like eating insects.", "Mana now loves eating insects.", "Mana does not try the cookie.", "Sam talks about winter coats."], answer: "Mana thinks the cookie tastes OK, but she still doesn't like eating insects.", explanation: "クッキーの味はOKでも、昆虫を食べること自体には抵抗があります。" },
+      { type: "本文内容", mode: "choice", q: "Part1の内容と違う文はどれ？", choices: ["Mana loves eating insects because they are edible.", "Sam brought cricket cookies.", "Cricket cookies are rich in nutrients.", "Grasshoppers are called tsukudani in some areas."], answer: "Mana loves eating insects because they are edible.", explanation: "Mana は edible でも、自分では昆虫を食べるのが好きではありません。" },
+      { type: "本文内容", mode: "choice", q: "次の文は本文の内容と合っている？ Insects may become a food supply in space in the future.", choices: ["合っている", "合っていない"], answer: "合っている", explanation: "Part2では、昆虫が将来の宇宙での食料供給になる可能性が示されています。" },
+      { type: "本文内容", mode: "choice", q: "次の文は本文の内容と合っている？ Astronauts need to grow their own food in space.", choices: ["合っている", "合っていない"], answer: "合っている", explanation: "宇宙で長く生活するとき、宇宙飛行士は自分たちで食料を育てる必要があります。" },
+      { type: "本文内容", mode: "choice", q: "宇宙で昆虫が食料として向いている理由は？", choices: ["They reproduce rapidly and need only a small space.", "They need a very large space.", "They use more water than beef.", "They grow very slowly."], answer: "They reproduce rapidly and need only a small space.", explanation: "昆虫は速く増え、小さいスペースで育てられる点が利点です。" },
+      { type: "本文内容", mode: "choice", q: "Insect farming needs only a ___ space.", choices: ["small", "large", "cold", "horrible"], answer: "small", explanation: "昆虫飼育は小さいスペースでよいと説明されています。" },
+      { type: "本文内容", mode: "choice", q: "Mealworms と beef の比較として合うものは？", choices: ["Mealworms use much less water than beef.", "Mealworms use much more water than beef.", "Beef reproduces rapidly.", "Mealworms need a very large space."], answer: "Mealworms use much less water than beef.", explanation: "ミールワームは牛肉よりずっと少ない水を使います。" },
+      { type: "本文内容", mode: "choice", q: "次の文は本文の内容と合っている？ About one hundred crickets are used for one bowl of cricket ramen.", choices: ["合っている", "合っていない"], answer: "合っている", explanation: "コオロギラーメン1杯には約100匹のコオロギが使われています。" },
+      { type: "本文内容", mode: "choice", q: "Mana の最後の気持ちに近いものはどれ？", choices: ["She is not adventurous, but she might try it someday.", "She wants to eat insects every day.", "She never changes her mind at all.", "She already loves cricket ramen."], answer: "She is not adventurous, but she might try it someday.", explanation: "最後は、冒険好きではないがいつか試すかもしれない、という反応です。" },
+      { type: "本文内容", mode: "word_order", q: "Lesson 4 Part1の内容の流れになるように並べ替えよう。", words: ["コオロギクッキー", "最初の抵抗感", "食べてみる", "味は悪くない", "昆虫食にはまだ抵抗"], answer: "コオロギクッキー 最初の抵抗感 食べてみる 味は悪くない 昆虫食にはまだ抵抗", explanation: "コオロギクッキー → 最初の抵抗感 → 食べてみる → 味は悪くない → 昆虫食にはまだ抵抗、という流れです。" },
+      { type: "本文内容", mode: "word_order", q: "Lesson 4 Part2の内容の流れになるように並べ替えよう。", words: ["宇宙での食料", "自分たちで育てる必要", "昆虫の利点", "コオロギラーメン", "Mana の最後の反応"], answer: "宇宙での食料 自分たちで育てる必要 昆虫の利点 コオロギラーメン Mana の最後の反応", explanation: "宇宙での食料 → 自分たちで育てる必要 → 昆虫の利点 → コオロギラーメン → Mana の最後の反応、という流れです。" },
+      { type: "本文内容", mode: "choice", q: "Part1を一言でまとめるなら？", choices: ["Mana tries cricket cookies but still feels uncomfortable about eating insects.", "Insects are useful as space food.", "Traditional clothing reflects local climates.", "Boys can wear what they want."], answer: "Mana tries cricket cookies but still feels uncomfortable about eating insects.", explanation: "Part1はコオロギクッキーへの反応と昆虫食への抵抗感が中心です。" },
+      { type: "本文内容", mode: "choice", q: "Part2を一言でまとめるなら？", choices: ["Insects may be useful as future food.", "Mana loves all insect food.", "Cricket cookies are made of beef.", "Fashion expresses inner selves."], answer: "Insects may be useful as future food.", explanation: "Part2は昆虫が未来の食料として役立つ可能性が中心です。" },
 
       // Added pattern variants: same grammar in multiple formats
       { type: "文法", mode: "choice", q: "This picture was taken by Ken. の意味は？", choices: ["この写真はケンによって撮られた。", "ケンはこの写真によって撮られた。", "この写真はケンを撮った。", "ケンはこの写真を撮られている。"], answer: "この写真はケンによって撮られた。", explanation: "was taken by Ken は『ケンによって撮られた』です。" },
@@ -859,14 +905,14 @@ const lessons = {
       { type: "表現", mode: "choice", q: "Cricket ramen ___ at a local restaurant.", choices: ["is served", "serves", "are served", "serve"], answer: "is served", explanation: "コオロギラーメンは『出される』側なので is served です。at a local restaurant は本文表現として確認しましょう。" },
 
       // Added reading from handouts
-      { type: "本文内容", mode: "choice", q: "Part1の First reading：Sam と Mana は何について話している？", choices: ["Cricket cookies and insect food", "Mana’s favorite restaurant", "How to make soy sauce", "Space food"], answer: "Cricket cookies and insect food", explanation: "Part1ではコオロギクッキーと昆虫食について話しています。" },
+      { type: "本文内容", mode: "choice", q: "Sam と Mana は何について話している？", choices: ["Cricket cookies and insect food", "Mana’s favorite restaurant", "How to make soy sauce", "Space food"], answer: "Cricket cookies and insect food", explanation: "Part1ではコオロギクッキーと昆虫食について話しています。" },
       { type: "本文内容", mode: "choice", q: "コオロギクッキーの素材として本文に出てくるものは？", choices: ["crickets", "beef", "reindeer skin", "sari"], answer: "crickets", explanation: "Are they made with crickets? とあるので、素材は crickets です。" },
       { type: "本文内容", mode: "choice", q: "Sam は Mana を説得できた？最も近いものは？", choices: ["少しだけ。クッキーはOKだが、昆虫を食べることはまだ好きではない。", "完全に説得できた。Mana は昆虫食が大好きになった。", "全くできなかった。Mana はクッキーを食べなかった。", "Mana は最初から昆虫食が大好きだった。"], answer: "少しだけ。クッキーはOKだが、昆虫を食べることはまだ好きではない。", explanation: "Mana は cookie tasted good と言いつつ、still don’t like the idea と言っています。" },
-      { type: "本文内容", mode: "choice", q: "Part2の main topic として最も近いものは？", choices: ["Insects may become food in the future.", "Mana wants to eat many insects.", "Beef is very easy to make in space.", "Cricket ramen is Mana’s favorite food."], answer: "Insects may become food in the future.", explanation: "Part2は昆虫が未来の食料、特に宇宙食になる可能性についての話です。" },
+      { type: "本文内容", mode: "choice", q: "Part2の中心内容として最も近いものは？", choices: ["Insects may become food in the future.", "Mana wants to eat many insects.", "Beef is very easy to make in space.", "Cricket ramen is Mana’s favorite food."], answer: "Insects may become food in the future.", explanation: "Part2は昆虫が未来の食料、特に宇宙食になる可能性についての話です。" },
       { type: "本文内容", mode: "choice", q: "宇宙で育てる食べ物に向いている特徴として本文に合うものは？", choices: ["小さいスペースで育てられる", "大きな土地が必要", "水を大量に使う", "成長がとても遅い"], answer: "小さいスペースで育てられる", explanation: "Insect farming needs only a small space. がポイントです。" },
-      { type: "本文内容", mode: "choice", q: "Part2の T/F として正しいものは？ Insect farming needs a very large space.", choices: ["False", "True"], answer: "False", explanation: "本文では only a small space と言っているので False です。" },
+      { type: "本文内容", mode: "choice", q: "次の文は本文の内容と合っている？ Insect farming needs a very large space.", choices: ["合っている", "合っていない"], answer: "合っていない", explanation: "本文では only a small space と言っているので False です。" },
       { type: "本文内容", mode: "choice", q: "Beef と insects / mealworms の比較で、mealworms 側の強みは？", choices: ["使う水が少ない", "広い土地が必要", "育てるのに時間がかかる", "家畜より効率が悪い"], answer: "使う水が少ない", explanation: "Mealworms use much less water than beef. が根拠です。" },
-      { type: "本文内容", mode: "choice", q: "Mana’s Challenge Meter で、Mana の気持ちに近いものは？", choices: ["迷いはあるが、いつか試すかもしれない", "絶対にありえないだけ", "すぐに毎日食べたい", "最初から大好き"], answer: "迷いはあるが、いつか試すかもしれない", explanation: "I’m not adventurous, but I might try it someday. なので、完全拒否ではありません。" },
+      { type: "本文内容", mode: "choice", q: "昆虫食に対する Mana の気持ちに近いものは？", choices: ["迷いはあるが、いつか試すかもしれない", "絶対にありえないだけ", "すぐに毎日食べたい", "最初から大好き"], answer: "迷いはあるが、いつか試すかもしれない", explanation: "I’m not adventurous, but I might try it someday. なので、完全拒否ではありません。" },
       { type: "本文内容", mode: "choice", q: "Lesson4全体の内容に一番近いものは？", choices: ["Insect food may be useful, but some people feel uncomfortable about eating it.", "Insect food is strange, so we should never eat it.", "Mana loves insects and wants to eat many insects.", "Beef is always better than insects."], answer: "Insect food may be useful, but some people feel uncomfortable about eating it.", explanation: "昆虫食の有用性と、食べることへの抵抗感の両方が本文にあります。" },
       // Vocabulary
       { type: "単語", mode: "choice", q: "「昆虫」を表す英語は？", choices: ["insect", "cricket", "protein", "supply"], answer: "insect", explanation: "insect は「昆虫」です。" },
@@ -941,7 +987,7 @@ const lessons = {
       { type: "本文内容", mode: "choice", q: "最後に Mana は cricket ramen についてどう言っている？", choices: ["冒険的ではないが、いつか試すかもしれない", "絶対に食べない", "すでに大好き", "毎日食べたい"], answer: "冒険的ではないが、いつか試すかもしれない", explanation: "I’m not adventurous, but I might try it someday と言っています。" },
       { type: "本文内容", mode: "choice", q: "本文の内容と合っているものは？", choices: ["Cricket cookies are rich in nutrients and protein.", "Mana wanted to try cricket cookies at first.", "Mealworms use much more water than beef.", "Insects reproduce slowly."], answer: "Cricket cookies are rich in nutrients and protein.", explanation: "単元テストの○×に近い内容確認です。" },
       { type: "本文内容", mode: "choice", q: "本文の内容と違うものは？", choices: ["Mealworms use much more water than beef.", "Insects reproduce rapidly.", "Mana might try cricket ramen someday.", "Grasshoppers are called tsukudani."], answer: "Mealworms use much more water than beef.", explanation: "本文では much less water なので、much more water は違います。" },
-      { type: "本文内容", mode: "choice", q: "Lesson 4全体のテーマとして最も近いものは？", choices: ["昆虫食が未来の食料になる可能性", "服で自分らしさを表すこと", "サリーと気候の関係", "高校生活のルール"], answer: "昆虫食が未来の食料になる可能性", explanation: "Part 1は昆虫食への抵抗感、Part 2は未来の食料としての可能性が中心です。" }
+      { type: "本文内容", mode: "choice", q: "Lesson 4全体の内容として最も近いものは？", choices: ["昆虫食が未来の食料になる可能性", "服で自分らしさを表すこと", "サリーと気候の関係", "高校生活のルール"], answer: "昆虫食が未来の食料になる可能性", explanation: "Part 1は昆虫食への抵抗感、Part 2は未来の食料としての可能性が中心です。" }
     ]
   }
 };
@@ -1156,6 +1202,13 @@ function backToLessonSelect() {
   showScreen("lessonSelect");
 }
 
+function shouldKeepChoiceOrder(q) {
+  return Array.isArray(q.choices)
+    && q.choices.length === 2
+    && q.choices[0] === "合っている"
+    && q.choices[1] === "合っていない";
+}
+
 function renderQuestion() {
   const q = quizQuestions[current];
   selected = null;
@@ -1179,7 +1232,8 @@ function renderQuestion() {
     wordOrderArea.style.display = "none";
     choiceArea.innerHTML = "";
 
-    shuffle(q.choices).forEach(choice => {
+    const displayChoices = shouldKeepChoiceOrder(q) ? q.choices : shuffle(q.choices);
+    displayChoices.forEach(choice => {
       const btn = document.createElement("button");
       btn.className = "choice";
       btn.type = "button";
@@ -1331,6 +1385,23 @@ function getHint(q) {
       return "本文に出てきた表現です。受け身の形だけでなく、後ろに続く語句が何を表しているかを考えよう。";
     }
     return "本文中の決まった表現を思い出そう。文法として細かく考えすぎず、フレーズ単位で見ると解きやすい。";
+  }
+
+  // 本文バリエーション問題用ヒント
+  if (q.type === "本文内容" && (text.startsWith("T/F") || text.includes("本文の内容と合っている？"))) {
+    return "True / False は、問題文の中の1語だけが本文と違うことがある。主語・形容詞・数字・場所に注意しよう。";
+  }
+  if (q.type === "本文内容" && q.mode === "word_order") {
+    return "流れの並べ替えです。本文で先に出てくる大きな話題、具体例、最後のまとめの順で考えよう。";
+  }
+  if (q.type === "本文内容" && (text.includes("正しい文") || text.includes("内容に合う文"))) {
+    return "選択肢の一部だけで判断せず、文全体が本文と一致しているかを確認しよう。";
+  }
+  if (q.type === "本文内容" && (text.includes("間違っている文") || text.includes("内容と違う文"))) {
+    return "本文と違うものを選ぶ問題です。選択肢の中の1語だけが本文と反対になっている場合がある。";
+  }
+  if (q.type === "本文内容" && text.includes("一言でまとめるなら")) {
+    return "細かい情報ではなく、そのPart全体の中心テーマを選ぼう。具体例だけの選択肢に注意。";
   }
 
   // 本文内容：答えの内容を言い切らず、探す場所だけ示す
