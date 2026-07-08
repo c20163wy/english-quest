@@ -499,6 +499,240 @@
       font-weight: 700;
       letter-spacing: 0.02em;
     }
+  
+    .close-btn,
+    .icon-btn {
+      white-space: nowrap;
+    }
+
+    #quiz .close-btn,
+    #quiz .icon-btn {
+      min-width: 86px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 14px;
+    }
+  
+    #quiz .topbar {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #quiz .topbar .progress-wrap,
+    #quiz .topbar .progress-container,
+    #quiz .topbar .progress {
+      min-width: 0;
+    }
+
+    #quiz .topbar .lesson-label,
+    #quiz .topbar #quizLessonTitle,
+    #quiz .topbar #currentLessonLabel {
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+    }
+
+    #quiz .close-btn,
+    #quiz .icon-btn {
+      min-width: auto;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 420px) {
+      #quiz .topbar {
+        grid-template-columns: auto 1fr;
+        grid-template-areas:
+          "back title"
+          "progress progress";
+      }
+
+      #quiz .topbar button {
+        grid-area: back;
+      }
+
+      #quiz .topbar .lesson-label,
+      #quiz .topbar #quizLessonTitle,
+      #quiz .topbar #currentLessonLabel {
+        grid-area: title;
+      }
+
+      #quiz .topbar .progress-wrap,
+      #quiz .topbar .progress-container,
+      #quiz .topbar .progress {
+        grid-area: progress;
+      }
+    }
+
+  
+    /* Final quiz header layout: no overlap */
+    #quiz .quiz-topbar,
+    #quiz .topbar {
+      display: grid !important;
+      grid-template-columns: auto minmax(0, 1fr) !important;
+      grid-template-areas:
+        "home title"
+        "progress progress" !important;
+      align-items: center !important;
+      gap: 8px 10px !important;
+    }
+
+    #quiz .quiz-home-btn,
+    #quiz .topbar .close-btn {
+      grid-area: home !important;
+      justify-self: start !important;
+      min-width: 92px !important;
+      max-width: 120px !important;
+      padding: 7px 10px !important;
+      border-radius: 999px !important;
+      font-size: 13px !important;
+      line-height: 1.2 !important;
+      white-space: nowrap !important;
+      text-align: center !important;
+    }
+
+    #quiz #quizLessonTitle {
+      grid-area: title !important;
+      min-width: 0 !important;
+      max-width: 100% !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      white-space: nowrap !important;
+      text-align: right !important;
+      font-size: 13px !important;
+    }
+
+    #quiz .progress-wrap {
+      grid-area: progress !important;
+      width: 100% !important;
+      min-width: 0 !important;
+    }
+
+    @media (max-width: 360px) {
+      #quiz .quiz-home-btn,
+      #quiz .topbar .close-btn {
+        min-width: 84px !important;
+        max-width: 100px !important;
+        padding: 7px 8px !important;
+        font-size: 12px !important;
+      }
+
+      #quiz #quizLessonTitle {
+        font-size: 12px !important;
+      }
+    }
+
+  
+    /* Navigation buttons for selection screens */
+    .nav-home-btn,
+    .nav-back-btn {
+      min-width: 92px !important;
+      padding: 7px 10px !important;
+      border-radius: 999px !important;
+      font-size: 13px !important;
+      line-height: 1.2 !important;
+      white-space: nowrap !important;
+      text-align: center !important;
+      font-weight: 900 !important;
+    }
+
+    #questionCountSelect .topbar,
+    #lessonSelect .topbar {
+      display: grid !important;
+      grid-template-columns: auto minmax(0, 1fr) !important;
+      align-items: center !important;
+      gap: 8px 10px !important;
+    }
+
+    #questionCountSelect .topbar > div,
+    #lessonSelect .topbar > div {
+      min-width: 0 !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      white-space: nowrap !important;
+      text-align: right !important;
+      font-size: 13px !important;
+    }
+
+    @media (max-width: 360px) {
+      .nav-home-btn,
+      .nav-back-btn {
+        min-width: 84px !important;
+        padding: 7px 8px !important;
+        font-size: 12px !important;
+      }
+
+      #questionCountSelect .topbar > div,
+      #lessonSelect .topbar > div {
+        font-size: 12px !important;
+      }
+    }
+
+  
+    /* Selection screen navigation final fix */
+    #questionCountSelect .topbar,
+    #lessonSelect .topbar {
+      display: grid !important;
+      grid-template-columns: auto minmax(0, 1fr) !important;
+      align-items: center !important;
+      gap: 8px 10px !important;
+    }
+
+    #questionCountSelect .topbar > div,
+    #lessonSelect .topbar > div {
+      min-width: 0 !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      white-space: nowrap !important;
+      text-align: right !important;
+    }
+
+    #questionCountSelect .nav-home-btn,
+    #lessonSelect .nav-back-btn {
+      min-width: 92px !important;
+      padding: 7px 10px !important;
+      border-radius: 999px !important;
+      font-size: 13px !important;
+      white-space: nowrap !important;
+      font-weight: 900 !important;
+    }
+
+  
+    /* Refined navigation button style */
+    #questionCountSelect .nav-home-btn,
+    #lessonSelect .nav-back-btn,
+    #quiz .quiz-home-btn,
+    #quiz .topbar .close-btn {
+      background: #eff6ff !important;
+      color: #1d4ed8 !important;
+      border: 1.5px solid #93c5fd !important;
+      box-shadow: 0 1px 3px rgba(37, 99, 235, 0.18) !important;
+      text-shadow: none !important;
+    }
+
+    #questionCountSelect .nav-home-btn:hover,
+    #lessonSelect .nav-back-btn:hover,
+    #quiz .quiz-home-btn:hover,
+    #quiz .topbar .close-btn:hover {
+      background: #dbeafe !important;
+      border-color: #60a5fa !important;
+    }
+
+    #questionCountSelect .nav-home-btn:active,
+    #lessonSelect .nav-back-btn:active,
+    #quiz .quiz-home-btn:active,
+    #quiz .topbar .close-btn:active {
+      transform: translateY(1px) !important;
+      box-shadow: 0 1px 2px rgba(37, 99, 235, 0.12) !important;
+    }
+
   </style>
 </head>
 <body>
@@ -535,7 +769,7 @@
 
     <main id="questionCountSelect" class="screen">
       <div class="topbar">
-        <button class="close-btn" onclick="goHome()">×</button>
+        <button class="close-btn nav-home-btn" onclick="goHome()">← ホームへ</button>
         <div style="flex:1;">
           <div style="font-weight:900;font-size:18px;">出題数を選択</div>
           <div id="selectedModeOnlyText" style="font-size:13px;color:#6b7280;font-weight:700;"></div>
@@ -547,7 +781,7 @@
 
     <main id="lessonSelect" class="screen">
       <div class="topbar">
-        <button class="close-btn" onclick="goHome()">×</button>
+        <button class="close-btn nav-back-btn" onclick="backToQuestionCount()">← 戻る</button>
         <div style="flex:1;">
           <div style="font-weight:900;font-size:18px;">Lessonを選択</div>
           <div id="selectedModeText" style="font-size:13px;color:#6b7280;font-weight:700;"></div>
@@ -558,8 +792,8 @@
     </main>
 
     <main id="quiz" class="screen">
-      <div class="topbar">
-        <button class="close-btn" onclick="backToLessonSelect()">×</button>
+      <div class="topbar quiz-topbar">
+        <button class="close-btn quiz-home-btn" onclick="goHome()">← ホームへ</button>
         <div class="progress-wrap">
           <div id="progress" class="progress"></div>
         </div>
@@ -1078,6 +1312,10 @@ function showScreen(id) {
   document.getElementById(id).classList.add("active");
 }
 
+function backToQuestionCount() {
+  showScreen("questionCountSelect");
+}
+
 function renderModes() {
   const box = document.getElementById("modeList");
   box.innerHTML = "";
@@ -1576,6 +1814,6 @@ renderModes();
 loadStats();
 </script>
 
-  <div class="version-info">English Quest v1.0.0｜2026.07.08</div>
+  <div class="version-info">English Quest v1.0.2｜2026.07.08</div>
 </body>
 </html>
