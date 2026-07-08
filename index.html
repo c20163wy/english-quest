@@ -558,7 +558,6 @@
           <div style="font-weight:800;margin-bottom:8px;">答え</div>
           <div id="answerBank" class="answer-bank"></div>
           <div style="font-weight:800;margin-bottom:8px;">語群</div>
-          <div class="note">※ヒントにならないよう、大文字・ピリオドは消しています。</div>
           <div id="wordBank" class="word-bank"></div>
           <button class="btn secondary" onclick="clearWordOrder()">やり直す</button>
         </div>
@@ -668,7 +667,7 @@ const lessons = {
 
       { type: "文法", mode: "choice", q: "I had my father move the desk. の意味は？", choices: ["私は父に机を動かしてもらった。", "私は父に机を動かさせてくれた。", "父は私に机を動かさせた。", "私は机に父を動かしてもらった。"], answer: "私は父に机を動かしてもらった。", explanation: "had + 人 + 動詞の原形で『人に〜してもらった』です。" },
       { type: "文法", mode: "choice", q: "「私は父に机を動かしてもらった。」に合う英文は？", choices: ["I had my father move the desk.", "I let my father to move the desk.", "I made my father moved the desk.", "I had my father to move the desk."], answer: "I had my father move the desk.", explanation: "have + 人 + 動詞の原形。move the desk を続けます。" },
-      { type: "文法", mode: "word_order", q: "「私は父に机を動かしてもらった。」となるように並べ替えよう。", words: ["i", "had", "my", "father", "move", "the", "desk"], answer: "I had my father move the desk.", explanation: "I had my father move ... の順番です。" },
+      { type: "文法", mode: "word_order", q: "「私は父に机を動かしてもらった。」となるように並べ替えよう。", words: ["I", "had", "my", "father", "move", "the", "desk"], answer: "I had my father move the desk.", explanation: "I had my father move ... の順番です。" },
 
       // Added vocabulary reverse patterns: English to Japanese
       { type: "単語", mode: "choice", q: "climate の意味は？", choices: ["気候", "衣服", "生活様式", "固定観念"], answer: "気候", explanation: "climate は『気候』です。" },
@@ -701,10 +700,10 @@ const lessons = {
       { type: "文法", mode: "choice", q: "「コーチは選手たちを走らせた。」に合う英文は？", choices: ["The coach made the players run.", "The coach let the players to run.", "The coach had the players ran.", "The coach made the players to run."], answer: "The coach made the players run.", explanation: "強制に近い「走らせた」は made。後ろは the players + run です。" },
       { type: "文法", mode: "choice", q: "誤りを直すなら？ She had her brother cleaned the room.", choices: ["She had her brother clean the room.", "She had her brother to clean the room.", "She made her brother cleaned the room.", "She let her brother cleaning the room."], answer: "She had her brother clean the room.", explanation: "have + 人 + 動詞の原形。cleaned ではなく clean です。" },
       { type: "文法", mode: "word_order", q: "「兄は私に新しい服を着させてくれた。」となるように並べ替えよう。", words: ["my", "brother", "let", "me", "wear", "new", "clothes"], answer: "My brother let me wear new clothes.", explanation: "let me wear のまとまりを作ります。" },
-      { type: "文法", mode: "word_order", q: "「私は母に服を選んでもらった。」となるように並べ替えよう。", words: ["i", "had", "my", "mother", "choose", "my", "clothes"], answer: "I had my mother choose my clothes.", explanation: "had my mother choose がポイントです。" },
+      { type: "文法", mode: "word_order", q: "「私は母に服を選んでもらった。」となるように並べ替えよう。", words: ["I", "had", "my", "mother", "choose", "my", "clothes"], answer: "I had my mother choose my clothes.", explanation: "had my mother choose がポイントです。" },
       { type: "文法", mode: "word_order", q: "「この服は私を快適な気持ちにさせる。」となるように並べ替えよう。", words: ["these", "clothes", "make", "me", "feel", "comfortable"], answer: "These clothes make me feel comfortable.", explanation: "make me feel comfortable の型です。" },
       { type: "文法", mode: "word_order", q: "「コーチは選手たちを走らせた。」となるように並べ替えよう。", words: ["the", "coach", "made", "the", "players", "run"], answer: "The coach made the players run.", explanation: "made the players run の順番です。" },
-      { type: "文法", mode: "word_order", q: "「私は妹に私の自転車を使わせてあげた。」となるように並べ替えよう。", words: ["i", "let", "my", "sister", "use", "my", "bike"], answer: "I let my sister use my bike.", explanation: "let my sister use のまとまりを作ります。" },
+      { type: "文法", mode: "word_order", q: "「私は妹に私の自転車を使わせてあげた。」となるように並べ替えよう。", words: ["I", "let", "my", "sister", "use", "my", "bike"], answer: "I let my sister use my bike.", explanation: "let my sister use のまとまりを作ります。" },
 
       // Added reading questions from handouts
       { type: "本文内容", mode: "choice", q: "Part1で、winter coats から分かる地域の特徴は？", choices: ["寒い地域である", "暑い地域である", "宇宙にある", "水が少ない地域である"], answer: "寒い地域である", explanation: "winter coats は寒さから身を守るための服なので、その地域は寒いと考えられます。" },
@@ -744,12 +743,12 @@ const lessons = {
 
       // Grammar word order
       { type: "文法", mode: "word_order", q: "「父は私に車を洗わせた。」となるように並べ替えよう。", words: ["my", "father", "made", "me", "wash", "the", "car"], answer: "My father made me wash the car.", explanation: "made me wash がポイントです。" },
-      { type: "文法", mode: "word_order", q: "「私は弟にゲームをやらせてあげた。」となるように並べ替えよう。", words: ["i", "let", "my", "brother", "play", "the", "game"], answer: "I let my brother play the game.", explanation: "let my brother play で「弟にやらせてあげた」です。" },
-      { type: "文法", mode: "word_order", q: "「私は母に部屋を掃除してもらった。」となるように並べ替えよう。", words: ["i", "had", "my", "mother", "clean", "my", "room"], answer: "I had my mother clean my room.", explanation: "had my mother clean で「母に掃除してもらった」です。" },
+      { type: "文法", mode: "word_order", q: "「私は弟にゲームをやらせてあげた。」となるように並べ替えよう。", words: ["I", "let", "my", "brother", "play", "the", "game"], answer: "I let my brother play the game.", explanation: "let my brother play で「弟にやらせてあげた」です。" },
+      { type: "文法", mode: "word_order", q: "「私は母に部屋を掃除してもらった。」となるように並べ替えよう。", words: ["I", "had", "my", "mother", "clean", "my", "room"], answer: "I had my mother clean my room.", explanation: "had my mother clean で「母に掃除してもらった」です。" },
       { type: "文法", mode: "word_order", q: "「その歌は私を幸せな気持ちにさせた。」となるように並べ替えよう。", words: ["the", "song", "made", "me", "feel", "happy"], answer: "The song made me feel happy.", explanation: "made me feel happy がポイントです。" },
       { type: "文法", mode: "word_order", q: "「その写真は私を幸せな気持ちにさせた。」となるように並べ替えよう。", words: ["the", "picture", "made", "me", "feel", "happy"], answer: "The picture made me feel happy.", explanation: "make + 人 + feel + 形容詞の形です。" },
-      { type: "文法", mode: "word_order", q: "「私は弟に私のペンを使わせてあげた。」となるように並べ替えよう。", words: ["i", "let", "my", "brother", "use", "my", "pen"], answer: "I let my brother use my pen.", explanation: "let + 人 + 動詞の原形です。" },
-      { type: "文法", mode: "word_order", q: "「私は友だちに数学を教えてもらった。」となるように並べ替えよう。", words: ["i", "had", "my", "friend", "teach", "me", "math"], answer: "I had my friend teach me math.", explanation: "have + 人 + 動詞の原形です。" },
+      { type: "文法", mode: "word_order", q: "「私は弟に私のペンを使わせてあげた。」となるように並べ替えよう。", words: ["I", "let", "my", "brother", "use", "my", "pen"], answer: "I let my brother use my pen.", explanation: "let + 人 + 動詞の原形です。" },
+      { type: "文法", mode: "word_order", q: "「私は友だちに数学を教えてもらった。」となるように並べ替えよう。", words: ["I", "had", "my", "friend", "teach", "me", "math"], answer: "I had my friend teach me math.", explanation: "have + 人 + 動詞の原形です。" },
       { type: "文法", mode: "word_order", q: "「サリーは着る人を涼しく感じさせる。」となるように並べ替えよう。", words: ["the", "sari", "makes", "the", "wearer", "feel", "cooler"], answer: "The sari makes the wearer feel cooler.", explanation: "本文の make 型です。" },
       { type: "表現", mode: "word_order", q: "「ファッションは私たちの生き方の表現である。」となるように並べ替えよう。", words: ["fashion", "is", "an", "expression", "of", "the", "way", "we", "live"], answer: "Fashion is an expression of the way we live.", explanation: "an expression of ... の形です。" },
       { type: "表現", mode: "word_order", q: "「私たちは自分が着たいものを着ることができる。」となるように並べ替えよう。", words: ["we", "can", "wear", "what", "we", "want"], answer: "We can wear what we want.", explanation: "what we want で「私たちが望むもの」です。" },
