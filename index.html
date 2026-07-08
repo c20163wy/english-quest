@@ -604,6 +604,12 @@
 
 <script>
 const modes = {
+  vocabulary: {
+    title: "単語",
+    icon: "🔤",
+    theme: "単語問題のみ",
+    description: "授業プリントの単語リストから出題します。"
+  },
   grammar: {
     title: "文法",
     icon: "🧩",
@@ -646,6 +652,68 @@ const lessons = {
     theme: "Why do we wear clothes? / Causative Verbs",
     description: "服の役割、ファッション、使役動詞 let / have / make を復習します。",
     questions: [
+
+      // Added pattern variants: same grammar in multiple formats
+      { type: "文法", mode: "word_order", q: "「母は私に夕食を作らせてくれた。」となるように並べ替えよう。", words: ["my", "mother", "let", "me", "cook", "dinner"], answer: "My mother let me cook dinner.", explanation: "let + 人 + 動詞の原形。『させてくれた』なので let を使います。" },
+      { type: "文法", mode: "choice", q: "誤りを直すなら？ My mother let me to cook dinner.", choices: ["My mother let me cook dinner.", "My mother made me to cook dinner.", "My mother let I cook dinner.", "My mother had me cooked dinner."], answer: "My mother let me cook dinner.", explanation: "let の後ろは 人 + 動詞の原形。to cook ではなく cook です。" },
+      { type: "文法", mode: "choice", q: "My mother let me cook dinner. の意味は？", choices: ["母は私に夕食を作らせてくれた。", "母は私に夕食を作らせた。", "私は母に夕食を作ってもらった。", "母は私を悲しい気持ちにさせた。"], answer: "母は私に夕食を作らせてくれた。", explanation: "let は許可・させてあげるイメージです。" },
+
+      { type: "文法", mode: "word_order", q: "「先生は私たちに机を運ばせた。」となるように並べ替えよう。", words: ["the", "teacher", "made", "us", "carry", "the", "desks"], answer: "The teacher made us carry the desks.", explanation: "make + 人 + 動詞の原形。made us carry の順番です。" },
+      { type: "文法", mode: "choice", q: "誤りを直すなら？ The teacher made us to carry the desks.", choices: ["The teacher made us carry the desks.", "The teacher let us to carry the desks.", "The teacher made we carry the desks.", "The teacher had us carried the desks."], answer: "The teacher made us carry the desks.", explanation: "make の後ろは 人 + 動詞の原形。to carry ではなく carry です。" },
+      { type: "文法", mode: "choice", q: "The teacher made us carry the desks. の意味は？", choices: ["先生は私たちに机を運ばせた。", "先生は私たちに机を運ばせてくれた。", "先生は私たちに机を運んでもらった。", "先生は机を運ばれた。"], answer: "先生は私たちに机を運ばせた。", explanation: "made は強めの『させた』という意味です。" },
+
+      { type: "文法", mode: "choice", q: "「このジャケットは私をあたたかい気持ちにさせる。」に合う英文は？", choices: ["This jacket makes me feel warm.", "This jacket makes me to feel warm.", "This jacket lets me feel warm.", "This jacket made I feel warm."], answer: "This jacket makes me feel warm.", explanation: "make + 人 + feel + 形容詞の形です。" },
+      { type: "文法", mode: "word_order", q: "「このジャケットは私をあたたかい気持ちにさせる。」となるように並べ替えよう。", words: ["this", "jacket", "makes", "me", "feel", "warm"], answer: "This jacket makes me feel warm.", explanation: "makes me feel warm のまとまりを作ります。" },
+      { type: "文法", mode: "choice", q: "誤りを直すなら？ This jacket makes me to feel warm.", choices: ["This jacket makes me feel warm.", "This jacket makes I feel warm.", "This jacket lets me to feel warm.", "This jacket had me feel warm."], answer: "This jacket makes me feel warm.", explanation: "make + 人 + feel + 形容詞。to feel にはしません。" },
+
+      { type: "文法", mode: "choice", q: "I had my father move the desk. の意味は？", choices: ["私は父に机を動かしてもらった。", "私は父に机を動かさせてくれた。", "父は私に机を動かさせた。", "私は机に父を動かしてもらった。"], answer: "私は父に机を動かしてもらった。", explanation: "had + 人 + 動詞の原形で『人に〜してもらった』です。" },
+      { type: "文法", mode: "choice", q: "「私は父に机を動かしてもらった。」に合う英文は？", choices: ["I had my father move the desk.", "I let my father to move the desk.", "I made my father moved the desk.", "I had my father to move the desk."], answer: "I had my father move the desk.", explanation: "have + 人 + 動詞の原形。move the desk を続けます。" },
+      { type: "文法", mode: "word_order", q: "「私は父に机を動かしてもらった。」となるように並べ替えよう。", words: ["i", "had", "my", "father", "move", "the", "desk"], answer: "I had my father move the desk.", explanation: "I had my father move ... の順番です。" },
+
+      // Added vocabulary reverse patterns: English to Japanese
+      { type: "単語", mode: "choice", q: "climate の意味は？", choices: ["気候", "衣服", "生活様式", "固定観念"], answer: "気候", explanation: "climate は『気候』です。" },
+      { type: "単語", mode: "choice", q: "intense の意味は？", choices: ["激しい、強烈な", "一般的な", "快適な", "受け入れられる"], answer: "激しい、強烈な", explanation: "intense heat で『激しい暑さ』です。" },
+      { type: "単語", mode: "choice", q: "ethnic の意味は？", choices: ["民族の、民族的な", "冒険好きな", "効率的な", "食べられる"], answer: "民族の、民族的な", explanation: "ethnic costumes で『民族衣装』です。" },
+      { type: "単語", mode: "choice", q: "protect A from B の意味は？", choices: ["AをBから守る", "AをBに反映する", "AをBに従わせる", "AをBとして表現する"], answer: "AをBから守る", explanation: "protect A from B は『AをBから守る』です。" },
+      { type: "単語", mode: "choice", q: "reflect の意味は？", choices: ["反映する", "守る", "従う", "追い求める"], answer: "反映する", explanation: "traditional clothing reflects local climates... の reflect です。" },
+      { type: "単語", mode: "choice", q: "lifestyle の意味は？", choices: ["生活様式、暮らし方", "固定観念", "内面", "衣服"], answer: "生活様式、暮らし方", explanation: "lifestyle は『生活様式、暮らし方』です。" },
+      { type: "単語", mode: "choice", q: "inner self の意味は？", choices: ["内面、自分らしさ", "民族衣装", "厳しい環境", "快適さ"], answer: "内面、自分らしさ", explanation: "inner self は『内面、自分らしさ』です。" },
+      { type: "単語", mode: "choice", q: "struggle to の意味は？", choices: ["〜するのに苦労する", "〜の代わりに", "〜が豊富である", "〜から守る"], answer: "〜するのに苦労する", explanation: "struggle to ～ は『〜するのに苦労する』です。" },
+      { type: "単語", mode: "choice", q: "garment の意味は？", choices: ["衣服", "家畜", "栄養素", "宇宙飛行士"], answer: "衣服", explanation: "garment は『衣服』です。" },
+      { type: "単語", mode: "choice", q: "acceptable の意味は？", choices: ["受け入れられる", "激しい", "民族的な", "正直に"], answer: "受け入れられる", explanation: "acceptable は『受け入れられる』です。" },
+
+      // Added vocabulary from lesson handouts
+      { type: "単語", mode: "choice", q: "「激しい、強烈な」を表す英語は？", choices: ["intense", "inner", "edible", "steady"], answer: "intense", explanation: "intense は「激しい、強烈な」です。intense heat で「激しい暑さ」です。" },
+      { type: "単語", mode: "choice", q: "「民族の、民族的な」を表す英語は？", choices: ["ethnic", "edible", "ordinary", "local"], answer: "ethnic", explanation: "ethnic は「民族の、民族的な」です。ethnic costumes の形で出てきます。" },
+      { type: "単語", mode: "choice", q: "「AをBから守る」は英語で？", choices: ["protect A from B", "express A through B", "reflect A and B", "follow A with B"], answer: "protect A from B", explanation: "protect A from B で「AをBから守る」です。" },
+      { type: "単語", mode: "choice", q: "「トナカイ」を表す英語は？", choices: ["reindeer", "sari", "garment", "cricket"], answer: "reindeer", explanation: "reindeer は「トナカイ」です。reindeer skin の形で出てきます。" },
+      { type: "単語", mode: "choice", q: "「示す、提案する」を表す英語は？", choices: ["suggest", "struggle", "supply", "serve"], answer: "suggest", explanation: "suggest は「示す、提案する」です。As these examples suggest... の形で出てきます。" },
+      { type: "単語", mode: "choice", q: "「内面、自分らしさ」を表す英語は？", choices: ["inner self", "local climate", "ethnic costume", "food supply"], answer: "inner self", explanation: "inner self は「内面、自分らしさ」です。inner selves の形で出てきます。" },
+      { type: "単語", mode: "choice", q: "「〜するのに苦労する」は英語で？", choices: ["struggle to", "be raised", "instead of", "rich in"], answer: "struggle to", explanation: "struggle to ～ で「〜するのに苦労する」です。" },
+      { type: "単語", mode: "choice", q: "「従う」を表す英語は？", choices: ["follow", "reflect", "protect", "reproduce"], answer: "follow", explanation: "follow は「従う」です。follow common stereotypes の形で出てきます。" },
+      { type: "単語", mode: "choice", q: "「一般的な、共通の」を表す英語は？", choices: ["common", "comfortable", "cooler", "climate"], answer: "common", explanation: "common は「一般的な、共通の」です。common stereotypes の形で出てきます。" },
+      { type: "単語", mode: "choice", q: "「心地よい、快適な」を表す英語は？", choices: ["comfortable", "acceptable", "genuinely", "intense"], answer: "comfortable", explanation: "comfortable は「心地よい、快適な」です。" },
+
+      // Added grammar inspired by handouts
+      { type: "文法", mode: "choice", q: "「兄は私に新しい服を着させてくれた。」に合う英文は？", choices: ["My brother let me wear new clothes.", "My brother made me to wear new clothes.", "My brother had me worn new clothes.", "My brother let me to wear new clothes."], answer: "My brother let me wear new clothes.", explanation: "「させてくれた」は let。let + 人 + 動詞の原形です。" },
+      { type: "文法", mode: "choice", q: "「私は母に服を選んでもらった。」に合う英文は？", choices: ["I had my mother choose my clothes.", "I let my mother to choose my clothes.", "I made my mother chosen my clothes.", "I had my mother to choose my clothes."], answer: "I had my mother choose my clothes.", explanation: "「してもらった」は have。have + 人 + 動詞の原形です。" },
+      { type: "文法", mode: "choice", q: "「この服は私を快適な気持ちにさせる。」に合う英文は？", choices: ["These clothes make me feel comfortable.", "These clothes make me to feel comfortable.", "These clothes let me feeling comfortable.", "These clothes had me feel comfortable."], answer: "These clothes make me feel comfortable.", explanation: "make + 人 + feel + 形容詞の形です。" },
+      { type: "文法", mode: "choice", q: "「コーチは選手たちを走らせた。」に合う英文は？", choices: ["The coach made the players run.", "The coach let the players to run.", "The coach had the players ran.", "The coach made the players to run."], answer: "The coach made the players run.", explanation: "強制に近い「走らせた」は made。後ろは the players + run です。" },
+      { type: "文法", mode: "choice", q: "誤りを直すなら？ She had her brother cleaned the room.", choices: ["She had her brother clean the room.", "She had her brother to clean the room.", "She made her brother cleaned the room.", "She let her brother cleaning the room."], answer: "She had her brother clean the room.", explanation: "have + 人 + 動詞の原形。cleaned ではなく clean です。" },
+      { type: "文法", mode: "word_order", q: "「兄は私に新しい服を着させてくれた。」となるように並べ替えよう。", words: ["my", "brother", "let", "me", "wear", "new", "clothes"], answer: "My brother let me wear new clothes.", explanation: "let me wear のまとまりを作ります。" },
+      { type: "文法", mode: "word_order", q: "「私は母に服を選んでもらった。」となるように並べ替えよう。", words: ["i", "had", "my", "mother", "choose", "my", "clothes"], answer: "I had my mother choose my clothes.", explanation: "had my mother choose がポイントです。" },
+      { type: "文法", mode: "word_order", q: "「この服は私を快適な気持ちにさせる。」となるように並べ替えよう。", words: ["these", "clothes", "make", "me", "feel", "comfortable"], answer: "These clothes make me feel comfortable.", explanation: "make me feel comfortable の型です。" },
+      { type: "文法", mode: "word_order", q: "「コーチは選手たちを走らせた。」となるように並べ替えよう。", words: ["the", "coach", "made", "the", "players", "run"], answer: "The coach made the players run.", explanation: "made the players run の順番です。" },
+      { type: "文法", mode: "word_order", q: "「私は妹に私の自転車を使わせてあげた。」となるように並べ替えよう。", words: ["i", "let", "my", "sister", "use", "my", "bike"], answer: "I let my sister use my bike.", explanation: "let my sister use のまとまりを作ります。" },
+
+      // Added reading questions from handouts
+      { type: "本文内容", mode: "choice", q: "Part1で、winter coats から分かる地域の特徴は？", choices: ["寒い地域である", "暑い地域である", "宇宙にある", "水が少ない地域である"], answer: "寒い地域である", explanation: "winter coats は寒さから身を守るための服なので、その地域は寒いと考えられます。" },
+      { type: "本文内容", mode: "choice", q: "Part1で、sari から分かる地域の特徴は？", choices: ["暑い地域である", "寒い地域である", "雪が多い地域である", "宇宙にある"], answer: "暑い地域である", explanation: "sari は hot weather で着る人を cooler に感じさせる服です。" },
+      { type: "本文内容", mode: "choice", q: "Traditional clothing reflects local climates and lifestyles. に最も合う服は？", choices: ["raincoat", "smartphone", "cricket cookie", "desk"], answer: "raincoat", explanation: "raincoat は雨の多さや生活場面と関係する服なので、気候や生活様式を反映している例になりやすいです。" },
+      { type: "本文内容", mode: "choice", q: "Part2の Main Idea として最も近いものは？", choices: ["Fashion can help us express the way we live.", "We must follow common stereotypes.", "Boys and girls must wear different clothes.", "Fashion is only about looking cool."], answer: "Fashion can help us express the way we live.", explanation: "Part2は、ファッションが生き方や自分らしさの表現になるという内容です。" },
+      { type: "本文内容", mode: "choice", q: "Stereotype の例として最も近いものは？", choices: ["Boys can’t wear pink.", "Some people wear coats in winter.", "Students wear uniforms at school.", "People wear raincoats when it rains."], answer: "Boys can’t wear pink.", explanation: "性別で服装を決めつける考え方は stereotype に近いです。" },
+      { type: "本文内容", mode: "choice", q: "Part2の流れとして正しいものは？", choices: ["Fashion is expression → stereotypes → examples → we can wear what we want", "examples → winter coats → cricket cookies → space food", "sari → beef → mealworms → ramen", "stereotypes → must follow → boys and girls must wear different clothes"], answer: "Fashion is expression → stereotypes → examples → we can wear what we want", explanation: "Part2は、ファッションの意味、固定観念、具体例、まとめの順で進みます。" },
+      { type: "本文内容", mode: "choice", q: "Part2のメッセージとして最も近いものは？", choices: ["We can wear what we want.", "Boys should wear skirts.", "Girls should wear boyish clothes.", "Fashion is only about looking cool."], answer: "We can wear what we want.", explanation: "Part2のまとめは、自分が着たいものを着てよいという方向です。" },
       // Vocabulary
       { type: "単語", mode: "choice", q: "「気候」を表す英語は？", choices: ["climate", "culture", "costume", "cookie"], answer: "climate", explanation: "climate は「気候」です。" },
       { type: "単語", mode: "choice", q: "「厳しい」を表す英語は？", choices: ["harsh", "hot", "honest", "happy"], answer: "harsh", explanation: "harsh は「厳しい」という意味です。" },
@@ -718,6 +786,80 @@ const lessons = {
     theme: "Our Future Food? / Passive Voice",
     description: "昆虫食、宇宙食、受け身を復習します。文法は by / in 中心です。",
     questions: [
+
+      // Added pattern variants: same grammar in multiple formats
+      { type: "文法", mode: "choice", q: "This picture was taken by Ken. の意味は？", choices: ["この写真はケンによって撮られた。", "ケンはこの写真によって撮られた。", "この写真はケンを撮った。", "ケンはこの写真を撮られている。"], answer: "この写真はケンによって撮られた。", explanation: "was taken by Ken は『ケンによって撮られた』です。" },
+      { type: "文法", mode: "choice", q: "誤りを直すなら？ This picture was took by Ken.", choices: ["This picture was taken by Ken.", "This picture was took by Ken.", "This picture is taken by Ken.", "This picture took by Ken."], answer: "This picture was taken by Ken.", explanation: "take の過去分詞は taken です。" },
+      { type: "文法", mode: "word_order", q: "「この写真はケンによって撮られた。」となるように並べ替えよう。", words: ["this", "picture", "was", "taken", "by", "ken"], answer: "This picture was taken by Ken.", explanation: "This picture → was taken → by Ken の順番です。" },
+
+      { type: "文法", mode: "choice", q: "This bridge was built in 2000. の意味は？", choices: ["この橋は2000年に建てられた。", "この橋は2000年によって建てられた。", "この橋は2000年を建てた。", "この橋は2000年に壊された。"], answer: "この橋は2000年に建てられた。", explanation: "in 2000 は『2000年に』です。" },
+      { type: "文法", mode: "choice", q: "誤りを直すなら？ This bridge was build in 2000.", choices: ["This bridge was built in 2000.", "This bridge was build in 2000.", "This bridge is built in 2000.", "This bridge built in 2000."], answer: "This bridge was built in 2000.", explanation: "build の過去分詞は built です。" },
+      { type: "文法", mode: "word_order", q: "「この橋は2000年に建てられた。」となるように並べ替えよう。", words: ["this", "bridge", "was", "built", "in", "2000"], answer: "This bridge was built in 2000.", explanation: "This bridge → was built → in 2000 の順番です。" },
+
+      { type: "文法", mode: "choice", q: "French is spoken in Canada. の意味は？", choices: ["フランス語はカナダで話されている。", "カナダはフランス語で話されている。", "フランス語はカナダによって話されている。", "フランス語はカナダを書いている。"], answer: "フランス語はカナダで話されている。", explanation: "in Canada は場所を表します。" },
+      { type: "文法", mode: "choice", q: "誤りを直すなら？ French is speak in Canada.", choices: ["French is spoken in Canada.", "French is speak in Canada.", "French are spoken in Canada.", "French speaks in Canada."], answer: "French is spoken in Canada.", explanation: "speak の過去分詞は spoken です。" },
+      { type: "文法", mode: "word_order", q: "「フランス語はカナダで話されている。」となるように並べ替えよう。", words: ["french", "is", "spoken", "in", "canada"], answer: "French is spoken in Canada.", explanation: "French → is spoken → in Canada の順番です。" },
+
+      { type: "文法", mode: "choice", q: "This song is written in Japanese. の意味は？", choices: ["この歌は日本語で書かれている。", "この歌は日本人によって書かれている。", "この歌は日本語を書いている。", "日本語はこの歌で書かれている。"], answer: "この歌は日本語で書かれている。", explanation: "in Japanese は『日本語で』です。" },
+      { type: "文法", mode: "choice", q: "誤りを直すなら？ This song is wrote in Japanese.", choices: ["This song is written in Japanese.", "This song is wrote in Japanese.", "This song are written in Japanese.", "This song writes in Japanese."], answer: "This song is written in Japanese.", explanation: "write の過去分詞は written です。" },
+      { type: "文法", mode: "choice", q: "This bag was made in China. の意味は？", choices: ["このバッグは中国で作られた。", "このバッグは中国人によって作られた。", "このバッグは中国を作った。", "中国はこのバッグで作られた。"], answer: "このバッグは中国で作られた。", explanation: "in China は場所を表します。by China ではありません。" },
+      { type: "文法", mode: "choice", q: "誤りを直すなら？ This bag was made by China.", choices: ["This bag was made in China.", "This bag was made by China.", "This bag is made in China.", "This bag made in China."], answer: "This bag was made in China.", explanation: "中国は作った人ではなく場所なので in China です。" },
+
+      // Added vocabulary reverse patterns: English to Japanese
+      { type: "単語", mode: "choice", q: "insect の意味は？", choices: ["昆虫", "家畜", "栄養素", "宇宙飛行士"], answer: "昆虫", explanation: "insect は『昆虫』です。" },
+      { type: "単語", mode: "choice", q: "horrible の意味は？", choices: ["恐ろしい、ひどい", "おいしい", "食べられる", "冒険好きな"], answer: "恐ろしい、ひどい", explanation: "horrible は『恐ろしい、ひどい』です。" },
+      { type: "単語", mode: "choice", q: "tasty の意味は？", choices: ["おいしい", "恐ろしい", "正直に", "安定して"], answer: "おいしい", explanation: "tasty は『おいしい』です。" },
+      { type: "単語", mode: "choice", q: "nutrient の意味は？", choices: ["栄養素", "タンパク質", "昆虫", "家畜"], answer: "栄養素", explanation: "nutrient は『栄養素』です。" },
+      { type: "単語", mode: "choice", q: "edible の意味は？", choices: ["食べられる", "効率的な", "普通の", "民族的な"], answer: "食べられる", explanation: "edible は『食べられる』です。" },
+      { type: "単語", mode: "choice", q: "food supply の意味は？", choices: ["食料供給", "しょうゆ", "地元のレストラン", "固定観念"], answer: "食料供給", explanation: "food supply は『食料供給』です。" },
+      { type: "単語", mode: "choice", q: "astronaut の意味は？", choices: ["宇宙飛行士", "冒険好きな人", "家畜", "ミールワーム"], answer: "宇宙飛行士", explanation: "astronaut は『宇宙飛行士』です。" },
+      { type: "単語", mode: "choice", q: "reproduce の意味は？", choices: ["繁殖する", "節約する", "調理する", "表現する"], answer: "繁殖する", explanation: "reproduce は『繁殖する』です。" },
+      { type: "単語", mode: "choice", q: "livestock の意味は？", choices: ["家畜", "昆虫", "栄養素", "衣服"], answer: "家畜", explanation: "livestock は『家畜』です。" },
+      { type: "単語", mode: "choice", q: "instead of の意味は？", choices: ["〜の代わりに", "〜が豊富な", "〜によって", "〜するのに苦労する"], answer: "〜の代わりに", explanation: "instead of ～ は『〜の代わりに』です。" },
+
+      // Added vocabulary from lesson handouts
+      { type: "単語", mode: "choice", q: "「普通の、いつもの」を表す英語は？", choices: ["ordinary", "edible", "steady", "ethnic"], answer: "ordinary", explanation: "ordinary は「普通の、いつもの」です。ordinary cookie の形で出てきます。" },
+      { type: "単語", mode: "choice", q: "「コオロギ」を表す英語は？", choices: ["cricket", "grasshopper", "mealworm", "livestock"], answer: "cricket", explanation: "cricket は「コオロギ」です。cricket cookies / cricket ramen の形で出てきます。" },
+      { type: "単語", mode: "choice", q: "「〜が多い、〜が豊富な」は英語で？", choices: ["rich in", "instead of", "be raised", "made by"], answer: "rich in", explanation: "rich in ～ で「〜が多い、〜が豊富な」です。" },
+      { type: "単語", mode: "choice", q: "「バッタ、イナゴ」を表す英語は？", choices: ["grasshopper", "cricket", "mealworm", "astronaut"], answer: "grasshopper", explanation: "grasshopper は「バッタ、イナゴ」です。" },
+      { type: "単語", mode: "choice", q: "「しょうゆ」を表す英語は？", choices: ["soy sauce", "food supply", "protein", "livestock"], answer: "soy sauce", explanation: "soy sauce は「しょうゆ」です。cooked in soy sauce の形で出てきます。" },
+      { type: "単語", mode: "choice", q: "「正直に」を表す英語は？", choices: ["honestly", "steadily", "rapidly", "efficiently"], answer: "honestly", explanation: "honestly は「正直に」です。Mana のセリフで出てきます。" },
+      { type: "単語", mode: "choice", q: "「嫌いである」を表す英語は？", choices: ["dislike", "conserve", "reproduce", "serve"], answer: "dislike", explanation: "dislike は「嫌いである」です。Some people dislike the idea... の形で出てきます。" },
+      { type: "単語", mode: "choice", q: "「食料供給」を表す英語は？", choices: ["food supply", "soy sauce", "local restaurant", "common stereotype"], answer: "food supply", explanation: "food supply は「食料供給」です。food supply in space の形で出てきます。" },
+      { type: "単語", mode: "choice", q: "「宇宙飛行士」を表す英語は？", choices: ["astronaut", "adventurous", "grasshopper", "livestock"], answer: "astronaut", explanation: "astronaut は「宇宙飛行士」です。" },
+      { type: "単語", mode: "choice", q: "「育てる」を表す英語は？", choices: ["grow", "conserve", "serve", "suggest"], answer: "grow", explanation: "grow は「育てる」です。grow their own food の形で出てきます。" },
+      { type: "単語", mode: "choice", q: "「速く」を表す英語は？", choices: ["rapidly", "steadily", "honestly", "genuinely"], answer: "rapidly", explanation: "rapidly は「速く」です。Insects reproduce rapidly. の形で出てきます。" },
+      { type: "単語", mode: "choice", q: "「ミールワーム」を表す英語は？", choices: ["mealworm", "livestock", "cricket", "grasshopper"], answer: "mealworm", explanation: "mealworm は「ミールワーム」です。Mealworms use much less water than beef. に出てきます。" },
+      { type: "単語", mode: "choice", q: "「家畜」を表す英語は？", choices: ["livestock", "astronaut", "nutrient", "garment"], answer: "livestock", explanation: "livestock は「家畜」です。" },
+      { type: "単語", mode: "choice", q: "「安定して、着実に」を表す英語は？", choices: ["steadily", "rapidly", "honestly", "genuinely"], answer: "steadily", explanation: "steadily は「安定して、着実に」です。produce food steadily の形で出てきます。" },
+      { type: "単語", mode: "choice", q: "「〜の代わりに」は英語で？", choices: ["instead of", "rich in", "made with", "be raised"], answer: "instead of", explanation: "instead of ～ で「〜の代わりに」です。" },
+
+      // Added grammar from handouts
+      { type: "表現", mode: "choice", q: "Cricket cookies are ___ with crickets.", choices: ["made", "make", "making", "makes"], answer: "made", explanation: "be made with ... で「〜で作られている」です。本文表現として確認しましょう。" },
+      { type: "表現", mode: "choice", q: "Grasshoppers ___ cooked in soy sauce.", choices: ["are", "is", "was", "be"], answer: "are", explanation: "Grasshoppers は複数なので are cooked です。" },
+      { type: "表現", mode: "choice", q: "Cricket ramen ___ served at a local restaurant.", choices: ["is", "are", "be", "were"], answer: "is", explanation: "Cricket ramen は単数扱いなので is served です。" },
+      { type: "文法", mode: "choice", q: "This song ___ ___ by many people.", choices: ["is sung", "are sung", "is sing", "was sung"], answer: "is sung", explanation: "受け身は be動詞 + 過去分詞。song は単数なので is sung です。" },
+      { type: "文法", mode: "choice", q: "This bridge ___ ___ in 2000.", choices: ["was built", "is build", "was build", "were built"], answer: "was built", explanation: "build の過去分詞は built。2000年に建てられたので was built です。" },
+      { type: "文法", mode: "choice", q: "French ___ ___ in Canada.", choices: ["is spoken", "are spoken", "is spoke", "was speak"], answer: "is spoken", explanation: "speak の過去分詞は spoken。French は単数扱いで is spoken です。" },
+      { type: "文法", mode: "word_order", q: "「バッタはしょうゆで調理される。」となるように並べ替えよう。", words: ["grasshoppers", "are", "cooked", "in", "soy", "sauce"], answer: "Grasshoppers are cooked in soy sauce.", explanation: "Grasshoppers are cooked が受け身、in soy sauce が手段・材料に近い表現です。" },
+      { type: "文法", mode: "word_order", q: "「この写真はユミによって撮られた。」となるように並べ替えよう。", words: ["this", "picture", "was", "taken", "by", "yumi"], answer: "This picture was taken by Yumi.", explanation: "was taken by Yumi のまとまりを作ります。" },
+      { type: "文法", mode: "word_order", q: "「この歌は日本語で書かれている。」となるように並べ替えよう。", words: ["this", "song", "is", "written", "in", "japanese"], answer: "This song is written in Japanese.", explanation: "言語は in Japanese。is written が受け身です。" },
+      { type: "文法", mode: "word_order", q: "「このバッグは中国で作られた。」となるように並べ替えよう。", words: ["this", "bag", "was", "made", "in", "china"], answer: "This bag was made in China.", explanation: "場所は in China。was made が受け身です。" },
+      { type: "文法", mode: "choice", q: "Insects can ___ more efficiently than livestock.", choices: ["be raised", "raise", "raised", "raising"], answer: "be raised", explanation: "昆虫は『育てられる』側なので can be raised です。can の後は原形なので、can be raised の形になります。" },
+      { type: "表現", mode: "choice", q: "About one hundred crickets ___ for one bowl.", choices: ["are used", "use", "is used", "used"], answer: "are used", explanation: "crickets は使われる側で複数なので are used です。for one bowl は本文表現として確認しましょう。" },
+      { type: "文法", mode: "choice", q: "Mealworms ___ much less water than beef.", choices: ["use", "are used", "is used", "used"], answer: "use", explanation: "Mealworms は水を『使う』側なので能動態の use です。受け身ではありません。" },
+      { type: "表現", mode: "choice", q: "Cricket ramen ___ at a local restaurant.", choices: ["is served", "serves", "are served", "serve"], answer: "is served", explanation: "コオロギラーメンは『出される』側なので is served です。at a local restaurant は本文表現として確認しましょう。" },
+
+      // Added reading from handouts
+      { type: "本文内容", mode: "choice", q: "Part1の First reading：Sam と Mana は何について話している？", choices: ["Cricket cookies and insect food", "Mana’s favorite restaurant", "How to make soy sauce", "Space food"], answer: "Cricket cookies and insect food", explanation: "Part1ではコオロギクッキーと昆虫食について話しています。" },
+      { type: "本文内容", mode: "choice", q: "コオロギクッキーの素材として本文に出てくるものは？", choices: ["crickets", "beef", "reindeer skin", "sari"], answer: "crickets", explanation: "Are they made with crickets? とあるので、素材は crickets です。" },
+      { type: "本文内容", mode: "choice", q: "Sam は Mana を説得できた？最も近いものは？", choices: ["少しだけ。クッキーはOKだが、昆虫を食べることはまだ好きではない。", "完全に説得できた。Mana は昆虫食が大好きになった。", "全くできなかった。Mana はクッキーを食べなかった。", "Mana は最初から昆虫食が大好きだった。"], answer: "少しだけ。クッキーはOKだが、昆虫を食べることはまだ好きではない。", explanation: "Mana は cookie tasted good と言いつつ、still don’t like the idea と言っています。" },
+      { type: "本文内容", mode: "choice", q: "Part2の main topic として最も近いものは？", choices: ["Insects may become food in the future.", "Mana wants to eat many insects.", "Beef is very easy to make in space.", "Cricket ramen is Mana’s favorite food."], answer: "Insects may become food in the future.", explanation: "Part2は昆虫が未来の食料、特に宇宙食になる可能性についての話です。" },
+      { type: "本文内容", mode: "choice", q: "宇宙で育てる食べ物に向いている特徴として本文に合うものは？", choices: ["小さいスペースで育てられる", "大きな土地が必要", "水を大量に使う", "成長がとても遅い"], answer: "小さいスペースで育てられる", explanation: "Insect farming needs only a small space. がポイントです。" },
+      { type: "本文内容", mode: "choice", q: "Part2の T/F として正しいものは？ Insect farming needs a very large space.", choices: ["False", "True"], answer: "False", explanation: "本文では only a small space と言っているので False です。" },
+      { type: "本文内容", mode: "choice", q: "Beef と insects / mealworms の比較で、mealworms 側の強みは？", choices: ["使う水が少ない", "広い土地が必要", "育てるのに時間がかかる", "家畜より効率が悪い"], answer: "使う水が少ない", explanation: "Mealworms use much less water than beef. が根拠です。" },
+      { type: "本文内容", mode: "choice", q: "Mana’s Challenge Meter で、Mana の気持ちに近いものは？", choices: ["迷いはあるが、いつか試すかもしれない", "絶対にありえないだけ", "すぐに毎日食べたい", "最初から大好き"], answer: "迷いはあるが、いつか試すかもしれない", explanation: "I’m not adventurous, but I might try it someday. なので、完全拒否ではありません。" },
+      { type: "本文内容", mode: "choice", q: "Lesson4全体の内容に一番近いものは？", choices: ["Insect food may be useful, but some people feel uncomfortable about eating it.", "Insect food is strange, so we should never eat it.", "Mana loves insects and wants to eat many insects.", "Beef is always better than insects."], answer: "Insect food may be useful, but some people feel uncomfortable about eating it.", explanation: "昆虫食の有用性と、食べることへの抵抗感の両方が本文にあります。" },
       // Vocabulary
       { type: "単語", mode: "choice", q: "「昆虫」を表す英語は？", choices: ["insect", "cricket", "protein", "supply"], answer: "insect", explanation: "insect は「昆虫」です。" },
       { type: "単語", mode: "choice", q: "「恐ろしい、ひどい」を表す英語は？", choices: ["horrible", "tasty", "edible", "rapid"], answer: "horrible", explanation: "horrible は「恐ろしい、ひどい」です。" },
@@ -741,7 +883,7 @@ const lessons = {
       { type: "文法", mode: "choice", q: "「この窓はトムによって壊された。」に合う英文は？", choices: ["This window was broken by Tom.", "This window was broke by Tom.", "This window is break by Tom.", "Tom was broken this window."], answer: "This window was broken by Tom.", explanation: "break の過去分詞は broken。by Tom で「トムによって」です。" },
       { type: "文法", mode: "choice", q: "「この公園は多くの子どもたちに使われている。」に合う英文は？", choices: ["This park is used by many children.", "This park are used by many children.", "This park is use by many children.", "Many children is used this park."], answer: "This park is used by many children.", explanation: "This park は単数なので is used です。" },
       { type: "表現", mode: "choice", q: "Are they made ___ crickets?", choices: ["with", "by", "to", "at"], answer: "with", explanation: "材料として crickets を使っているので made with crickets です。" },
-      { type: "文法", mode: "choice", q: "They are cooked in soy sauce and ___ called tsukudani.", choices: ["are", "is", "be", "was"], answer: "are", explanation: "They are cooked ... and are called ... の形です。" },
+      { type: "表現", mode: "choice", q: "They are cooked in soy sauce and ___ called tsukudani.", choices: ["are", "is", "be", "was"], answer: "are", explanation: "They are cooked ... and are called ... の形です。" },
       { type: "文法", mode: "choice", q: "Insects can ___ raised more efficiently than livestock.", choices: ["be", "been", "being", "is"], answer: "be", explanation: "can の後は原形。受け身なので can be raised です。" },
       { type: "表現", mode: "choice", q: "About one hundred crickets are used ___ one bowl.", choices: ["for", "by", "with", "from"], answer: "for", explanation: "for one bowl で「一杯のために」です。" },
       { type: "表現", mode: "choice", q: "Mealworms use much ___ water than beef.", choices: ["less", "least", "little", "few"], answer: "less", explanation: "than があるので比較級 less を使います。" },
@@ -876,6 +1018,9 @@ function chooseQuestionCount(count) {
 }
 
 function getQuestionsForMode(lesson) {
+  if (currentMode === "vocabulary") {
+    return lesson.questions.filter(q => q.type === "単語");
+  }
   if (currentMode === "grammar") {
     return lesson.questions.filter(q => q.type === "文法");
   }
@@ -888,14 +1033,16 @@ function getQuestionsForMode(lesson) {
 function getLessonSummary(lessonId) {
   const summaries = {
     lesson3: {
+      vocabulary: "服装・ファッションの単語",
       grammar: "使役動詞",
       reading: "服装について",
-      mixed: "使役動詞＋服装について"
+      mixed: "単語＋使役動詞＋服装について"
     },
     lesson4: {
+      vocabulary: "昆虫食・宇宙食の単語",
       grammar: "受け身",
       reading: "昆虫食について",
-      mixed: "受け身＋昆虫食について"
+      mixed: "単語＋受け身＋昆虫食について"
     }
   };
   return summaries[lessonId][currentMode] || "";
@@ -1105,154 +1252,108 @@ function normalize(text) {
 
 function getHint(q) {
   const text = q.q;
+  const answer = String(q.answer || "");
 
-  // Lesson 3 vocabulary
-  if (text.includes("「気候」")) return "clothes are worn to protect us from colder climates... の climates と同じ仲間の単語。";
-  if (text.includes("「厳しい」")) return "Khanty people が暮らす environment を説明している形容詞。寒さや環境のきつさを表す語。";
-  if (text.includes("「反映する」")) return "Traditional clothing ___ local climates and lifestyles. の空欄に入る動詞を思い出そう。";
-  if (text.includes("「生活様式」")) return "local climates and ___ のセットで出てきた語。生活の仕方という意味。";
-  if (text.includes("「表現する」")) return "inner selves through fashion の前に出てくる動詞。自分の内面を外に出すイメージ。";
-  if (text.includes("「追い求める」")) return "what we genuinely wish to be の前に出てくる語。夢や理想を追うイメージ。";
-  if (text.includes("「本当に、心から」")) return "genuinely wish to be の genuinely。気持ちが本物であるイメージ。";
-  if (text.includes("「衣服」を表す")) return "本文では garments to wear の形でも出てくる。clothes より少し堅い言い方。";
-  if (text.includes("「固定観念」")) return "common ___ の形で出てきた語。男子らしさ・女子らしさの決めつけのこと。";
-  if (text.includes("「受け入れられる」")) return "It is ___ for girls to wear boyish clothes. の空欄に入る語。";
-
-  // Lesson 4 vocabulary
-  if (text.includes("「昆虫」")) return "crickets や grasshoppers をまとめて言う語。Lesson 4の中心語。";
-  if (text.includes("「恐ろしい")) return "Mana が最初に cricket cookies を見たときの反応 That sounds ... を思い出そう。";
-  if (text.includes("「おいしい」")) return "Sam が cricket cookies について説明した positive な形容詞。";
-  if (text.includes("「栄養素」")) return "rich in ___, especially protein の空欄に入る語。protein を含む広い意味。";
-  if (text.includes("「タンパク質」")) return "nutrients の中でも especially と強調されていたもの。";
-  if (text.includes("「食べられる」")) return "even if they are ___ の形で出てきた語。食べ物として可能という意味。";
-  if (text.includes("「繁殖する」")) return "Insects ___ rapidly. の動詞。どんどん増えるイメージ。";
-  if (text.includes("「効率よく」")) return "more ___ than livestock の形で出てきた副詞。efficient の副詞形。";
-  if (text.includes("「節約する」")) return "We can ___ water. の動詞。水を大切に使うイメージ。";
-  if (text.includes("「冒険好きな」")) return "Mana の最後のセリフ I’m not ... を思い出そう。新しいことに挑戦する性格。";
-
-  // Lesson 3 grammar choice
-  if (text.includes("母は私に夕食を作らせてくれた")) return "「させてくれた」は許可のニュアンス。let を使い、後ろは me + 動詞の原形。";
-  if (text.includes("兄にパソコンを直してもらった")) return "「してもらった」は have の出番。have + 人 + 動詞の原形。";
-  if (text.includes("先生は私たちに机を運ばせた")) return "先生が生徒にやらせる場面。強めの make を使う。後ろは us + 動詞の原形。";
-  if (text.includes("The news made me")) return "made me の後ろは to feel ではなく feel。気持ちを表す形容詞 sad が続く。";
-  if (text.includes("This shirt makes me")) return "この型は make + 人 + feel + 形容詞。comfortable は feel の後ろに置く。";
-  if (text.includes("She let Kevin")) return "let の後ろは Kevin + 動詞の原形。to は入れない。";
-  if (text.includes("I had Satoshi")) return "have + 人 + 動詞の原形。take copies で「コピーを取る」。";
-  if (text.includes("She made Ken")) return "make + 人 + 動詞の原形。Ken の後ろは study の原形。";
-  if (text.includes("The smell made me feel")) return "feel の後ろには形容詞。副詞っぽい形にしない。";
-  if (text.includes("The sari makes the wearer")) return "本文そのまま型。makes the wearer の後ろは feel + 比較級。";
-  if (text.includes("Boys can wear a skirt")) return "makes them の後ろに続くのは feel。to feel にはしない。";
-  if (text.includes("We don’t always have")) return "don’t have to は「〜する必要はない」。have の後ろに必要な形を考えよう。";
-  if (text.includes("Fashion is an expression")) return "expression は of と相性がよい。『〜の表現』というまとまり。";
-  if (text.includes("Traditional clothing reflects")) return "local climates と lifestyles を並べている。2つをつなぐ語を選ぶ。";
-
-  // Lesson 3 word order
-  if (text.includes("父は私に車を洗わせた")) return "主語は my father。使役動詞 made の後ろは me + wash ... の順番。";
-  if (text.includes("弟にゲームをやらせてあげた")) return "「やらせてあげた」なので let。I → let → my brother → play ... の流れ。";
-  if (text.includes("母に部屋を掃除してもらった")) return "「してもらった」なので had。I → had → my mother → clean ... の流れ。";
-  if (text.includes("その歌は私を幸せ")) return "主語は the song。made me feel happy のまとまりを作ろう。";
-  if (text.includes("その写真は私を幸せ")) return "the picture が主語。made me feel happy の順番は崩さない。";
-  if (text.includes("弟に私のペンを使わせてあげた")) return "許可の let。I let my brother use ... まで一気に作ろう。";
-  if (text.includes("友だちに数学を教えてもらった")) return "have + 人 + teach。teach me math の語順にも注意。";
-  if (text.includes("サリーは着る人を涼しく")) return "The sari が主語。makes the wearer feel cooler の型。";
-  if (text.includes("生き方の表現")) return "Fashion is an expression of ... の後ろに the way we live を置く。";
-  if (text.includes("自分が着たいもの")) return "what we want が「私たちが望むもの」。We can wear の後ろに続ける。";
-
-  // Lesson 3 correction / image
-  if (text.includes("My mother let me to cook")) return "let の後ろは to 不定詞にしない。me の次は動詞の原形。";
-  if (text.includes("made me to feel")) return "make + 人 + feel の型。to を入れたくなるけど不要。";
-  if (text.includes("許可して")) return "やさしく許可するイメージの使役動詞。『〜させてあげる』。";
-  if (text.includes("お願い・役割")) return "頼んでやってもらうイメージ。仕事や役割としてお願いする感じ。";
-  if (text.includes("やりたくなくても")) return "一番強い使役動詞。本人の意思より『させる』が強い。";
-
-  // Lesson 4 passive grammar
-  if (text.includes("受け身の基本形")) return "『〜される／された』は、主語の後ろに be動詞、その後ろに過去分詞。";
-  if (text.includes("この写真はケンによって撮られた")) return "写真は『撮られた』側。take の過去分詞と by Ken を使う。";
-  if (text.includes("この家は1990年に建てられた")) return "家は『建てられた』側。build の過去分詞と、年を表す in 1990。";
-  if (text.includes("フランス語はカナダで話されている")) return "言語が主語。speak の過去分詞を使い、場所は in Canada。";
-  if (text.includes("この机は父によって作られた")) return "机は『作られた』側。作った人を表すので by my father。";
-  if (text.includes("このバッグは中国で作られた")) return "中国は作った人ではなく場所。by ではなく in を使う。";
-  if (text.includes("この手紙は英語で書かれている")) return "言語は in English。write の過去分詞にも注意。";
-  if (text.includes("この窓はトムによって壊された")) return "窓は壊された側。break の過去分詞と by Tom。";
-  if (text.includes("この公園は多くの子どもたちに使われている")) return "公園が主語なので受け身。This park は単数だから be動詞にも注意。";
-  if (text.includes("They are cooked in soy sauce")) return "They are cooked と are called が並んでいる。主語 They に合う be動詞を選ぶ。";
-  if (text.includes("Insects can")) return "can の後ろは必ず動詞の原形。受け身なら can be + 過去分詞。";
-  if (text.includes("About one hundred crickets")) return "one bowl のために使われる、という意味。本文表現として覚えておこう。";
-  if (text.includes("Mealworms use much")) return "than があるので比較級。water は不可算名詞なので fewer ではなく別の語。";
-
-  // Natural active/passive
-  if (text.includes("学校パンフレットで体育館")) return "紹介したい主役は『体育館』。体育館を主語にすると自然。";
-  if (text.includes("サッカーというスポーツ")) return "説明したい主役は『サッカー』。世界中でプレーされる、という受け身が自然。";
-  if (text.includes("生徒たちが体育館を使って")) return "今回は主役が『生徒たちの活動』。受け身より Many students を主語にする。";
-  if (text.includes("観光客の動き")) return "動いている主役は観光客。Many tourists を主語にした能動態が自然。";
-  if (text.includes("ONE PIECEという漫画")) return "紹介したい主役は作品名。作品を主語にして『書かれている』にする。";
-
-  // Lesson 4 correction
-  if (text.includes("This room is clean by students")) return "clean はこのままだと形容詞/原形。受け身にするには過去分詞にする。";
-  if (text.includes("Many flowers is grown")) return "主語 Many flowers は複数。be動詞を単数形にしない。";
-  if (text.includes("This window was break")) return "was の後ろは過去分詞。break の過去分詞は不規則変化。";
-  if (text.includes("This letter is wrote")) return "is の後ろは過去分詞。write の過去分詞を思い出そう。";
-
-  // Lesson 4 word order
-  if (text.includes("この漫画は英語で書かれている")) return "This manga が主語。is written の後ろに、言語を表す in English。";
-  if (text.includes("この窓はケンによって壊された")) return "This window → was broken → by Ken の順番。";
-  if (text.includes("韓国語は韓国で話されている")) return "Korean が主語。is spoken の後ろに場所を表す in Korea。";
-  if (text.includes("この本は佐々木先生")) return "This book が主語。was written の後ろに by Mr. Sasaki。";
-  if (text.includes("コオロギで作られているのですか")) return "疑問文なので Are they ... ? から始まる。made with crickets はまとまり。";
-  if (text.includes("家畜よりも効率的")) return "主語は insects。can be raised の後ろに比較の more efficiently than ...。";
-
-  // Lesson 3 reading
-  if (text.includes("服を着る理由として最初")) return "本文の最初の Why do we wear clothes? の直後を思い出そう。気候や暑さの話。";
-  if (text.includes("Khanty people はどこの")) return "Khanty people の直後に地名が2つ出てくる。Siberia と国名。";
-  if (text.includes("Khanty people の winter coats")) return "winter coats made of ... の部分。寒い地域らしい素材。";
-  if (text.includes("winter coats を着る目的")) return "to keep themselves warm in their harsh environment の部分を見る。";
-  if (text.includes("sari はどこの")) return "The sari, traditional clothing of ... の国名を思い出そう。";
-  if (text.includes("sari は着る人を")) return "makes the wearer feel ... の後ろ。暑い天気でどう感じるか。";
-  if (text.includes("Traditional clothing は何を反映")) return "reflects の後ろに2つ並んでいる。local で始まるセット。";
-  if (text.includes("服を着るもう1つの理由")) return "More recently we have another reason... の次の文。fashion がキーワード。";
-  if (text.includes("fashion は何の表現")) return "an expression of ... の後ろの4語。way が入る表現。";
-  if (text.includes("boys can wear a skirt")) return "理由は if の後ろ。本人がどう感じるならOKなのか。";
-  if (text.includes("girls について")) return "girls can wear ... ではなく、It is acceptable for girls to wear ... の部分。";
-  if (text.includes("Lesson 3全体のテーマ")) return "前半は伝統衣装と気候、後半はファッションと自分らしさ。この2つを含む選択肢を探す。";
-
-  // Lesson 4 reading
-  if (text.includes("Sam が Mana に持ってきた")) return "本文の最初の Sam のセリフ。Mana に試してほしいと言っているもの。";
-  if (text.includes("最初、cricket cookies")) return "Mana の最初の反応。That sounds ... の一語。";
-  if (text.includes("cricket cookies について Sam")) return "Sam は味と栄養の2点を説明している。especially の後ろも大事。";
-  if (text.includes("食べた後の反応")) return "Mana は完全に好きになったわけではない。all right という控えめな反応。";
-  if (text.includes("日本の一部地域")) return "such as の後ろに出てくる昆虫。日本の佃煮の話。";
-  if (text.includes("grasshoppers は何で")) return "They are cooked in ... and are called ... の2つを押さえる。";
-  if (text.includes("insects を食べることについて")) return "Mana は edible とは認めているが、自分ではどう感じているか。";
-  if (text.includes("Some people dislike")) return "だから、虫の姿がそのままではない食べ物がよい、という流れ。";
-  if (text.includes("宇宙で何になる")) return "food ___ in space の表現。食料の供給源という意味。";
-  if (text.includes("astronauts")) return "宇宙では地球から持っていくだけではなく、自分たちで何をする必要があるか。";
-  if (text.includes("昆虫のよい点")) return "rapidly と steadily の2語がヒント。増える速さと生産の安定性。";
-  if (text.includes("Insect farming")) return "Mana が I see. のあとに言っていること。space の量に注目。";
-  if (text.includes("Mealworms と beef")) return "比較表現 much less water than beef。more と less を取り違えない。";
-  if (text.includes("何を節約")) return "conserve の直後の名詞。昆虫を食べることで節約できるもの。";
-  if (text.includes("local restaurant")) return "cricket cookies ではなく、地元のレストランが出している料理。";
-  if (text.includes("one bowl of cricket ramen")) return "About one hundred ... の数字。10でも1000でもない。";
-  if (text.includes("最後に Mana")) return "I’m not adventurous, but ... の後半。完全拒否ではない。";
-  if (text.includes("Lesson 4全体のテーマ")) return "Part 1は抵抗感、Part 2は宇宙食・未来の食料。この両方をまとめる選択肢。";
-
-  // General fallback, but still a bit more useful
-  if (q.mode === "word_order") {
-    return "まず主語を置き、その後ろに動詞のまとまりを作ろう。日本語の『誰が／何が』と『どうする』を分けて考える。";
+  // 単語：答えそのものではなく、本文の場面・語のイメージだけ出す
+  if (q.type === "単語") {
+    if (currentLessonId === "lesson3") {
+      if (text.includes("意味は？")) {
+        return "Lesson 3の単語です。服・気候・伝統衣装・ファッション・自分らしさのどの話題で出てきたかを思い出そう。";
+      }
+      return "授業プリントの New Words を思い出そう。Part1なら服と気候、Part2ならファッションと自分らしさに関係する語が多いよ。";
+    }
+    if (text.includes("意味は？")) {
+      return "Lesson 4の単語です。コオロギクッキー・昆虫食・宇宙食のどの場面で出てきた語かを思い出そう。";
+    }
+    return "授業プリントの New Words を思い出そう。Part1なら昆虫食への反応、Part2なら宇宙食としての利点に関係する語が多いよ。";
   }
 
+  // Lesson 3 文法：使役動詞だけ。答えの動詞名を直接出しすぎない。
   if (q.type === "文法" && currentLessonId === "lesson3") {
-    return "使役動詞のどれを使うかを先に決めよう。let は許可、have は依頼、make は強制寄り。";
+    if (q.mode === "word_order") {
+      return "まず主語を置こう。そのあとに使役動詞、その後ろに「人＋動詞の原形」を続ける。to を入れないのが大事。";
+    }
+
+    if (text.includes("誤りを直すなら")) {
+      return "使役動詞の後ろの形を確認しよう。「人＋動詞の原形」になっているか、to や過去形が入っていないかを見る。";
+    }
+
+    if (text.includes("意味は？")) {
+      return "使役動詞のニュアンスを見よう。許可っぽいのか、お願いしてやってもらうのか、強くやらせるのかで意味が変わる。";
+    }
+
+    if (text.includes("feel")) {
+      return "気持ちを表す文なら「make＋人＋feel＋形容詞」の形を確認しよう。feel の前後に何が来るかがポイント。";
+    }
+
+    return "使役動詞は「使役動詞＋人＋動詞の原形」が基本。日本語の『させてあげる・してもらう・させる』のニュアンスを見分けよう。";
   }
 
+  // Lesson 4 文法：受け身＋by/in。答えになる語はなるべく言わない。
   if (q.type === "文法" && currentLessonId === "lesson4") {
-    return "主語が『する側』か『される側』かを確認しよう。される側なら be動詞 + 過去分詞。";
+    if (q.mode === "word_order") {
+      return "まず主語が『する側』か『される側』かを考えよう。受け身なら「主語＋be動詞＋過去分詞」のまとまりを先に作る。";
+    }
+
+    if (text.includes("誤りを直すなら")) {
+      return "be動詞の後ろが過去分詞になっているか、主語に合ったbe動詞になっているかを確認しよう。";
+    }
+
+    if (text.includes("意味は？")) {
+      return "英文の主語が『される側』になっていることに注目しよう。文末の by / in は追加情報として読む。";
+    }
+
+    if (text.includes("by") || text.includes("in")) {
+      return "文末の情報を見よう。『誰がしたか』なら人に注目、『場所・年・言語』ならその情報に注目する。";
+    }
+
+    if (text.includes("can")) {
+      return "助動詞 can の後ろの形に注意。受け身にしたいときも、can の後ろは原形から始まる。";
+    }
+
+    return "受け身は「be動詞＋過去分詞」。主語が『する側』か『される側』かを最初に判断しよう。";
   }
 
+  // 表現：総合問題用。答えの前置詞などを直接言わない。
+  if (q.type === "表現") {
+    if (text.includes("less") || text.includes("than")) {
+      return "比較の文です。than の前に、量が多いのか少ないのかを表す語が入る。本文の比較関係を思い出そう。";
+    }
+    if (text.includes("made") || text.includes("used") || text.includes("served") || text.includes("cooked")) {
+      return "本文に出てきた表現です。受け身の形だけでなく、後ろに続く語句が何を表しているかを考えよう。";
+    }
+    return "本文中の決まった表現を思い出そう。文法として細かく考えすぎず、フレーズ単位で見ると解きやすい。";
+  }
+
+  // 本文内容：答えの内容を言い切らず、探す場所だけ示す
   if (q.type === "本文内容") {
-    return "問題文のキーワードを本文のどの場面で見たか思い出そう。前半か後半かを分けると探しやすい。";
+    if (currentLessonId === "lesson3") {
+      if (text.includes("Part1") || text.includes("winter") || text.includes("sari") || text.includes("Traditional")) {
+        return "Lesson 3 Part1の内容です。服が気候や生活とどう関係しているかに注目しよう。";
+      }
+      if (text.includes("Part2") || text.includes("Fashion") || text.includes("Stereotype") || text.includes("stereotype")) {
+        return "Lesson 3 Part2の内容です。ファッション、自分らしさ、固定観念の流れを思い出そう。";
+      }
+      return "Lesson 3の本文は、前半が服と気候、後半がファッションと自分らしさ。どちらの話題かを先に判断しよう。";
+    }
+
+    if (text.includes("Part1") || text.includes("cookie") || text.includes("Sam") || text.includes("Mana") || text.includes("grasshopper")) {
+      return "Lesson 4 Part1の内容です。コオロギクッキーを見たとき、食べた後、昆虫食そのものへの気持ちを分けて考えよう。";
+    }
+
+    if (text.includes("Part2") || text.includes("space") || text.includes("astronaut") || text.includes("Mealworms") || text.includes("Challenge")) {
+      return "Lesson 4 Part2の内容です。宇宙で食料を育てる条件と、昆虫食の利点に注目しよう。";
+    }
+
+    return "Lesson 4の本文は、前半が昆虫食への反応、後半が未来の食料としての利点。どちらの場面かを先に判断しよう。";
   }
 
-  return "選択肢をすぐ選ばず、問題文のキーワードが本文・プリントのどこで出てきたか思い出そう。";
+  // 並べ替えの一般ヒント
+  if (q.mode === "word_order") {
+    return "まず主語と動詞のまとまりを作ろう。その後に場所・時・理由などの追加情報をつけると整理しやすい。";
+  }
+
+  return "ヒントは答えそのものではなく、見るポイントだけです。問題文のキーワードが授業プリントのどこに出てきたかを思い出そう。";
 }
 
 function showHint() {
