@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>English Quest</title>
+  <style>
+    :root {
+      --green: #58cc02;
+      --green-dark: #43a802;
+      --blue: #1cb0f6;
+      --red: #ff4b4b;
+      --text: #2f3640;
+      --muted: #6b7280;
+      --bg: #f7f9fc;
+      --card: #ffffff;
+      --line: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .app {
+      max-width: 520px;
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 20px;
+    }
+
+    .mascot {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--green);
+      color: white;
+      font-size: 24px;
+      box-shadow: 0 4px 0 var(--green-dark);
+    }
+
+    .streak {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #fff7ed;
+      color: #c2410c;
+      font-weight: 700;
+      font-size: 14px;
+      border: 1px solid #fed7aa;
+      white-space: nowrap;
+    }
+
+    .screen { display: none; flex: 1; }
+    .screen.active { display: block; }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 28px 20px;
+      margin-bottom: 14px;
+    }
+
+    .hero-icon {
+      width: 92px;
+      height: 92px;
+      margin: 0 auto 16px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #58cc02, #1cb0f6);
+      display: grid;
+      place-items: center;
+      font-size: 50px;
+      color: white;
+      box-shadow: 0 8px 0 rgba(67, 168, 2, 0.5);
+    }
+
+    h1, h2, h3 { margin: 0; }
+
+    h1 {
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 12px 0 20px;
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 900;
+      margin: 18px 4px 10px;
+    }
+
+    .lesson-grid { display: grid; gap: 12px; }
+
+    .lesson-card {
+      border: 2px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      background: white;
+      cursor: pointer;
+      transition: 0.12s;
+      text-align: left;
+      width: 100%;
+      color: var(--text);
+    }
+
+    .lesson-card:hover {
+      border-color: #bfdbfe;
+      background: #eff6ff;
+      transform: translateY(-1px);
+    }
+
+    .lesson-card strong {
+      display: block;
+      font-size: 19px;
+      margin-bottom: 6px;
+    }
+
+    .lesson-meta {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .lesson-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lesson-badge {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-size: 25px;
+      background: #dcfce7;
+      color: var(--green-dark);
+      flex: 0 0 auto;
+    }
+
+    .btn {
+      width: 100%;
+      border: 0;
+      border-radius: 16px;
+      padding: 15px 18px;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+      background: var(--green);
+      color: white;
+      box-shadow: 0 5px 0 var(--green-dark);
+      transition: transform 0.05s, box-shadow 0.05s, opacity 0.2s;
+    }
+
+    .btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 2px 0 var(--green-dark);
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn.secondary {
+      background: white;
+      color: var(--text);
+      border: 2px solid var(--line);
+      box-shadow: 0 5px 0 #d1d5db;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .close-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      border: 0;
+      background: white;
+      font-size: 22px;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .progress-wrap {
+      flex: 1;
+      height: 14px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      overflow: hidden;
+    }
+
+    .progress {
+      height: 100%;
+      width: 0%;
+      background: var(--green);
+      border-radius: 999px;
+      transition: width 0.3s;
+    }
+
+    .quiz-lesson-title {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .question-type {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #e0f2fe;
+      color: #0369a1;
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    .question {
+      font-size: 22px;
+      line-height: 1.55;
+      font-weight: 800;
+      margin-bottom: 20px;
+      word-break: normal;
+    }
+
+    .choices {
+      display: grid;
+      gap: 12px;
+      margin: 16px 0 20px;
+    }
+
+    .choice {
+      border: 2px solid var(--line);
+      background: white;
+      border-radius: 16px;
+      padding: 15px;
+      text-align: left;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.12s;
+      color: var(--text);
+    }
+
+    .choice:hover {
+      border-color: #bfdbfe;
+      background: #eff6ff;
+    }
+
+    .choice.selected {
+      border-color: var(--blue);
+      background: #e0f2fe;
+    }
+
+    .choice.correct {
+      border-color: var(--green);
+      background: #dcfce7;
+    }
+
+    .choice.wrong {
+      border-color: var(--red);
+      background: #fee2e2;
+    }
+
+    .word-bank, .answer-bank {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      min-height: 54px;
+      padding: 12px;
+      border-radius: 16px;
+      background: #f3f4f6;
+      border: 2px dashed #d1d5db;
+      margin-bottom: 14px;
+    }
+
+    .word {
+      padding: 10px 12px;
+      background: white;
+      border: 2px solid var(--line);
+      border-radius: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 3px 0 #d1d5db;
+      color: var(--text);
+    }
+
+    .word:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 #d1d5db;
+    }
+
+    .note {
+      font-size: 13px;
+      color: var(--muted);
+      margin: -4px 0 8px;
+      line-height: 1.5;
+    }
+
+    .feedback {
+      position: sticky;
+      bottom: 0;
+      margin: 18px -16px -16px;
+      padding: 16px;
+      border-radius: 24px 24px 0 0;
+      background: white;
+      border-top: 1px solid var(--line);
+      box-shadow: 0 -8px 20px rgba(15, 23, 42, 0.08);
+      display: none;
+    }
+
+    .feedback.show { display: block; }
+
+    .feedback.correct {
+      background: #dcfce7;
+      border-color: #bbf7d0;
+    }
+
+    .feedback.wrong {
+      background: #fee2e2;
+      border-color: #fecaca;
+    }
+
+    .feedback-title {
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .feedback-text {
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .result { text-align: center; }
+
+    .score-circle {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      margin: 14px auto 18px;
+      background: #dcfce7;
+      border: 10px solid var(--green);
+      display: grid;
+      place-items: center;
+      font-size: 34px;
+      font-weight: 900;
+      color: var(--green-dark);
+    }
+
+    .result-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .stat {
+      padding: 14px;
+      border-radius: 18px;
+      background: #f9fafb;
+      border: 1px solid var(--line);
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-weight: 900;
+      font-size: 22px;
+    }
+
+    .history-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--muted);
+    }
+
+    .history-item strong { color: var(--text); }
+
+    footer {
+      margin-top: 18px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="logo">
+        <div class="mascot">🦉</div>
+        <div>
+          <div>English Quest</div>
+          <div style="font-size:12px;color:#6b7280;font-weight:600;">1日3分の授業復習</div>
+        </div>
+      </div>
+      <div class="streak">🔥 <span id="streakCount">0</span>日</div>
+    </header>
+
+    <main id="home" class="screen active">
+      <section class="card hero">
+        <div class="hero-icon">📚</div>
+        <h1>English Quest</h1>
+        <p class="subtitle">
+          まずは問題タイプを選ぼう。<br>
+          出題数とLessonを選んで復習。
+        </p>
+      </section>
+
+      <div class="section-title">問題タイプを選択</div>
+      <section id="modeList" class="lesson-grid"></section>
+
+      <div class="section-title">学習履歴</div>
+      <section class="lesson-card">
+        <div id="historyList" class="lesson-meta">まだ記録がありません。</div>
+      </section>
+    </main>
+
+    <main id="questionCountSelect" class="screen">
+      <div class="topbar">
+        <button class="close-btn" onclick="goHome()">×</button>
+        <div style="flex:1;">
+          <div style="font-weight:900;font-size:18px;">出題数を選択</div>
+          <div id="selectedModeOnlyText" style="font-size:13px;color:#6b7280;font-weight:700;"></div>
+        </div>
+      </div>
+
+      <section id="questionCountList" class="lesson-grid"></section>
+    </main>
+
+    <main id="lessonSelect" class="screen">
+      <div class="topbar">
+        <button class="close-btn" onclick="goHome()">×</button>
+        <div style="flex:1;">
+          <div style="font-weight:900;font-size:18px;">Lessonを選択</div>
+          <div id="selectedModeText" style="font-size:13px;color:#6b7280;font-weight:700;"></div>
+        </div>
+      </div>
+
+      <section id="lessonList" class="lesson-grid"></section>
+    </main>
+
+    <main id="quiz" class="screen">
+      <div class="topbar">
+        <button class="close-btn" onclick="backToLessonSelect()">×</button>
+        <div class="progress-wrap">
+          <div id="progress" class="progress"></div>
+        </div>
+        <div id="quizLessonTitle" class="quiz-lesson-title"></div>
+      </div>
+
+      <section class="card">
+        <div id="questionType" class="question-type">単語</div>
+        <div id="questionText" class="question"></div>
+
+        <div id="choiceArea" class="choices"></div>
+
+        <div id="wordOrderArea" style="display:none;">
+          <div style="font-weight:800;margin-bottom:8px;">答え</div>
+          <div id="answerBank" class="answer-bank"></div>
+          <div style="font-weight:800;margin-bottom:8px;">語群</div>
+          <div class="note">※ヒントにならないよう、大文字・ピリオドは消しています。</div>
+          <div id="wordBank" class="word-bank"></div>
+          <button class="btn secondary" onclick="clearWordOrder()">やり直す</button>
+        </div>
+
+        <button id="checkBtn" class="btn" onclick="checkAnswer()" disabled>答え合わせ</button>
+      </section>
+
+      <section id="feedback" class="feedback">
+        <div id="feedbackTitle" class="feedback-title"></div>
+        <div id="feedbackText" class="feedback-text"></div>
+        <button class="btn" onclick="nextQuestion()">次へ</button>
+      </section>
+    </main>
+
+    <main id="result" class="screen">
+      <section class="card result">
+        <div class="hero-icon">🎉</div>
+        <h2>Quest Clear!</h2>
+        <p id="resultLessonText" class="subtitle">今日の復習、おつかれさま。</p>
+        <div id="scoreCircle" class="score-circle">0/5</div>
+
+        <div class="result-stats">
+          <div class="stat">
+            <div class="stat-label">正解数</div>
+            <div id="correctStat" class="stat-value">0</div>
+          </div>
+          <div class="stat">
+            <div class="stat-label">連続学習</div>
+            <div id="streakStat" class="stat-value">0日</div>
+          </div>
+        </div>
+
+        <button class="btn" onclick="restartCurrentLesson()">同じ条件でもう一度</button>
+        <div style="height:12px;"></div>
+        <button class="btn secondary" onclick="backToLessonSelect()">Lesson選択へ</button>
+      </section>
+    </main>
+
+    <footer>
+      Prototype for class review. 問題はあとから追加できます。
+    </footer>
+  </div>
+
+<script>
+const modes = {
+  grammar: {
+    title: "文法",
+    icon: "🧩",
+    theme: "文法問題のみ",
+    description: "Lesson 3は使役動詞、Lesson 4は受け身と by / in の使い分けだけを復習します。"
+  },
+  reading: {
+    title: "本文",
+    icon: "📖",
+    theme: "本文問題のみ",
+    description: "単元テストの読解問題に近い本文内容確認です。"
+  },
+  mixed: {
+    title: "総合問題",
+    icon: "🎯",
+    theme: "ごちゃまぜ",
+    description: "単語・文法・表現・本文内容をランダムに復習します。"
+  }
+};
+
+const questionCounts = {
+  5: {
+    title: "5問",
+    icon: "⚡",
+    theme: "サクッと復習",
+    description: "短時間で確認したいとき用。朝・休み時間にもやりやすい。"
+  },
+  10: {
+    title: "10問",
+    icon: "🔥",
+    theme: "しっかり復習",
+    description: "考査前や弱点つぶし用。問題数多めで定着を狙う。"
+  }
+};
+
+const lessons = {
+  lesson3: {
+    title: "Lesson 3",
+    icon: "👕",
+    theme: "Why do we wear clothes? / Causative Verbs",
+    description: "服の役割、ファッション、使役動詞 let / have / make を復習します。",
+    questions: [
+      // Vocabulary
+      { type: "単語", mode: "choice", q: "「気候」を表す英語は？", choices: ["climate", "culture", "costume", "cookie"], answer: "climate", explanation: "climate は「気候」です。" },
+      { type: "単語", mode: "choice", q: "「厳しい」を表す英語は？", choices: ["harsh", "hot", "honest", "happy"], answer: "harsh", explanation: "harsh は「厳しい」という意味です。" },
+      { type: "単語", mode: "choice", q: "「反映する」を表す英語は？", choices: ["reflect", "protect", "express", "pursue"], answer: "reflect", explanation: "reflect は「反映する」です。" },
+      { type: "単語", mode: "choice", q: "「生活様式」を表す英語は？", choices: ["lifestyle", "stereotype", "garment", "climate"], answer: "lifestyle", explanation: "lifestyle は「生活様式」です。" },
+      { type: "単語", mode: "choice", q: "「表現する」を表す英語は？", choices: ["express", "protect", "reflect", "wear"], answer: "express", explanation: "express は「表現する」です。" },
+      { type: "単語", mode: "choice", q: "「追い求める」を表す英語は？", choices: ["pursue", "protect", "produce", "prefer"], answer: "pursue", explanation: "pursue は「追い求める」です。" },
+      { type: "単語", mode: "choice", q: "「本当に、心から」を表す英語は？", choices: ["genuinely", "recently", "rapidly", "honestly"], answer: "genuinely", explanation: "genuinely は「本当に、心から」という意味です。" },
+      { type: "単語", mode: "choice", q: "「衣服」を表す英語は？", choices: ["garment", "nutrient", "livestock", "astronaut"], answer: "garment", explanation: "garment は「衣服」です。" },
+      { type: "単語", mode: "choice", q: "「固定観念」を表す英語は？", choices: ["stereotype", "expression", "environment", "lifestyle"], answer: "stereotype", explanation: "stereotype は「固定観念、決めつけ」です。" },
+      { type: "単語", mode: "choice", q: "「受け入れられる」を表す英語は？", choices: ["acceptable", "comfortable", "traditional", "intense"], answer: "acceptable", explanation: "acceptable は「受け入れられる」という意味です。" },
+
+      // Grammar choice
+      { type: "文法", mode: "choice", q: "「母は私に夕食を作らせてくれた。」に合う英文は？", choices: ["My mother let me cook dinner.", "My mother let me to cook dinner.", "My mother made me to cook dinner.", "My mother had I cook dinner."], answer: "My mother let me cook dinner.", explanation: "let + 人 + 動詞の原形。許可・させてあげるイメージです。" },
+      { type: "文法", mode: "choice", q: "「私は兄にパソコンを直してもらった。」に合う英文は？", choices: ["I had my brother fix my computer.", "I let my brother to fix my computer.", "I made my brother fixed my computer.", "I had my brother to fix my computer."], answer: "I had my brother fix my computer.", explanation: "have + 人 + 動詞の原形。お願い・役割としてやってもらうイメージです。" },
+      { type: "文法", mode: "choice", q: "「先生は私たちに机を運ばせた。」に合う英文は？", choices: ["The teacher made us carry the desks.", "The teacher let us to carry the desks.", "The teacher had we carry the desks.", "The teacher made us carried the desks."], answer: "The teacher made us carry the desks.", explanation: "make + 人 + 動詞の原形。強めに「させる」イメージです。" },
+      { type: "文法", mode: "choice", q: "The news made me ___ sad.", choices: ["feel", "feels", "to feel", "felt"], answer: "feel", explanation: "make + 人 + feel + 形容詞。「人を〜な気持ちにさせる」です。" },
+      { type: "文法", mode: "choice", q: "This shirt makes me ___ comfortable.", choices: ["feel", "feels", "to feel", "feeling"], answer: "feel", explanation: "makes me feel comfortable で「私を快適な気持ちにさせる」です。" },
+      { type: "文法", mode: "choice", q: "She let Kevin ___ the dishes.", choices: ["wash", "washes", "to wash", "washed"], answer: "wash", explanation: "let Kevin wash ... のように、let の後は人 + 動詞の原形です。" },
+      { type: "文法", mode: "choice", q: "I had Satoshi ___ copies.", choices: ["take", "takes", "to take", "taken"], answer: "take", explanation: "have Satoshi take copies で「サトシにコピーを取ってもらった」です。" },
+      { type: "文法", mode: "choice", q: "She made Ken ___ hard.", choices: ["study", "studies", "to study", "studied"], answer: "study", explanation: "make Ken study で「ケンに勉強をやらせた」です。" },
+      { type: "文法", mode: "choice", q: "The smell made me feel ___.", choices: ["bad", "badly", "worse", "worstly"], answer: "bad", explanation: "feel の後ろは形容詞。feel bad で「嫌な気分になる」です。" },
+      { type: "文法", mode: "choice", q: "The sari makes the wearer ___ cooler.", choices: ["feel", "feels", "to feel", "felt"], answer: "feel", explanation: "本文型の make + 人 + 動詞の原形です。" },
+      { type: "文法", mode: "choice", q: "Boys can wear a skirt if it makes them ___ more comfortable.", choices: ["feel", "feels", "to feel", "feeling"], answer: "feel", explanation: "makes them feel more comfortable で「彼らをより心地よく感じさせる」です。" },
+      { type: "表現", mode: "choice", q: "We don’t always have ___ common stereotypes.", choices: ["to follow", "follow", "following", "followed"], answer: "to follow", explanation: "have to + 動詞の原形。don’t have to は「〜する必要はない」です。" },
+      { type: "表現", mode: "choice", q: "Fashion is an expression ___ the way we live.", choices: ["of", "by", "with", "at"], answer: "of", explanation: "an expression of ... で「〜の表現」です。" },
+      { type: "表現", mode: "choice", q: "Traditional clothing reflects local climates ___ lifestyles.", choices: ["and", "but", "because", "if"], answer: "and", explanation: "local climates and lifestyles で「地域の気候と生活様式」です。" },
+
+      // Grammar word order
+      { type: "文法", mode: "word_order", q: "「父は私に車を洗わせた。」となるように並べ替えよう。", words: ["my", "father", "made", "me", "wash", "the", "car"], answer: "My father made me wash the car.", explanation: "made me wash がポイントです。" },
+      { type: "文法", mode: "word_order", q: "「私は弟にゲームをやらせてあげた。」となるように並べ替えよう。", words: ["i", "let", "my", "brother", "play", "the", "game"], answer: "I let my brother play the game.", explanation: "let my brother play で「弟にやらせてあげた」です。" },
+      { type: "文法", mode: "word_order", q: "「私は母に部屋を掃除してもらった。」となるように並べ替えよう。", words: ["i", "had", "my", "mother", "clean", "my", "room"], answer: "I had my mother clean my room.", explanation: "had my mother clean で「母に掃除してもらった」です。" },
+      { type: "文法", mode: "word_order", q: "「その歌は私を幸せな気持ちにさせた。」となるように並べ替えよう。", words: ["the", "song", "made", "me", "feel", "happy"], answer: "The song made me feel happy.", explanation: "made me feel happy がポイントです。" },
+      { type: "文法", mode: "word_order", q: "「その写真は私を幸せな気持ちにさせた。」となるように並べ替えよう。", words: ["the", "picture", "made", "me", "feel", "happy"], answer: "The picture made me feel happy.", explanation: "make + 人 + feel + 形容詞の形です。" },
+      { type: "文法", mode: "word_order", q: "「私は弟に私のペンを使わせてあげた。」となるように並べ替えよう。", words: ["i", "let", "my", "brother", "use", "my", "pen"], answer: "I let my brother use my pen.", explanation: "let + 人 + 動詞の原形です。" },
+      { type: "文法", mode: "word_order", q: "「私は友だちに数学を教えてもらった。」となるように並べ替えよう。", words: ["i", "had", "my", "friend", "teach", "me", "math"], answer: "I had my friend teach me math.", explanation: "have + 人 + 動詞の原形です。" },
+      { type: "文法", mode: "word_order", q: "「サリーは着る人を涼しく感じさせる。」となるように並べ替えよう。", words: ["the", "sari", "makes", "the", "wearer", "feel", "cooler"], answer: "The sari makes the wearer feel cooler.", explanation: "本文の make 型です。" },
+      { type: "表現", mode: "word_order", q: "「ファッションは私たちの生き方の表現である。」となるように並べ替えよう。", words: ["fashion", "is", "an", "expression", "of", "the", "way", "we", "live"], answer: "Fashion is an expression of the way we live.", explanation: "an expression of ... の形です。" },
+      { type: "表現", mode: "word_order", q: "「私たちは自分が着たいものを着ることができる。」となるように並べ替えよう。", words: ["we", "can", "wear", "what", "we", "want"], answer: "We can wear what we want.", explanation: "what we want で「私たちが望むもの」です。" },
+
+      // Grammar correction / meaning
+      { type: "文法", mode: "choice", q: "誤りを直すなら？ My mother let me to cook dinner.", choices: ["My mother let me cook dinner.", "My mother lets I cook dinner.", "My mother let me cooked dinner.", "My mother had me to cook dinner."], answer: "My mother let me cook dinner.", explanation: "let の後は 人 + 動詞の原形。to は不要です。" },
+      { type: "文法", mode: "choice", q: "誤りを直すなら？ The smell made me to feel bad.", choices: ["The smell made me feel bad.", "The smell made I feel bad.", "The smell made me felt bad.", "The smell let me feel bad."], answer: "The smell made me feel bad.", explanation: "make + 人 + feel + 形容詞です。to feel にはしません。" },
+      { type: "文法", mode: "choice", q: "let / have / make のうち、「許可して〜させてあげる」のイメージが強いものは？", choices: ["let", "have", "make", "feel"], answer: "let", explanation: "let は「許可する・させてあげる」イメージです。" },
+      { type: "文法", mode: "choice", q: "let / have / make のうち、「お願い・役割としてやってもらう」のイメージが強いものは？", choices: ["have", "let", "make", "wear"], answer: "have", explanation: "have は「してもらう」イメージで使います。" },
+      { type: "文法", mode: "choice", q: "let / have / make のうち、「やりたくなくてもさせる」のイメージが強いものは？", choices: ["make", "let", "have", "feel"], answer: "make", explanation: "make は強制に近い「させる」イメージです。" },
+
+      // Reading
+      { type: "本文内容", mode: "choice", q: "本文で、服を着る理由として最初に説明されているものは？", choices: ["寒い気候や激しい暑さから身を守るため", "昆虫を食べるため", "水を節約するため", "宇宙で暮らすため"], answer: "寒い気候や激しい暑さから身を守るため", explanation: "本文冒頭では、clothes are worn to protect us from colder climates or intense heat とあります。" },
+      { type: "本文内容", mode: "choice", q: "Khanty people はどこの人々？", choices: ["Siberia, Russia", "India", "Canada", "Japan"], answer: "Siberia, Russia", explanation: "本文では Khanty people in Siberia, Russia と説明されています。" },
+      { type: "本文内容", mode: "choice", q: "Khanty people の winter coats は何でできていますか。", choices: ["reindeer skin", "cotton", "soy sauce", "crickets"], answer: "reindeer skin", explanation: "winter coats made of reindeer skin とあります。" },
+      { type: "本文内容", mode: "choice", q: "Khanty people が winter coats を着る目的は？", choices: ["厳しい環境で暖かくいるため", "暑い天気で涼しく感じるため", "内面を表現するため", "ステレオタイプに従うため"], answer: "厳しい環境で暖かくいるため", explanation: "to keep themselves warm in their harsh environment がポイントです。" },
+      { type: "本文内容", mode: "choice", q: "sari はどこの伝統衣装？", choices: ["India", "Russia", "Japan", "Canada"], answer: "India", explanation: "The sari, traditional clothing of India とあります。" },
+      { type: "本文内容", mode: "choice", q: "sari は着る人をどのように感じさせますか。", choices: ["涼しく感じさせる", "悲しく感じさせる", "暖かく感じさせる", "眠く感じさせる"], answer: "涼しく感じさせる", explanation: "makes the wearer feel cooler in hot weather とあります。" },
+      { type: "本文内容", mode: "choice", q: "Traditional clothing は何を反映していますか。", choices: ["local climates and lifestyles", "common stereotypes and fashion", "crickets and protein", "schools and rules"], answer: "local climates and lifestyles", explanation: "traditional clothing reflects local climates and lifestyles とあります。" },
+      { type: "本文内容", mode: "choice", q: "最近生まれた、服を着るもう1つの理由は？", choices: ["fashion を通して inner selves を表現すること", "気候から身を守ることだけ", "食べ物を育てること", "制服を着ること"], answer: "fashion を通して inner selves を表現すること", explanation: "It is to express our inner selves through fashion とあります。" },
+      { type: "本文内容", mode: "choice", q: "fashion は何の表現だと本文では言われていますか。", choices: ["the way we live", "the food we eat", "the school we like", "the climate we protect"], answer: "the way we live", explanation: "fashion is an expression of the way we live とあります。" },
+      { type: "本文内容", mode: "choice", q: "common stereotypes について本文の考えに近いものは？", choices: ["いつも従う必要はない", "必ず従わなければならない", "伝統衣装だけに関係する", "気候を反映するもの"], answer: "いつも従う必要はない", explanation: "we don’t always have to follow common stereotypes がポイントです。" },
+      { type: "本文内容", mode: "choice", q: "boys can wear a skirt の例が伝えていることは？", choices: ["自分が心地よい服を選んでよい", "男子は必ずスカートをはくべき", "服は気候にだけ合わせるべき", "伝統衣装だけを着るべき"], answer: "自分が心地よい服を選んでよい", explanation: "if it makes them feel more comfortable という条件が大事です。" },
+      { type: "本文内容", mode: "choice", q: "girls について本文で述べられていることは？", choices: ["boyish clothes を着ることも受け入れられる", "sari を着なければならない", "winter coats を着るべき", "stereotypes に従うべき"], answer: "boyish clothes を着ることも受け入れられる", explanation: "it is acceptable for girls to wear boyish clothes とあります。" },
+      { type: "本文内容", mode: "choice", q: "本文の内容と合っているものは？", choices: ["Clothes are worn to protect us from climates or heat.", "The sari makes the wearer feel warmer.", "We always have to follow stereotypes.", "Traditional clothing does not reflect lifestyles."], answer: "Clothes are worn to protect us from climates or heat.", explanation: "服は気候や暑さから身を守るために着られる、という内容が本文に合っています。" },
+      { type: "本文内容", mode: "choice", q: "本文の内容と違うものは？", choices: ["The sari makes the wearer feel warmer in hot weather.", "Traditional clothing reflects local climates.", "Fashion can express our inner selves.", "We can wear what we want."], answer: "The sari makes the wearer feel warmer in hot weather.", explanation: "本文では warmer ではなく cooler です。" },
+      { type: "本文内容", mode: "choice", q: "Lesson 3全体のテーマとして最も近いものは？", choices: ["服には気候への対応と自分らしさの表現という役割がある", "昆虫は未来の食料になる", "宇宙では水を節約する必要がある", "英語では受け身を使う"], answer: "服には気候への対応と自分らしさの表現という役割がある", explanation: "前半は気候と伝統衣装、後半はファッションと自分らしさが中心です。" }
+    ]
+  },
+
+  lesson4: {
+    title: "Lesson 4",
+    icon: "🦗",
+    theme: "Our Future Food? / Passive Voice",
+    description: "昆虫食、宇宙食、受け身を復習します。文法は by / in 中心です。",
+    questions: [
+      // Vocabulary
+      { type: "単語", mode: "choice", q: "「昆虫」を表す英語は？", choices: ["insect", "cricket", "protein", "supply"], answer: "insect", explanation: "insect は「昆虫」です。" },
+      { type: "単語", mode: "choice", q: "「恐ろしい、ひどい」を表す英語は？", choices: ["horrible", "tasty", "edible", "rapid"], answer: "horrible", explanation: "horrible は「恐ろしい、ひどい」です。" },
+      { type: "単語", mode: "choice", q: "「おいしい」を表す英語は？", choices: ["tasty", "edible", "horrible", "local"], answer: "tasty", explanation: "tasty は「おいしい」です。" },
+      { type: "単語", mode: "choice", q: "「栄養素」を表す英語は？", choices: ["nutrient", "protein", "livestock", "astronaut"], answer: "nutrient", explanation: "nutrient は「栄養素」です。" },
+      { type: "単語", mode: "choice", q: "「タンパク質」を表す英語は？", choices: ["protein", "nutrient", "cricket", "water"], answer: "protein", explanation: "protein は「タンパク質」です。" },
+      { type: "単語", mode: "choice", q: "「食べられる」を表す英語は？", choices: ["edible", "efficient", "adventurous", "steady"], answer: "edible", explanation: "edible は「食べられる」です。" },
+      { type: "単語", mode: "choice", q: "「繁殖する」を表す英語は？", choices: ["reproduce", "conserve", "serve", "produce"], answer: "reproduce", explanation: "reproduce は「繁殖する」です。" },
+      { type: "単語", mode: "choice", q: "「効率よく」を表す英語は？", choices: ["efficiently", "rapidly", "steadily", "honestly"], answer: "efficiently", explanation: "efficiently は「効率よく」です。" },
+      { type: "単語", mode: "choice", q: "「節約する」を表す英語は？", choices: ["conserve", "produce", "raise", "serve"], answer: "conserve", explanation: "conserve は「節約する、保つ」です。" },
+      { type: "単語", mode: "choice", q: "「冒険好きな」を表す英語は？", choices: ["adventurous", "acceptable", "traditional", "horrible"], answer: "adventurous", explanation: "adventurous は「冒険好きな」です。" },
+
+      // Grammar choice
+      { type: "文法", mode: "choice", q: "受け身の基本形として正しいものは？", choices: ["be動詞 + 過去分詞", "be動詞 + 動詞の原形", "have + 人 + 動詞の原形", "make + 人 + feel"], answer: "be動詞 + 過去分詞", explanation: "受け身は be動詞 + 過去分詞 で「〜される、〜された」を表します。" },
+      { type: "文法", mode: "choice", q: "「この写真はケンによって撮られた。」に合う英文は？", choices: ["This picture was taken by Ken.", "This picture was took by Ken.", "This picture is take by Ken.", "Ken was taken this picture."], answer: "This picture was taken by Ken.", explanation: "was + taken で受け身。by Ken で「ケンによって」です。" },
+      { type: "文法", mode: "choice", q: "「この家は1990年に建てられた。」に合う英文は？", choices: ["This house was built in 1990.", "This house built in 1990.", "This house was build in 1990.", "This house is built by 1990."], answer: "This house was built in 1990.", explanation: "build の過去分詞は built。年は in 1990 です。" },
+      { type: "文法", mode: "choice", q: "「フランス語はカナダで話されている。」に合う英文は？", choices: ["French is spoken in Canada.", "French is speak in Canada.", "French was spoken by Canada.", "Canada is spoken French."], answer: "French is spoken in Canada.", explanation: "speak の過去分詞は spoken。場所は in Canada です。" },
+      { type: "文法", mode: "choice", q: "「この机は父によって作られた。」に合う英文は？", choices: ["This desk was made by my father.", "This desk made by my father.", "This desk was make by my father.", "My father was made this desk."], answer: "This desk was made by my father.", explanation: "was made by ... で「〜によって作られた」です。" },
+      { type: "文法", mode: "choice", q: "「このバッグは中国で作られた。」に合う英文は？", choices: ["This bag was made in China.", "This bag was made by China.", "This bag made in China.", "This bag is make in China."], answer: "This bag was made in China.", explanation: "国・場所は in China。作った人ではないので by China ではありません。" },
+      { type: "文法", mode: "choice", q: "「この手紙は英語で書かれている。」に合う英文は？", choices: ["This letter is written in English.", "This letter is wrote in English.", "This letter was written by English.", "This letter writes in English."], answer: "This letter is written in English.", explanation: "write の過去分詞は written。言語は in English です。" },
+      { type: "文法", mode: "choice", q: "「この窓はトムによって壊された。」に合う英文は？", choices: ["This window was broken by Tom.", "This window was broke by Tom.", "This window is break by Tom.", "Tom was broken this window."], answer: "This window was broken by Tom.", explanation: "break の過去分詞は broken。by Tom で「トムによって」です。" },
+      { type: "文法", mode: "choice", q: "「この公園は多くの子どもたちに使われている。」に合う英文は？", choices: ["This park is used by many children.", "This park are used by many children.", "This park is use by many children.", "Many children is used this park."], answer: "This park is used by many children.", explanation: "This park は単数なので is used です。" },
+      { type: "表現", mode: "choice", q: "Are they made ___ crickets?", choices: ["with", "by", "to", "at"], answer: "with", explanation: "材料として crickets を使っているので made with crickets です。" },
+      { type: "文法", mode: "choice", q: "They are cooked in soy sauce and ___ called tsukudani.", choices: ["are", "is", "be", "was"], answer: "are", explanation: "They are cooked ... and are called ... の形です。" },
+      { type: "文法", mode: "choice", q: "Insects can ___ raised more efficiently than livestock.", choices: ["be", "been", "being", "is"], answer: "be", explanation: "can の後は原形。受け身なので can be raised です。" },
+      { type: "表現", mode: "choice", q: "About one hundred crickets are used ___ one bowl.", choices: ["for", "by", "with", "from"], answer: "for", explanation: "for one bowl で「一杯のために」です。" },
+      { type: "表現", mode: "choice", q: "Mealworms use much ___ water than beef.", choices: ["less", "least", "little", "few"], answer: "less", explanation: "than があるので比較級 less を使います。" },
+
+      // Natural active/passive choices
+      { type: "文法", mode: "choice", q: "学校パンフレットで体育館を紹介するなら自然なのは？", choices: ["The gym is used every day.", "Students use the gym every day.", "The gym uses students every day.", "Every day is used the gym."], answer: "The gym is used every day.", explanation: "体育館を主役に紹介する場面なので受け身が自然です。" },
+      { type: "文法", mode: "choice", q: "サッカーというスポーツを説明するなら自然なのは？", choices: ["Soccer is played around the world.", "People play soccer around the world.", "Soccer plays people around the world.", "Around the world is played soccer."], answer: "Soccer is played around the world.", explanation: "スポーツそのものを説明するので Soccer is played ... が自然です。" },
+      { type: "文法", mode: "choice", q: "生徒たちが体育館を使って活動していることを伝えたいなら自然なのは？", choices: ["Many students use the gym every day.", "The gym is used every day.", "Students are used by the gym.", "The gym uses students every day."], answer: "Many students use the gym every day.", explanation: "生徒たちの活動を伝えたいので能動態が自然です。" },
+      { type: "文法", mode: "choice", q: "観光客の動きを説明したいなら自然なのは？", choices: ["Many tourists visit Hakodate.", "Hakodate is visited by many tourists.", "Many tourists are visited by Hakodate.", "Hakodate visits many tourists."], answer: "Many tourists visit Hakodate.", explanation: "観光客の動きを説明したいので Many tourists を主語にするのが自然です。" },
+      { type: "文法", mode: "choice", q: "ONE PIECEという漫画を紹介するなら自然なのは？", choices: ["ONE PIECE is written by Eiichiro Oda.", "Eiichiro Oda writes ONE PIECE.", "ONE PIECE writes Eiichiro Oda.", "Eiichiro Oda is written by ONE PIECE."], answer: "ONE PIECE is written by Eiichiro Oda.", explanation: "作品を主役に紹介するなら受け身が自然です。" },
+
+      // Grammar word order
+      { type: "文法", mode: "word_order", q: "「この写真はケンによって撮られた。」となるように並べ替えよう。", words: ["this", "picture", "was", "taken", "by", "ken"], answer: "This picture was taken by Ken.", explanation: "was taken by Ken がポイントです。" },
+      { type: "文法", mode: "word_order", q: "「この家は1990年に建てられた。」となるように並べ替えよう。", words: ["this", "house", "was", "built", "in", "1990"], answer: "This house was built in 1990.", explanation: "was built in 1990 の形です。" },
+      { type: "文法", mode: "word_order", q: "「フランス語はカナダで話されている。」となるように並べ替えよう。", words: ["french", "is", "spoken", "in", "canada"], answer: "French is spoken in Canada.", explanation: "is spoken in Canada の形です。" },
+      { type: "文法", mode: "word_order", q: "「この机は父によって作られた。」となるように並べ替えよう。", words: ["this", "desk", "was", "made", "by", "my", "father"], answer: "This desk was made by my father.", explanation: "was made by my father がポイントです。" },
+      { type: "文法", mode: "word_order", q: "「この漫画は英語で書かれている。」となるように並べ替えよう。", words: ["this", "manga", "is", "written", "in", "english"], answer: "This manga is written in English.", explanation: "言語は in English で表します。" },
+      { type: "文法", mode: "word_order", q: "「この窓はケンによって壊された。」となるように並べ替えよう。", words: ["this", "window", "was", "broken", "by", "ken"], answer: "This window was broken by Ken.", explanation: "break の過去分詞は broken です。" },
+      { type: "文法", mode: "word_order", q: "「韓国語は韓国で話されている。」となるように並べ替えよう。", words: ["korean", "is", "spoken", "in", "korea"], answer: "Korean is spoken in Korea.", explanation: "言語 + is spoken in + 国 の形です。" },
+      { type: "文法", mode: "word_order", q: "「この本は佐々木先生によって書かれた。」となるように並べ替えよう。", words: ["this", "book", "was", "written", "by", "mr", "sasaki"], answer: "This book was written by Mr. Sasaki.", explanation: "write の過去分詞は written です。" },
+      { type: "表現", mode: "word_order", q: "「それらはコオロギで作られているのですか。」となるように並べ替えよう。", words: ["are", "they", "made", "with", "crickets"], answer: "Are they made with crickets?", explanation: "疑問文なので Are they ... ? で始まります。" },
+      { type: "文法", mode: "word_order", q: "「昆虫は家畜よりも効率的に育てられる。」となるように並べ替えよう。", words: ["insects", "can", "be", "raised", "more", "efficiently", "than", "livestock"], answer: "Insects can be raised more efficiently than livestock.", explanation: "can be raised が受け身です。" },
+
+      // Correction
+      { type: "文法", mode: "choice", q: "誤りを直すなら？ This room is clean by students.", choices: ["This room is cleaned by students.", "This room are cleaned by students.", "This room is cleaning by students.", "This room cleaned by students."], answer: "This room is cleaned by students.", explanation: "受け身は be動詞 + 過去分詞。cleaned にします。" },
+      { type: "文法", mode: "choice", q: "誤りを直すなら？ Many flowers is grown in this park.", choices: ["Many flowers are grown in this park.", "Many flowers is grow in this park.", "Many flowers are grew in this park.", "Many flowers grown in this park."], answer: "Many flowers are grown in this park.", explanation: "Many flowers は複数なので are grown です。" },
+      { type: "文法", mode: "choice", q: "誤りを直すなら？ This window was break by Tom.", choices: ["This window was broken by Tom.", "This window is break by Tom.", "This window was broke by Tom.", "Tom was broken this window."], answer: "This window was broken by Tom.", explanation: "break の過去分詞は broken です。" },
+      { type: "文法", mode: "choice", q: "誤りを直すなら？ This letter is wrote in English.", choices: ["This letter is written in English.", "This letter is write in English.", "This letter wrote in English.", "This letter was writing in English."], answer: "This letter is written in English.", explanation: "write の過去分詞は written です。" },
+
+      // Reading
+      { type: "本文内容", mode: "choice", q: "Sam が Mana に持ってきたものは？", choices: ["cricket cookies", "cricket ramen", "mealworms", "tsukudani"], answer: "cricket cookies", explanation: "Sam は Mana に cricket cookies を持ってきました。" },
+      { type: "本文内容", mode: "choice", q: "Mana は最初、cricket cookies についてどう感じた？", choices: ["horrible だと思った", "すぐに食べたいと思った", "日本文化だと思った", "冒険好きになった"], answer: "horrible だと思った", explanation: "Mana は That sounds horrible. と言っています。" },
+      { type: "本文内容", mode: "choice", q: "cricket cookies について Sam が説明した内容は？", choices: ["tasty で nutrients、特に protein が豊富", "水を大量に使う", "牛肉から作られる", "味は悪いが健康に良い"], answer: "tasty で nutrients、特に protein が豊富", explanation: "Sam は they are tasty and rich in nutrients, especially protein と言っています。" },
+      { type: "本文内容", mode: "choice", q: "Mana が cricket cookie を食べた後の反応は？", choices: ["actually it tastes all right", "that sounds horrible のまま", "I eat them every day", "I cannot try one"], answer: "actually it tastes all right", explanation: "Mana は食べたあと actually it tastes all right と言っています。" },
+      { type: "本文内容", mode: "choice", q: "日本の一部地域で食べられている昆虫として本文に出てくるものは？", choices: ["grasshoppers", "mealworms", "crickets only", "beef"], answer: "grasshoppers", explanation: "people eat insects such as grasshoppers in some areas of Japan とあります。" },
+      { type: "本文内容", mode: "choice", q: "grasshoppers は何で調理され、何と呼ばれている？", choices: ["soy sauce で調理され、tsukudani と呼ばれる", "salt で調理され、ramen と呼ばれる", "water で育てられ、protein と呼ばれる", "beef と混ぜられ、cookie と呼ばれる"], answer: "soy sauce で調理され、tsukudani と呼ばれる", explanation: "They are cooked in soy sauce and are called tsukudani とあります。" },
+      { type: "本文内容", mode: "choice", q: "Mana は insects を食べることについてどう言っている？", choices: ["自分では好きではない", "とても好きだ", "毎日食べる", "食べられないものだと言っている"], answer: "自分では好きではない", explanation: "I don’t like eating insects myself と言っています。" },
+      { type: "本文内容", mode: "choice", q: "Some people dislike the idea of eating insects なので、Sam は何が good idea だと言っている？", choices: ["insects を使った snack", "beef を食べること", "水を使うこと", "宇宙に行くこと"], answer: "insects を使った snack", explanation: "a snack that is made with them is a good idea と言っています。" },
+      { type: "本文内容", mode: "choice", q: "昆虫は将来、宇宙で何になるかもしれない？", choices: ["food supply", "local restaurant", "traditional clothing", "soy sauce"], answer: "food supply", explanation: "insects may become a food supply in space in the future とあります。" },
+      { type: "本文内容", mode: "choice", q: "astronauts が宇宙に滞在するときに必要なことは？", choices: ["自分たちの食べ物を育てること", "牛を育てること", "服を作ること", "地球に戻ること"], answer: "自分たちの食べ物を育てること", explanation: "they need to grow their own food とあります。" },
+      { type: "本文内容", mode: "choice", q: "昆虫のよい点として本文に合うものは？", choices: ["rapidly reproduce し、food を steadily produce できる", "大量の水が必要", "とても広い土地が必要", "育つのが遅い"], answer: "rapidly reproduce し、food を steadily produce できる", explanation: "Insects reproduce rapidly, and small insect farms can produce food steadily とあります。" },
+      { type: "本文内容", mode: "choice", q: "Insect farming について Mana が理解したことは？", choices: ["only a small space が必要", "large farms が必要", "beef より水を多く使う", "宇宙ではできない"], answer: "only a small space が必要", explanation: "Insect farming needs only a small space と言っています。" },
+      { type: "本文内容", mode: "choice", q: "Mealworms と beef の比較として正しいものは？", choices: ["Mealworms use much less water than beef.", "Mealworms use much more water than beef.", "Beef uses no water.", "Mealworms are made with beef."], answer: "Mealworms use much less water than beef.", explanation: "本文にそのまま出てくる比較表現です。" },
+      { type: "本文内容", mode: "choice", q: "昆虫を食べることで何を節約できる？", choices: ["water", "clothes", "sari", "stereotypes"], answer: "water", explanation: "We can conserve water when we eat insects for protein instead of meat とあります。" },
+      { type: "本文内容", mode: "choice", q: "A local restaurant が出しているものは？", choices: ["cricket ramen", "cricket cookies", "mealworm beef", "soy sauce cookies"], answer: "cricket ramen", explanation: "A local restaurant serves cricket ramen とあります。" },
+      { type: "本文内容", mode: "choice", q: "one bowl of cricket ramen に使われる crickets は約何匹？", choices: ["about one hundred", "about ten", "about one thousand", "about five"], answer: "about one hundred", explanation: "About one hundred crickets are used for one bowl とあります。" },
+      { type: "本文内容", mode: "choice", q: "最後に Mana は cricket ramen についてどう言っている？", choices: ["冒険的ではないが、いつか試すかもしれない", "絶対に食べない", "すでに大好き", "毎日食べたい"], answer: "冒険的ではないが、いつか試すかもしれない", explanation: "I’m not adventurous, but I might try it someday と言っています。" },
+      { type: "本文内容", mode: "choice", q: "本文の内容と合っているものは？", choices: ["Cricket cookies are rich in nutrients and protein.", "Mana wanted to try cricket cookies at first.", "Mealworms use much more water than beef.", "Insects reproduce slowly."], answer: "Cricket cookies are rich in nutrients and protein.", explanation: "単元テストの○×に近い内容確認です。" },
+      { type: "本文内容", mode: "choice", q: "本文の内容と違うものは？", choices: ["Mealworms use much more water than beef.", "Insects reproduce rapidly.", "Mana might try cricket ramen someday.", "Grasshoppers are called tsukudani."], answer: "Mealworms use much more water than beef.", explanation: "本文では much less water なので、much more water は違います。" },
+      { type: "本文内容", mode: "choice", q: "Lesson 4全体のテーマとして最も近いものは？", choices: ["昆虫食が未来の食料になる可能性", "服で自分らしさを表すこと", "サリーと気候の関係", "高校生活のルール"], answer: "昆虫食が未来の食料になる可能性", explanation: "Part 1は昆虫食への抵抗感、Part 2は未来の食料としての可能性が中心です。" }
+    ]
+  }
+};
+
+let currentMode = "mixed";
+let currentQuestionCount = 5;
+let currentLessonId = "lesson3";
+let quizQuestions = [];
+let current = 0;
+let score = 0;
+let selected = null;
+let answerWords = [];
+let usedIndexes = [];
+
+function shuffle(array) {
+  return [...array].sort(() => Math.random() - 0.5);
+}
+
+function todayKey() {
+  const d = new Date();
+  return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+}
+
+function showScreen(id) {
+  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+function renderModes() {
+  const box = document.getElementById("modeList");
+  box.innerHTML = "";
+  Object.entries(modes).forEach(([id, mode]) => {
+    const card = document.createElement("button");
+    card.className = "lesson-card";
+    card.type = "button";
+    card.onclick = () => chooseMode(id);
+    card.innerHTML = `
+      <div class="lesson-row">
+        <div class="lesson-badge">${mode.icon}</div>
+        <div>
+          <strong>${mode.title}</strong>
+          <div class="lesson-meta">${mode.theme}<br>${mode.description}</div>
+        </div>
+      </div>
+    `;
+    box.appendChild(card);
+  });
+}
+
+function chooseMode(modeId) {
+  currentMode = modeId;
+  document.getElementById("selectedModeOnlyText").textContent = `${modes[currentMode].title}：${modes[currentMode].theme}`;
+  renderQuestionCounts();
+  showScreen("questionCountSelect");
+}
+
+function renderQuestionCounts() {
+  const box = document.getElementById("questionCountList");
+  box.innerHTML = "";
+  Object.entries(questionCounts).forEach(([count, setting]) => {
+    const card = document.createElement("button");
+    card.className = "lesson-card";
+    card.type = "button";
+    card.onclick = () => chooseQuestionCount(Number(count));
+    card.innerHTML = `
+      <div class="lesson-row">
+        <div class="lesson-badge">${setting.icon}</div>
+        <div>
+          <strong>${setting.title}</strong>
+          <div class="lesson-meta">${setting.theme}<br>${setting.description}</div>
+        </div>
+      </div>
+    `;
+    box.appendChild(card);
+  });
+}
+
+function chooseQuestionCount(count) {
+  currentQuestionCount = count;
+  document.getElementById("selectedModeText").textContent = `${modes[currentMode].title} / ${currentQuestionCount}問`;
+  renderLessons();
+  showScreen("lessonSelect");
+}
+
+function getQuestionsForMode(lesson) {
+  if (currentMode === "grammar") {
+    return lesson.questions.filter(q => q.type === "文法");
+  }
+  if (currentMode === "reading") {
+    return lesson.questions.filter(q => q.type === "本文内容");
+  }
+  return lesson.questions;
+}
+
+function renderLessons() {
+  const box = document.getElementById("lessonList");
+  box.innerHTML = "";
+  Object.entries(lessons).forEach(([id, lesson]) => {
+    const availableCount = getQuestionsForMode(lesson).length;
+    const card = document.createElement("button");
+    card.className = "lesson-card";
+    card.type = "button";
+    card.onclick = () => startLesson(id);
+    card.innerHTML = `
+      <div class="lesson-row">
+        <div class="lesson-badge">${lesson.icon}</div>
+        <div>
+          <strong>${lesson.title}</strong>
+          <div class="lesson-meta">${lesson.theme}<br>${lesson.description}<br>出題対象：${availableCount}問 / 今回：${Math.min(currentQuestionCount, availableCount)}問</div>
+        </div>
+      </div>
+    `;
+    box.appendChild(card);
+  });
+}
+
+function loadStats() {
+  const streak = Number(localStorage.getItem("eq_streak") || "0");
+  document.getElementById("streakCount").textContent = streak;
+  renderHistory();
+}
+
+function updateStreak() {
+  const today = todayKey();
+  const last = localStorage.getItem("eq_lastStudy");
+  let streak = Number(localStorage.getItem("eq_streak") || "0");
+
+  if (last !== today) {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yKey = yesterday.getFullYear() + "-" + String(yesterday.getMonth()+1).padStart(2,"0") + "-" + String(yesterday.getDate()).padStart(2,"0");
+    streak = (last === yKey) ? streak + 1 : 1;
+    localStorage.setItem("eq_streak", String(streak));
+    localStorage.setItem("eq_lastStudy", today);
+  }
+
+  document.getElementById("streakCount").textContent = localStorage.getItem("eq_streak") || "0";
+}
+
+function saveHistory(correct, total) {
+  const history = JSON.parse(localStorage.getItem("eq_history") || "[]");
+  const lesson = lessons[currentLessonId];
+  history.unshift({
+    date: todayKey(),
+    lesson: lesson.title,
+    mode: modes[currentMode].title,
+    count: total,
+    correct,
+    total
+  });
+  localStorage.setItem("eq_history", JSON.stringify(history.slice(0, 8)));
+}
+
+function renderHistory() {
+  const history = JSON.parse(localStorage.getItem("eq_history") || "[]");
+  const box = document.getElementById("historyList");
+  if (!history.length) {
+    box.textContent = "まだ記録がありません。";
+    return;
+  }
+  box.innerHTML = history.map(item => `
+    <div class="history-item">
+      <span>${item.date} / ${item.lesson || "Lesson"} / ${item.mode || "総合問題"} / ${item.count || item.total || 5}問</span>
+      <strong>${item.correct}/${item.total}</strong>
+    </div>
+  `).join("");
+}
+
+function startLesson(lessonId) {
+  currentLessonId = lessonId;
+  const lesson = lessons[currentLessonId];
+  const questionSource = getQuestionsForMode(lesson);
+  quizQuestions = shuffle(questionSource).slice(0, currentQuestionCount).map(q => ({...q}));
+  current = 0;
+  score = 0;
+  document.getElementById("quizLessonTitle").textContent = `${lesson.title} / ${modes[currentMode].title} / ${quizQuestions.length}問`;
+  showScreen("quiz");
+  renderQuestion();
+}
+
+function restartCurrentLesson() {
+  startLesson(currentLessonId);
+}
+
+function goHome() {
+  showScreen("home");
+  loadStats();
+}
+
+function backToLessonSelect() {
+  renderLessons();
+  showScreen("lessonSelect");
+}
+
+function renderQuestion() {
+  const q = quizQuestions[current];
+  selected = null;
+  answerWords = [];
+  usedIndexes = [];
+
+  document.getElementById("feedback").className = "feedback";
+  document.getElementById("checkBtn").disabled = true;
+  document.getElementById("progress").style.width = `${(current / quizQuestions.length) * 100}%`;
+  document.getElementById("questionType").textContent = q.type;
+  document.getElementById("questionText").textContent = q.q;
+
+  const choiceArea = document.getElementById("choiceArea");
+  const wordOrderArea = document.getElementById("wordOrderArea");
+
+  if (q.mode === "choice") {
+    choiceArea.style.display = "grid";
+    wordOrderArea.style.display = "none";
+    choiceArea.innerHTML = "";
+
+    shuffle(q.choices).forEach(choice => {
+      const btn = document.createElement("button");
+      btn.className = "choice";
+      btn.type = "button";
+      btn.textContent = choice;
+      btn.onclick = () => selectChoice(btn, choice);
+      choiceArea.appendChild(btn);
+    });
+  } else {
+    choiceArea.style.display = "none";
+    wordOrderArea.style.display = "block";
+    q.shuffledWords = shuffle(q.words.map((w, i) => ({w, i})));
+    renderWordOrder();
+  }
+}
+
+function selectChoice(btn, value) {
+  selected = value;
+  document.querySelectorAll(".choice").forEach(c => c.classList.remove("selected"));
+  btn.classList.add("selected");
+  document.getElementById("checkBtn").disabled = false;
+}
+
+function renderWordOrder() {
+  const q = quizQuestions[current];
+
+  document.getElementById("answerBank").innerHTML = "";
+  answerWords.forEach((item, idx) => {
+    const btn = document.createElement("button");
+    btn.className = "word";
+    btn.type = "button";
+    btn.textContent = item.w;
+    btn.onclick = () => removeWord(idx);
+    document.getElementById("answerBank").appendChild(btn);
+  });
+
+  document.getElementById("wordBank").innerHTML = "";
+  q.shuffledWords.forEach(item => {
+    if (usedIndexes.includes(item.i)) return;
+    const btn = document.createElement("button");
+    btn.className = "word";
+    btn.type = "button";
+    btn.textContent = item.w;
+    btn.onclick = () => addWord(item.i);
+    document.getElementById("wordBank").appendChild(btn);
+  });
+
+  document.getElementById("checkBtn").disabled = answerWords.length !== q.words.length;
+}
+
+function addWord(originalIndex) {
+  const q = quizQuestions[current];
+  const item = q.words.map((w, i) => ({w, i})).find(x => x.i === originalIndex);
+  answerWords.push(item);
+  usedIndexes.push(originalIndex);
+  renderWordOrder();
+}
+
+function removeWord(answerIndex) {
+  const removed = answerWords.splice(answerIndex, 1)[0];
+  usedIndexes = usedIndexes.filter(i => i !== removed.i);
+  renderWordOrder();
+}
+
+function clearWordOrder() {
+  answerWords = [];
+  usedIndexes = [];
+  renderWordOrder();
+}
+
+function normalize(text) {
+  return text
+    .toLowerCase()
+    .replace(/[.!?]+$/g, "")
+    .replace(/[,.]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function checkAnswer() {
+  const q = quizQuestions[current];
+  let userAnswer = "";
+
+  if (q.mode === "choice") {
+    userAnswer = selected;
+  } else {
+    userAnswer = answerWords.map(x => x.w).join(" ");
+  }
+
+  const isCorrect = normalize(userAnswer) === normalize(q.answer);
+  if (isCorrect) score++;
+
+  if (q.mode === "choice") {
+    document.querySelectorAll(".choice").forEach(btn => {
+      if (btn.textContent === q.answer) btn.classList.add("correct");
+      if (btn.textContent === userAnswer && !isCorrect) btn.classList.add("wrong");
+      btn.disabled = true;
+    });
+  }
+
+  const fb = document.getElementById("feedback");
+  fb.className = "feedback show " + (isCorrect ? "correct" : "wrong");
+  document.getElementById("feedbackTitle").textContent = isCorrect ? "正解！" : "惜しい！";
+  document.getElementById("feedbackText").innerHTML = isCorrect
+    ? q.explanation
+    : `正解：<strong>${q.answer}</strong><br>${q.explanation}`;
+
+  document.getElementById("checkBtn").disabled = true;
+}
+
+function nextQuestion() {
+  current++;
+  if (current >= quizQuestions.length) {
+    finishLesson();
+  } else {
+    renderQuestion();
+  }
+}
+
+function finishLesson() {
+  updateStreak();
+  saveHistory(score, quizQuestions.length);
+
+  const lesson = lessons[currentLessonId];
+  document.getElementById("progress").style.width = "100%";
+  document.getElementById("resultLessonText").textContent = `${lesson.title} / ${modes[currentMode].title} / ${quizQuestions.length}問 の復習、おつかれさま。`;
+  document.getElementById("scoreCircle").textContent = `${score}/${quizQuestions.length}`;
+  document.getElementById("correctStat").textContent = `${score}問`;
+  document.getElementById("streakStat").textContent = `${localStorage.getItem("eq_streak") || "0"}日`;
+  showScreen("result");
+}
+
+renderModes();
+loadStats();
+</script>
+</body>
+</html>
