@@ -833,7 +833,6 @@ function renderModes() {
         <div class="lesson-badge">${mode.icon}</div>
         <div>
           <strong>${mode.title}</strong>
-          <div class="lesson-meta">${mode.theme}<br>${mode.description}</div>
         </div>
       </div>
     `;
@@ -843,7 +842,7 @@ function renderModes() {
 
 function chooseMode(modeId) {
   currentMode = modeId;
-  document.getElementById("selectedModeOnlyText").textContent = `${modes[currentMode].title}：${modes[currentMode].theme}`;
+  document.getElementById("selectedModeOnlyText").textContent = modes[currentMode].title;
   renderQuestionCounts();
   showScreen("questionCountSelect");
 }
@@ -886,6 +885,22 @@ function getQuestionsForMode(lesson) {
   return lesson.questions;
 }
 
+function getLessonSummary(lessonId) {
+  const summaries = {
+    lesson3: {
+      grammar: "使役動詞",
+      reading: "服装について",
+      mixed: "使役動詞＋服装について"
+    },
+    lesson4: {
+      grammar: "受け身",
+      reading: "昆虫食について",
+      mixed: "受け身＋昆虫食について"
+    }
+  };
+  return summaries[lessonId][currentMode] || "";
+}
+
 function renderLessons() {
   const box = document.getElementById("lessonList");
   box.innerHTML = "";
@@ -900,7 +915,7 @@ function renderLessons() {
         <div class="lesson-badge">${lesson.icon}</div>
         <div>
           <strong>${lesson.title}</strong>
-          <div class="lesson-meta">${lesson.theme}<br>${lesson.description}<br>出題対象：${availableCount}問 / 今回：${Math.min(currentQuestionCount, availableCount)}問</div>
+          <div class="lesson-meta">${getLessonSummary(id)}<br>出題対象：${availableCount}問 / 今回：${Math.min(currentQuestionCount, availableCount)}問</div>
         </div>
       </div>
     `;
