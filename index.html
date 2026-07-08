@@ -343,6 +343,45 @@
       line-height: 1.5;
     }
 
+    .hint-area {
+      margin: 4px 0 16px;
+    }
+
+    .hint-btn {
+      width: auto;
+      border: 2px solid #fde68a;
+      border-radius: 999px;
+      padding: 9px 13px;
+      background: #fffbeb;
+      color: #92400e;
+      font-weight: 900;
+      font-size: 14px;
+      cursor: pointer;
+      box-shadow: 0 3px 0 #facc15;
+    }
+
+    .hint-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 1px 0 #facc15;
+    }
+
+    .hint-box {
+      display: none;
+      margin-top: 10px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      color: #78350f;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.6;
+    }
+
+    .hint-box.show {
+      display: block;
+    }
+
     .feedback {
       position: sticky;
       bottom: 0;
@@ -507,6 +546,11 @@
       <section class="card">
         <div id="questionType" class="question-type">単語</div>
         <div id="questionText" class="question"></div>
+
+        <div class="hint-area">
+          <button id="hintBtn" class="hint-btn" type="button" onclick="showHint()">💡 ヒント</button>
+          <div id="hintBox" class="hint-box"></div>
+        </div>
 
         <div id="choiceArea" class="choices"></div>
 
@@ -950,6 +994,9 @@ function renderQuestion() {
 
   document.getElementById("feedback").className = "feedback";
   document.getElementById("checkBtn").disabled = true;
+  document.getElementById("hintBox").className = "hint-box";
+  document.getElementById("hintBox").textContent = "";
+  document.getElementById("hintBtn").disabled = false;
   document.getElementById("progress").style.width = `${(current / quizQuestions.length) * 100}%`;
   document.getElementById("questionType").textContent = q.type;
   document.getElementById("questionText").textContent = q.q;
@@ -1041,6 +1088,52 @@ function normalize(text) {
     .trim();
 }
 
+function getHint(q) {
+  if (q.hint) return q.hint;
+
+  if (q.mode === "word_order") {
+    if (q.type === "文法" && currentLessonId === "lesson3") {
+      return "使役動詞の並べ替えは「主語 → let / have / make → 人 → 動詞の原形」の順番を意識しよう。";
+    }
+    if (q.type === "文法" && currentLessonId === "lesson4") {
+      return "受け身の並べ替えは「主語 → be動詞 → 過去分詞」を先に作ろう。by は「誰によって」、in は「場所・年・言語」のときに使うよ。";
+    }
+    return "まず主語と動詞を探そう。文頭の大文字と最後のピリオドはヒントにならないように消してあるよ。";
+  }
+
+  if (q.type === "単語") {
+    return "本文でその単語が出てきた場面を思い出そう。意味だけでなく、どの話題で使われたかもヒントになるよ。";
+  }
+
+  if (q.type === "本文内容") {
+    if (currentLessonId === "lesson3") {
+      return "Lesson 3は「服の役割」と「ファッションで自分らしさを表すこと」の2つの流れを思い出そう。";
+    }
+    return "Lesson 4は「コオロギクッキーへの反応」と「昆虫食が未来の食料になる理由」の流れを思い出そう。";
+  }
+
+  if (q.type === "文法" && currentLessonId === "lesson3") {
+    return "Lesson 3の文法は使役動詞。基本は「let / have / make + 人 + 動詞の原形」。make + 人 + feel + 形容詞も大事。";
+  }
+
+  if (q.type === "文法" && currentLessonId === "lesson4") {
+    return "Lesson 4の文法は受け身。基本は「be動詞 + 過去分詞」。by は「誰によって」、in は「場所・年・言語」。";
+  }
+
+  if (q.type === "表現") {
+    return "本文で出てきた決まった表現を思い出そう。文法というより、フレーズとして覚えると解きやすいよ。";
+  }
+
+  return "問題文のキーワードを1つ決めて、本文や授業プリントのどこで出てきたか思い出そう。";
+}
+
+function showHint() {
+  const q = quizQuestions[current];
+  const box = document.getElementById("hintBox");
+  box.textContent = getHint(q);
+  box.className = "hint-box show";
+}
+
 function checkAnswer() {
   const q = quizQuestions[current];
   let userAnswer = "";
@@ -1070,6 +1163,7 @@ function checkAnswer() {
     : `正解：<strong>${q.answer}</strong><br>${q.explanation}`;
 
   document.getElementById("checkBtn").disabled = true;
+  document.getElementById("hintBtn").disabled = true;
 }
 
 function nextQuestion() {
